@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/b_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="member Create"/>
+
+    <EditText
+        android:hint="username"
+        android:id="@+id/e_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:hint="password"
+        android:id="@+id/e_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/b_notice"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="notice create"/>
+
+    <EditText
+        android:hint="title"
+        android:id="@+id/e_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:hint="content"
+        android:id="@+id/e_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/b_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Create"/>
+
+    <Button
+        android:id="@+id/b_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Show"/>
+
+    <TextView
+        android:id="@+id/t_show"
+        android:hint="show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
