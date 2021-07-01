@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     Button b_create, b_notice, b_view, b_show;
     EditText e_username, e_password, e_title, e_content;
     TextView t_show;
-//    Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
