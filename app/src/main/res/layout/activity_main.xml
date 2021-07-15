@@ -5,62 +5,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
-    <Button
-        android:id="@+id/b_create"
-        android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/main1_btn"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:background="@drawable/gradient_basic_button"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:text="혼잡도"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="#FFFFFF"
+            app:backgroundTintMode="multiply" />
+
+        <Button
+            android:id="@+id/main2_btn"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient_basic_button"
+            android:text="예약"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="#FFFFFF"
+            app:backgroundTintMode="multiply" />
+
+        <View
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/pink_700"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textColor="@color/purple_700" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="|"
+            android:textColor="@color/pink_700" />
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="회원가입"
+            android:textColor="@color/purple_700" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="|"
+            android:textColor="@color/pink_700" />
+
+        <TextView
+            android:id="@+id/tv_administrator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="관리자 등록"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:text="member Create"/>
+        android:gravity="center_horizontal"
+        android:visibility="invisible">
 
-    <EditText
-        android:hint="username"
-        android:id="@+id/e_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:hint="password"
-        android:id="@+id/e_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/b_notice"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="notice create"/>
-
-    <EditText
-        android:hint="title"
-        android:id="@+id/e_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:hint="content"
-        android:id="@+id/e_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/b_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Create"/>
-
-    <Button
-        android:id="@+id/b_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Show"/>
-
-    <TextView
-        android:id="@+id/t_show"
-        android:hint="show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Page"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
 
 </LinearLayout>

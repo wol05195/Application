@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Booking">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:elevation="1dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약하기"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rectangle_line_button"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="날짜" />
+
+
+        <EditText
+            android:id="@+id/et_time"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rectangle_line_button"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="시간" />
+
+        <EditText
+            android:id="@+id/et_people"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/rectangle_line_button"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="인원수" />
+
+        <Button
+            android:id="@+id/b_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:background="@drawable/gradient_basic_button"
+            android:text="OK"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            app:backgroundTintMode="multiply" />
+    </LinearLayout>
+</RelativeLayout>

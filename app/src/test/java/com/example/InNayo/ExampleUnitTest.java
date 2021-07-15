@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.InNayo;
 
 import org.junit.Test;
 
