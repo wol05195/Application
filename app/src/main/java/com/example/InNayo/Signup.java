@@ -37,7 +37,7 @@ class ViewpagerAdapter extends FragmentStatePagerAdapter {
     public ViewpagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         arrayList.add(new Member());
-        arrayList.add(new Nonmember());
+        arrayList.add(new NonMember());
 
         name.add("회원");
         name.add("비회원");

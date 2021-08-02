@@ -13,7 +13,6 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
-    TabLayout tabLayout;
     ViewPager viewPager;
 
     @Override
@@ -25,9 +24,8 @@ public class Login extends AppCompatActivity {
         ViewpagerAdapter2 adapter = new ViewpagerAdapter2(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        tabLayout = findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
 
     }
 }

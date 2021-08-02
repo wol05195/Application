@@ -35,7 +35,7 @@
 
 
         <Button
-            android:id="@+id/b_Login"
+            android:id="@+id/b_login"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -60,10 +60,11 @@
             android:textColor="#BEBBBB"
             android:textStyle="bold"/>
         <TextView
+            android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Sign up"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/purple_500"
             android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>
