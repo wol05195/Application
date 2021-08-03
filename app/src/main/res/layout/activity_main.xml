@@ -15,7 +15,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/main1_btn"
+            android:id="@+id/b_congestion"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:background="@drawable/gradient_basic_button"
@@ -28,7 +28,7 @@
             app:backgroundTintMode="multiply" />
 
         <Button
-            android:id="@+id/main2_btn"
+            android:id="@+id/b_reservation"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"

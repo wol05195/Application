@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MyPage">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:elevation="1dp"
+        app:title="마이페이지"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp">
+    <Button
+        android:id="@+id/mybutton1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/rectangle_line_button"
+        android:layout_marginBottom="16dp"
+        android:text="개인정보 수정"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/mybutton2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/rectangle_line_button"
+        android:layout_marginBottom="16dp"
+        android:text="예약내역 확인"
+        android:textColor="@color/black"/>
+    </LinearLayout>
+</LinearLayout>
