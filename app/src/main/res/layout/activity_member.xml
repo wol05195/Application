@@ -27,6 +27,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et1"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -39,6 +40,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et2"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -51,6 +53,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et3"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -63,6 +66,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et4"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -75,6 +79,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et5"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -87,6 +92,7 @@
                     android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/member_et6"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_700"/>
@@ -94,7 +100,7 @@
         </ScrollView>
     </LinearLayout>
     <Button
-        android:id="@+id/b_signup"
+        android:id="@+id/member_button1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

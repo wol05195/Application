@@ -15,7 +15,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/b_congestion"
+            android:id="@+id/main_button1"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:background="@drawable/gradient_basic_button"
@@ -28,7 +28,7 @@
             app:backgroundTintMode="multiply" />
 
         <Button
-            android:id="@+id/b_reservation"
+            android:id="@+id/main_button2"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"
@@ -56,7 +56,7 @@
         android:visibility="visible">
 
         <TextView
-            android:id="@+id/tv_login"
+            android:id="@+id/main_tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="로그인"
@@ -70,7 +70,7 @@
             android:textColor="@color/pink_700" />
 
         <TextView
-            android:id="@+id/tv_signup"
+            android:id="@+id/main_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -85,7 +85,7 @@
             android:textColor="@color/pink_700" />
 
         <TextView
-            android:id="@+id/tv_administrator"
+            android:id="@+id/main_tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

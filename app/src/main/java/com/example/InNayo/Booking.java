@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class Booking extends AppCompatActivity {
-    Button b_ok;
+    Button booking_button1;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
-        b_ok = (Button) findViewById(R.id.b_ok);
-        b_ok.setOnClickListener(v -> {
+        booking_button1 = (Button) findViewById(R.id.booking_button1);
+        booking_button1.setOnClickListener(v -> {
             intent = new Intent(getApplicationContext(), Reservation.class);
             startActivity(intent);
         });

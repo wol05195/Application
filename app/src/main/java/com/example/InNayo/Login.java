@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        viewPager = findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.login_viewpager);
         ViewpagerAdapter2 adapter = new ViewpagerAdapter2(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 

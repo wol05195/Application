@@ -21,13 +21,13 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item1"
+            android:id="@+id/login_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item2"
+            android:id="@+id/login_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비회원" />
@@ -36,7 +36,8 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/login_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

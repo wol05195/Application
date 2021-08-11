@@ -31,6 +31,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -41,6 +42,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -52,6 +54,7 @@
            android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -62,6 +65,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -72,6 +76,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et5"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -82,12 +87,13 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/admin_et6"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
     </LinearLayout>
     <Button
-        android:id="@+id/b_register"
+        android:id="@+id/admin_button1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_basic_button"

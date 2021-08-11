@@ -20,6 +20,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/id_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
@@ -31,11 +32,12 @@
             android:textColor="@color/purple_500"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/id_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"/>
         <TextView
-            android:id="@+id/tv_pw"
+            android:id="@+id/id_tv1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -51,7 +53,7 @@
         android:gravity="center_horizontal"
         android:layout_weight="2">
         <Button
-            android:id="@+id/b_ok"
+            android:id="@+id/id_button1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_basic_button"
