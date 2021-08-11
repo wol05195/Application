@@ -19,23 +19,23 @@ public class NonMemberLogin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_non_member_login,container,false);
 
-//        Button btnLogin = (Button) rootview.findViewById(R.id.b_login);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//        Button b_login = (Button) rootview.findViewById(R.id.b_login);
+//        b_login.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), MainActivity.class);
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), Main.class);
 //                startActivity(intent);
 //            }
 //        });
 
-//        TextView tvSignup = (TextView) rootview.findViewById(R.id.tv_signup);
-//        tvSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), Signup.class);
-//                startActivity(intent);
-//            }
-//        });
+        TextView tv_signup = (TextView) rootview.findViewById(R.id.tv_signup);
+        tv_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Signup.class);
+                startActivity(intent);
+            }
+        });
         return rootview;
     }
 }

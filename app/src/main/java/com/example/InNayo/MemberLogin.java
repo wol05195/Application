@@ -16,39 +16,38 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MemberLogin extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.activity_member_login, container, false);
+        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_member_login, container, false);
 
-//        TextView tv_pw = (TextView) rootview.findViewById(R.id.tv_pw);
-//        tv_pw.setOnClickListener(new View.OnClickListener() {
+        TextView tv_fp = (TextView) rootview.findViewById(R.id.tv_fp);
+        tv_fp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Find.class);
+                startActivity(intent);
+            }
+        });
+
+//        Button b_login = (Button) rootview.findViewById(R.id.b_login);
+//        b_login.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), Find.class);
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), Main.class);
 //                startActivity(intent);
 //            }
 //        });
 
-//        Button btnLogin = (Button) rootview.findViewById(R.id.b_login);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), Login.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        TextView tvSignup = (TextView) rootview.findViewById(R.id.tv_signup);
-//        tvSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), Signup.class);
-//                startActivity(intent);
-//            }
-//        });
 
+        TextView tv_signup = (TextView) rootview.findViewById(R.id.tv_signup);
+        tv_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Signup.class);
+                startActivity(intent);
+            }
+        });
         return rootview;
     }
 }

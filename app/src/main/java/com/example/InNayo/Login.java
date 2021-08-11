@@ -7,14 +7,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
     ViewPager viewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,6 @@ public class Login extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 }
 
@@ -60,4 +60,5 @@ class ViewpagerAdapter2 extends FragmentStatePagerAdapter {
     public int getCount() {
         return arrayList.size();
     }
+
 }
