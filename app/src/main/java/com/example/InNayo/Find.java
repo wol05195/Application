@@ -21,7 +21,7 @@ public class Find extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
 
-        viewPager = findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.find_viewpager);
         ViewpagerAdapter3 adapter = new ViewpagerAdapter3(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 

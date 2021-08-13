@@ -41,7 +41,7 @@ public class Reservation extends AppCompatActivity {
 
             list = (ListView)findViewById(R.id.listview);
             personList = new ArrayList<HashMap<String, String>>();
-            getData("http://172.30.1.41/PHP_facilities.php");
+            getData("http://172.30.1.21/PHP_facilities.php");
         }
 
         protected void showList(){

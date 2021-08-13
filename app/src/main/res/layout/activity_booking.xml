@@ -12,14 +12,8 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_500"
         android:elevation="1dp"
+        app:title="예약하기"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="예약하기"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -31,7 +25,7 @@
         android:padding="16dp">
 
         <EditText
-            android:id="@+id/et_date"
+            android:id="@+id/booking_edit1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginBottom="16dp"
@@ -44,7 +38,7 @@
 
 
         <EditText
-            android:id="@+id/et_time"
+            android:id="@+id/booking_edit2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginBottom="16dp"
@@ -56,7 +50,7 @@
             android:text="시간" />
 
         <EditText
-            android:id="@+id/et_people"
+            android:id="@+id/booking_edit3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginBottom="48dp"
@@ -68,7 +62,7 @@
             android:text="인원수" />
 
         <Button
-            android:id="@+id/b_ok"
+            android:id="@+id/booking_button1"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_gravity="center"
