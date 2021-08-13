@@ -20,6 +20,11 @@
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.naver.maps.map.MapFragment"/>
+        android:name="com.naver.maps.map.MapFragment"
+        app:navermap_latitude="37.55834"
+        app:navermap_longitude="127.04984"
+        app:navermap_zoom="16"
+
+        />
 
 </LinearLayout>
