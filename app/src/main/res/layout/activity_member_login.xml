@@ -14,7 +14,7 @@
         android:gravity="center"
         android:layout_weight="5">
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/member_et1"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@drawable/corner_line_button"
