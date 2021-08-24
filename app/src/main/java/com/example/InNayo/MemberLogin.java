@@ -21,8 +21,8 @@ public class MemberLogin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_member_login, container, false);
 
-        TextView tv_fp = (TextView) rootview.findViewById(R.id.tv_fp);
-        tv_fp.setOnClickListener(new View.OnClickListener() {
+        TextView member_login_tv1 = (TextView) rootview.findViewById(R.id.member_login_tv1);
+        member_login_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Find.class);
@@ -40,8 +40,8 @@ public class MemberLogin extends Fragment {
 //        });
 
 
-        TextView tv_signup = (TextView) rootview.findViewById(R.id.tv_signup);
-        tv_signup.setOnClickListener(new View.OnClickListener() {
+        TextView member_login_tv2 = (TextView) rootview.findViewById(R.id.member_login_tv2);
+        member_login_tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Signup.class);

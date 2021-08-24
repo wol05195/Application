@@ -22,7 +22,7 @@
         android:background="@color/pink_200"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/tv_year"
+            android:id="@+id/reservation_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0000"/>
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="년 "/>
         <TextView
-            android:id="@+id/tv_month"
+            android:id="@+id/reservation_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"/>
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="월 "/>
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/reservation_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"/>
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="일 "/>
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/reservation_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"/>
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="시 "/>
         <TextView
-            android:id="@+id/tv_people"
+            android:id="@+id/reservation_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"/>
@@ -73,7 +73,7 @@
 
     </LinearLayout>
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
+        android:id="@+id/reservation_search_view"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
@@ -87,7 +87,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
         <Button
-            android:id="@+id/place1"
+            android:id="@+id/reservation_bt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -95,7 +95,7 @@
             android:background="@drawable/corner_line_button"
             android:text="강의실"/>
         <Button
-            android:id="@+id/place2"
+            android:id="@+id/reservation_bt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -103,7 +103,7 @@
             android:background="@drawable/corner_line_button"
             android:text="도서관"/>
         <Button
-            android:id="@+id/place3"
+            android:id="@+id/reservation_bt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -111,7 +111,7 @@
             android:background="@drawable/corner_line_button"
             android:text="카페"/>
         <Button
-            android:id="@+id/place4"
+            android:id="@+id/reservation_bt4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -16,18 +16,18 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/signup_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item1"
+            android:id="@+id/signup_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item2"
+            android:id="@+id/signup_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비회원" />
