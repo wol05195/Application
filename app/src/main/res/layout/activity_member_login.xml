@@ -14,7 +14,7 @@
         android:gravity="center"
         android:layout_weight="5">
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/member_login_ed1"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@drawable/corner_line_button"
@@ -24,7 +24,7 @@
             android:hint="ID"/>
 
         <EditText
-            android:id="@+id/et_pw"
+            android:id="@+id/member_login_ed2"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
@@ -71,7 +71,7 @@
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/tv_signup"
-            android:layout_width="wrap_content"
+            android:layout_width="wrap_content"S
             android:layout_height="wrap_content"
             android:text=" Sign up"
             android:textColor="@color/purple_500"
