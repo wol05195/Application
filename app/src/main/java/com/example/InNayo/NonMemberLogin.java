@@ -19,8 +19,8 @@ public class NonMemberLogin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_non_member_login,container,false);
 
-//        Button b_login = (Button) rootview.findViewById(R.id.b_login);
-//        b_login.setOnClickListener(new View.OnClickListener() {
+//        Button non_member_bt = (Button) rootview.findViewById(R.id.non_member_bt);
+//        non_member_bt.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(getContext(), Main.class);
@@ -28,8 +28,8 @@ public class NonMemberLogin extends Fragment {
 //            }
 //        });
 
-        TextView tv_signup = (TextView) rootview.findViewById(R.id.tv_signup);
-        tv_signup.setOnClickListener(new View.OnClickListener() {
+        TextView non_member_login_tv = (TextView) rootview.findViewById(R.id.non_member_login_tv);
+        non_member_login_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Signup.class);

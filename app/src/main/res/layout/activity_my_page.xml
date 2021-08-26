@@ -23,7 +23,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp">
     <Button
-        android:id="@+id/mybutton1"
+        android:id="@+id/my_page_bt1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/rectangle_line_button"
@@ -32,7 +32,7 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/mybutton2"
+        android:id="@+id/my_page_bt2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/rectangle_line_button"

@@ -35,7 +35,7 @@
         android:layout_margin="10dp"
         android:text="입력한 정보로 예약하시겠습니까?"/>
     <Button
-        android:id="@+id/b_ok"
+        android:id="@+id/reservation_check_bt"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_gravity="center"
