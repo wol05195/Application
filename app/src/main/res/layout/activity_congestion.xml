@@ -25,6 +25,11 @@
         app:navermap_longitude="127.04984"
         app:navermap_zoom="16"
 
+
+
         />
+
+
+
 
 </LinearLayout>
