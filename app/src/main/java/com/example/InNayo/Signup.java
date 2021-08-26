@@ -25,8 +25,8 @@ public class Signup extends AppCompatActivity {
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
+        TabLayout signup_tabLayout = findViewById(R.id.signup_tab_layout);
+        signup_tabLayout.setupWithViewPager(viewPager);
     }
 }
 

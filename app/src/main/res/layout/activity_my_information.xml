@@ -77,7 +77,7 @@
             android:backgroundTint="@color/purple_700"/>
     </LinearLayout>
     <Button
-        android:id="@+id/b_ok"
+        android:id="@+id/my_information_bt"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_basic_button"

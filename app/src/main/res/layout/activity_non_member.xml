@@ -62,7 +62,7 @@
             android:backgroundTint="@color/purple_700"/>
     </LinearLayout>
         <Button
-            android:id="@+id/b_signup"
+            android:id="@+id/non_member_bt"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
