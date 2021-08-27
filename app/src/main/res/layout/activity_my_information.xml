@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/ivory"
+        app:titleTextColor="@color/brown"
         android:elevation="1dp"
         app:title="개인 정보 수정"
        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
@@ -28,53 +29,53 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:layout_marginTop="10dp"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="ID"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Password"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Phone Number"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
     </LinearLayout>
     <Button
         android:id="@+id/my_information_bt"
@@ -83,7 +84,7 @@
         android:background="@drawable/gradient_basic_button"
         android:textAllCaps="false"
         android:text="OK"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/darkpurple"
         android:layout_gravity="center"
         android:textSize="20dp"/>
 </LinearLayout>

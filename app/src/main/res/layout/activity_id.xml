@@ -17,25 +17,25 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="ID"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/id_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Phone Number"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/id_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
         <TextView
             android:id="@+id/id_tv1"
             android:layout_width="300dp"
@@ -43,7 +43,7 @@
             android:gravity="right"
             android:layout_marginTop="16dp"
             android:text="LogIn -->"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/gray"
             android:textStyle="bold"/>
     </LinearLayout>
     <LinearLayout
@@ -59,7 +59,7 @@
             android:background="@drawable/gradient_basic_button"
             android:textAllCaps="false"
             android:text="OK"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/darkpurple"
             android:textSize="18dp"/>
 
     </LinearLayout>

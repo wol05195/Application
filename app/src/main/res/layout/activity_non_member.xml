@@ -17,36 +17,36 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Phone Number"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Password"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
 
 
         <TextView
@@ -54,12 +54,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Re-type Password"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink"/>
     </LinearLayout>
         <Button
             android:id="@+id/non_member_bt"
@@ -70,6 +70,6 @@
             android:background="@drawable/gradient_basic_button"
             android:textAllCaps="false"
             android:text="Sign Up"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/darkpurple"
             android:textSize="20dp"/>
 </LinearLayout>

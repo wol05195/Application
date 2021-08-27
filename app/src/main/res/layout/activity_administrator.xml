@@ -11,87 +11,99 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/ivory"
+        app:titleTextColor="@color/brown"
         android:elevation="1dp"
         app:title="관리자 등록"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="시설명"
             android:layout_marginTop="10dp"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:text="시설명"
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="시설 위치"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="전화번호"
-           android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="전체 수용 가능 인원 수"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="예약 가능 시작 시간"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et5"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="예약 가능 종료 시간"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"/>
+            android:textColor="@color/darkpurple"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/admin_et6"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"/>
+            android:backgroundTint="@color/lightpink" />
     </LinearLayout>
+
     <Button
         android:id="@+id/admin_button1"
         android:layout_width="300dp"
@@ -99,7 +111,7 @@
         android:background="@drawable/gradient_basic_button"
         android:textAllCaps="false"
         android:text="등록하기"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/darkpurple"
         android:layout_gravity="center"
         android:textSize="20dp"/>
 </LinearLayout>

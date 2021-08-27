@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/ivory"
+        app:titleTextColor="@color/brown"
         android:elevation="1dp"
         app:title="혼잡도"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
@@ -36,7 +37,8 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/corner_line_button"
-                android:text="강의실"/>
+                android:text="강의실"
+                android:textColor="@color/brown"/>
 
             <Button
                 android:id="@+id/congestion_bt2"
@@ -47,7 +49,8 @@
                 android:layout_marginLeft="115dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/corner_line_button"
-                android:text="도서관" />
+                android:text="도서관"
+                android:textColor="@color/brown"/>
             <Button
                 android:id="@+id/congestion_bt3"
                 android:layout_width="wrap_content"
@@ -57,7 +60,8 @@
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/corner_line_button"
-                android:text="카페" />
+                android:text="카페"
+                android:textColor="@color/brown"/>
             <Button
                 android:id="@+id/congestion_bt4"
                 android:layout_width="wrap_content"
@@ -67,7 +71,8 @@
                 android:layout_marginLeft="295dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/corner_line_button"
-                android:text="식당" />
+                android:text="식당"
+                android:textColor="@color/brown"/>
 
             <fragment
                 android:id="@+id/map"
