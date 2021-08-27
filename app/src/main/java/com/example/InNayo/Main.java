@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
     Intent intent;
-    Button main_button1, main_button2;
-    TextView main_tv1, main_tv2, main_tv3;
+    Button main_button1, main_button2, main_button3, main_button4, main_button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +29,24 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     });
 
-        main_tv1 = (TextView)findViewById(R.id.main_tv1);
-        main_tv1.setOnClickListener(v -> {
-        intent = new Intent(getApplicationContext(), Login.class);
-        startActivity(intent);
-    });
-        main_tv2 = (TextView)findViewById(R.id.main_tv2);
-        main_tv2.setOnClickListener(v -> {
-        intent = new Intent(getApplicationContext(), Signup.class);
-        startActivity(intent);
-    });
+        main_button3 = (Button) findViewById(R.id.main_button3);
+        main_button3.setOnClickListener(v -> {
+            intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+        });
 
-        main_tv3 = (TextView)findViewById(R.id.main_tv3);
-        main_tv3.setOnClickListener(v -> {
-        intent = new Intent(getApplicationContext(), Administrator.class);
-        startActivity(intent);
-    });
+        main_button4 = (Button) findViewById(R.id.main_button4);
+        main_button4.setOnClickListener(v -> {
+            intent = new Intent(getApplicationContext(), Signup.class);
+            startActivity(intent);
+        });
+
+        main_button5 = (Button) findViewById(R.id.main_button5);
+        main_button5.setOnClickListener(v -> {
+            intent = new Intent(getApplicationContext(), Administrator.class);
+            startActivity(intent);
+        });
+
+
     }
 }

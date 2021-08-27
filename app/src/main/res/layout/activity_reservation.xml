@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/ivory"
+        app:titleTextColor="@color/brown"
         android:elevation="1dp"
         app:title="예약하기"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
@@ -93,7 +94,8 @@
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:background="@drawable/corner_line_button"
-            android:text="강의실"/>
+            android:text="강의실"
+            android:textColor="@color/brown"/>
         <Button
             android:id="@+id/reservation_bt2"
             android:layout_width="wrap_content"
@@ -101,7 +103,8 @@
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:background="@drawable/corner_line_button"
-            android:text="도서관"/>
+            android:text="도서관"
+            android:textColor="@color/brown"/>
         <Button
             android:id="@+id/reservation_bt3"
             android:layout_width="wrap_content"
@@ -109,14 +112,16 @@
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:background="@drawable/corner_line_button"
-            android:text="카페"/>
+            android:text="카페"
+            android:textColor="@color/brown"/>
         <Button
             android:id="@+id/reservation_bt4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/corner_line_button"
-            android:text="식당"/>
+            android:text="식당"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout

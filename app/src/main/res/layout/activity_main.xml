@@ -102,7 +102,6 @@
         android:visibility="invisible">
 
         <TextView
-            android:id="@+id/main_tv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Page"
