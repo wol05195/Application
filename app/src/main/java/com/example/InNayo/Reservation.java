@@ -2,7 +2,6 @@ package com.example.InNayo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,71 +38,71 @@ public class Reservation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-            list = (ListView)findViewById(R.id.listview);
-            personList = new ArrayList<HashMap<String, String>>();
-            getData("http://172.30.1.21/PHP_facilities.php");
-        }
+        list = (ListView)findViewById(R.id.listview);
+        personList = new ArrayList<HashMap<String, String>>();
+        getData("http://172.30.1.53/PHP_facilities.php");
+    }
 
-        protected void showList(){
-            try{
-                JSONObject jsonObj = new JSONObject(myJSON);
-                peoples = jsonObj.getJSONArray(TAG_RESULTS);
+    protected void showList(){
+        try{
+            JSONObject jsonObj = new JSONObject(myJSON);
+            peoples = jsonObj.getJSONArray(TAG_RESULTS);
 
-                for(int i=0; i<peoples.length(); i++){
-                    JSONObject c = peoples.getJSONObject(i);
-                    String name = c.getString(TAG_NAME);
+            for(int i=0; i<peoples.length(); i++){
+                JSONObject c = peoples.getJSONObject(i);
+                String list_item_name = c.getString(TAG_NAME);
 
-                    HashMap<String,String> persons = new HashMap<String, String>();
+                HashMap<String,String> persons = new HashMap<String, String>();
 
-                    persons.put(TAG_NAME, name);
+                persons.put(TAG_NAME, list_item_name);
 
-                    personList.add(persons);
-                }
-                ListAdapter adapter = new SimpleAdapter(
-                        Reservation.this, personList, R.layout.list_item,
-                        new String[]{TAG_NAME},
-                        new int[]{R.id.name}
-                );
-                list.setAdapter(adapter);
-
-            } catch (JSONException e){
-                e.printStackTrace();
+                personList.add(persons);
             }
+            ListAdapter adapter = new SimpleAdapter(
+                    Reservation.this, personList, R.layout.list_item,
+                    new String[]{TAG_NAME},
+                    new int[]{R.id.list_item_name}
+            );
+            list.setAdapter(adapter);
+
+        } catch (JSONException e){
+            e.printStackTrace();
         }
-        public void getData(String url) {
-            class GetDataJson extends AsyncTask<String, Void, String> {
+    }
+    public void getData(String url) {
+        class GetDataJson extends AsyncTask<String, Void, String> {
 
-                @Override
-                protected String doInBackground(String... params) {
-                    String uri = params[0];
+            @Override
+            protected String doInBackground(String... params) {
+                String uri = params[0];
 
-                    BufferedReader bufferedReader = null;
-                    try{
-                        URL url = new URL(uri);
-                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                        StringBuilder sb = new StringBuilder();
+                BufferedReader bufferedReader = null;
+                try{
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
 
-                        bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-                        String json;
-                        while ((json = bufferedReader.readLine()) != null){
-                            sb.append(json + '\n');
-                        }
-                        return sb.toString().trim();
-                    } catch(Exception e){
-                        return null;
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null){
+                        sb.append(json + '\n');
                     }
-
+                    return sb.toString().trim();
+                } catch(Exception e){
+                    return null;
                 }
 
-                @Override
-                protected void onPostExecute(String result){
-                    myJSON = result;
-                    showList();
-                }
             }
-            GetDataJson g = new GetDataJson();
-            g.execute(url);
+
+            @Override
+            protected void onPostExecute(String result){
+                myJSON = result;
+                showList();
+            }
+        }
+        GetDataJson g = new GetDataJson();
+        g.execute(url);
 
     }
 }
