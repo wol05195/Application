@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class Signup extends AppCompatActivity {
     ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class Signup extends AppCompatActivity {
 
         TabLayout signup_tabLayout = findViewById(R.id.signup_tab_layout);
         signup_tabLayout.setupWithViewPager(viewPager);
+
     }
 }
 

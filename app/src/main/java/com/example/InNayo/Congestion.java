@@ -38,23 +38,14 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
 
-        Marker marker1 = new Marker();
-        marker1.setPosition(new LatLng(37.55834853256298, 127.04990932947216));
-        marker1.setMap(naverMap);
-        marker1.setWidth(200);
-        marker1.setHeight(200);
-        marker1.setIcon(OverlayImage.fromResource(R.drawable.h));
-        marker1.setCaptionText("한양여자대학교");
-        marker1.setCaptionRequestedWidth(200);
-
-        Marker marker2 = new Marker();
-        marker2.setPosition(new LatLng(37.5606832475916, 127.047201183911));
-        marker2.setMap(naverMap);
-        marker2.setWidth(200);
-        marker2.setHeight(200);
-        marker2.setIcon(OverlayImage.fromResource(R.drawable.m));
-        marker2.setCaptionText("미네스키친");
-        marker2.setCaptionRequestedWidth(200);
+        Marker marker = new Marker();
+        marker.setPosition(new LatLng(37.55834853256298, 127.04990932947216));
+        marker.setMap(naverMap);
+        marker.setWidth(100);
+        marker.setHeight(100);
+        marker.setIcon(OverlayImage.fromResource(R.drawable.h));
+        marker.setCaptionText("한양여자대학교");
+        marker.setCaptionRequestedWidth(200);
 
 
 

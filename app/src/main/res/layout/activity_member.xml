@@ -89,13 +89,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="Phone Number"
-                    android:textColor="@color/darkpurple"
+                    android:textColor="@color/purple_500"
                     android:textStyle="bold"/>
                 <EditText
                     android:id="@+id/member_et6"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/lightpink"/>
+                    android:backgroundTint="@color/purple_700"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
