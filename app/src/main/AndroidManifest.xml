@@ -103,6 +103,10 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="169gyxcs2h" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>
