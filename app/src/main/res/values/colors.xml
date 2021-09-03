@@ -13,7 +13,10 @@
     <color name="gray">#848484</color>
     <color name="ivory">#f9f5ea</color>
     <color name="lightpink">#dfc5be</color>
+    <color name="begie">#e2d1c3</color>
     <color name="darkpurple">#786a73</color>
     <color name="brown">#604457</color>
+    <color name="lightpurple_100">#dad4ec</color>
+    <color name="lightpurple_200">#f3e7e9</color>
 
 </resources>

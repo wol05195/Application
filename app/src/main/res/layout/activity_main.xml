@@ -12,16 +12,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center">
 
         <Button
             android:id="@+id/main_button1"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="5dp"
-            android:background="@drawable/corner_line_button"
+            android:background="@drawable/line_button2"
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:text="혼잡도"
@@ -32,11 +32,12 @@
 
         <Button
             android:id="@+id/main_button2"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:layout_marginHorizontal="5dp"
-            android:background="@drawable/corner_line_button"
+            android:background="@drawable/line_button2"
             android:text="예약"
             android:textAllCaps="false"
             android:textColor="#000000"
@@ -59,75 +60,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:visibility="visible">
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/main_tv1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textColor="@color/brown" />
 
-            <Button
-                android:id="@+id/main_button3"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/corner_line_button"
-                android:text="로그인"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:backgroundTint="#FFFFFF"
-                app:backgroundTintMode="multiply"/>
-            <Button
-                android:id="@+id/main_button4"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/corner_line_button"
-                android:text="회원가입"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:backgroundTint="#FFFFFF"
-                app:backgroundTintMode="multiply"/>
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="15dp"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="|"
+            android:textColor="@color/lightpink" />
 
-            <Button
-                android:id="@+id/main_button5"
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/corner_line_button"
-                android:text="관리자 등록"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:backgroundTint="#FFFFFF"
-                app:backgroundTintMode="multiply"/>
+        <TextView
+            android:id="@+id/main_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="회원가입"
+            android:textColor="@color/brown" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="|"
+            android:textColor="@color/lightpink" />
 
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/main_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="관리자 등록"
+            android:textColor="@color/brown" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Page"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
 </LinearLayout>
