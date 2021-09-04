@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,7 +27,7 @@ import java.util.HashMap;
 
 public class Reservation extends AppCompatActivity {
     String myJSON;
-
+    Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5;
     private static final String TAG_RESULTS = "result";
     private static final String TAG_NAME = "fname";
 
@@ -38,9 +40,48 @@ public class Reservation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
+        reservation_bt1 = (Button)findViewById(R.id.reservation_bt1);
+        reservation_bt2 = (Button)findViewById(R.id.reservation_bt2);
+        reservation_bt3 = (Button)findViewById(R.id.reservation_bt3);
+        reservation_bt4 = (Button)findViewById(R.id.reservation_bt4);
+        reservation_bt5 = (Button)findViewById(R.id.reservation_bt5);
+
+        Button.OnClickListener onClickListener = new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.reservation_bt1:
+                        personList.clear();
+                        getData("http://172.30.1.49/Facilities.php");
+                        break;
+//                    case R.id.reservation_bt2:
+//                        personList.clear();
+//                        getData("http://172.30.1.49/Facilities_lectureroom.php");
+//                        break;
+//                    case R.id.reservation_bt3:
+//                        personList.clear();
+//                        getData("http://172.30.1.49/Facilities_library.php");
+//                        break;
+                    case R.id.reservation_bt4:
+                        personList.clear();
+                        getData("http://172.30.1.49/Facilities_cafe.php");
+                        break;
+                    case R.id.reservation_bt5:
+                        personList.clear();
+                        getData("http://172.30.1.49/Facilities_restaurant.php");
+                        break;
+                }
+            }
+        };
+        reservation_bt1.setOnClickListener(onClickListener);
+        reservation_bt2.setOnClickListener(onClickListener);
+        reservation_bt3.setOnClickListener(onClickListener);
+        reservation_bt4.setOnClickListener(onClickListener);
+        reservation_bt5.setOnClickListener(onClickListener);
+
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://172.30.1.53/PHP_facilities.php");
+        getData("http://172.30.1.49/PHP_facilities.php");
     }
 
     protected void showList(){
