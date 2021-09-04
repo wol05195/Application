@@ -21,9 +21,9 @@ public class Main extends AppCompatActivity {
 
         main_button1 = (Button) findViewById(R.id.main_button1);
         main_button2 = (Button) findViewById(R.id.main_button2);
-        main_tv1 = (TextView) findViewById(R.id.main_tv1);
-        main_tv2 = (TextView) findViewById(R.id.main_tv2);
-        main_tv3 = (TextView) findViewById(R.id.main_tv3);
+//        main_tv1 = (TextView) findViewById(R.id.main_tv1);
+//        main_tv2 = (TextView) findViewById(R.id.main_tv2);
+//        main_tv3 = (TextView) findViewById(R.id.main_tv3);
 
         Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
@@ -42,32 +42,32 @@ public class Main extends AppCompatActivity {
             }
         };
 
-        TextView main_tv1 = findViewById(R.id.main_tv1);
-        main_tv1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-            }
-        });
-
-        TextView main_tv2 = findViewById(R.id.main_tv2);
-        main_tv2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Signup.class);
-                startActivity(intent);
-            }
-        });
-
-        TextView main_tv3 = findViewById(R.id.main_tv3);
-        main_tv3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Administrator.class);
-                startActivity(intent);
-            }
-        });
+//        TextView main_tv1 = findViewById(R.id.main_tv1);
+//        main_tv1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), Login.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        TextView main_tv2 = findViewById(R.id.main_tv2);
+//        main_tv2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), Signup.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        TextView main_tv3 = findViewById(R.id.main_tv3);
+//        main_tv3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), Administrator.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         main_button1.setOnClickListener(onClickListener);
