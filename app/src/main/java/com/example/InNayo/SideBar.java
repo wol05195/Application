@@ -20,6 +20,8 @@ public class SideBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side_bar);
 
+
+
 //        side_menu1 = (RelativeLayout) findViewById(R.id.side_menu1);
 //        side_menu2 = (RelativeLayout) findViewById(R.id.side_menu2);
 //
