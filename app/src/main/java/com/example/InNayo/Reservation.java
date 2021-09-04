@@ -1,18 +1,14 @@
 package com.example.InNayo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +48,7 @@ public class Reservation extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://172.30.1.49/Facilities.php");
+                        getData("http://192.168.35.167/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -64,11 +60,11 @@ public class Reservation extends AppCompatActivity {
 //                        break;
                     case R.id.reservation_bt4:
                         personList.clear();
-                        getData("http://172.30.1.49/Facilities_cafe.php");
+                        getData("http://192.168.35.167/Facilities_cafe.php");
                         break;
                     case R.id.reservation_bt5:
                         personList.clear();
-                        getData("http://172.30.1.49/Facilities_restaurant.php");
+                        getData("http://192.168.35.167/Facilities_restaurant.php");
                         break;
                 }
             }
@@ -81,7 +77,7 @@ public class Reservation extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://172.30.1.49/PHP_facilities.php");
+        getData("http://192.168.35.167/Facilities.php");
     }
 
     protected void showList(){

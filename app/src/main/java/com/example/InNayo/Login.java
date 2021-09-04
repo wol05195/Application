@@ -1,8 +1,6 @@
 package com.example.InNayo;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +33,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private Boolean isMenuShow = false;
     private Boolean isExitFlag = false;
-
     ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
