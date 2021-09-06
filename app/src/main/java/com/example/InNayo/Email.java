@@ -84,7 +84,7 @@ public class Email extends Fragment {
     void find_email() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.167/Find_Email.php");
+            httppost = new HttpPost("http://192.168.0.6/Find_Email.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Email", mEmail.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Phone", mPhone.getText().toString()));

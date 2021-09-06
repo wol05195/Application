@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +96,7 @@ public class MemberLogin extends Fragment {
     void login() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.167/Login.php");
+            httppost = new HttpPost("http://192.168.0.6/Login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Pw", mPassword.getText().toString()));
@@ -114,7 +115,9 @@ public class MemberLogin extends Fragment {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(memberlogincontext, "Login Success", Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(memberlogincontext, "Login Success", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
+                        toast.show();
                     }
                 });
 //                startActivity((new Intent(getContext(), Main.class)));

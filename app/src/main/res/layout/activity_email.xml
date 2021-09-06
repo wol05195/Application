@@ -43,7 +43,7 @@
             android:gravity="right"
             android:layout_marginTop="16dp"
             android:text="LogIn -->"
-            android:textColor="@color/gray"
+            android:textColor="@color/brown"
             android:textStyle="bold"/>
     </LinearLayout>
     <LinearLayout

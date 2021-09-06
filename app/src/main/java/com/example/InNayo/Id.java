@@ -84,7 +84,7 @@ public class Id extends Fragment {
     void find_id() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.167/Find_Id.php");
+            httppost = new HttpPost("http://192.168.0.6/Find_Id.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Phone", mPhone.getText().toString()));
