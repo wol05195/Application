@@ -1,5 +1,6 @@
 package com.example.InNayo;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +26,7 @@ import java.util.HashMap;
 public class Reservation extends AppCompatActivity {
     String myJSON;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5;
+    TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     private static final String TAG_RESULTS = "result";
     private static final String TAG_NAME = "fname";
 
@@ -35,6 +38,34 @@ public class Reservation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+
+        reservation_year = (TextView) findViewById(R.id.reservation_year);
+        reservation_month = (TextView)findViewById(R.id.reservation_month);
+        reservation_date = (TextView)findViewById(R.id.reservation_date);
+        reservation_time = (TextView)findViewById(R.id.reservation_time);
+        reservation_ap = (TextView)findViewById(R.id.reservation_ap);
+        reservation_people = (TextView)findViewById(R.id.reservation_people);
+
+        String year = getIntent().getExtras().getString("year");
+        reservation_year.setText(year);
+
+        String month = getIntent().getExtras().getString("month");
+        reservation_month.setText(month);
+
+        String date = getIntent().getExtras().getString("date");
+        reservation_date.setText(date);
+
+        String time = getIntent().getExtras().getString("time");
+        reservation_time.setText(time);
+
+        String ap = getIntent().getExtras().getString("ap");
+        reservation_ap.setText(ap + " ");
+
+        String people = getIntent().getExtras().getString("people");
+        reservation_people.setText(people);
+
+//        int people = getIntent().getExtras().getInt("people");
+//        reservation_people.setText(String.valueOf(people));
 
         reservation_bt1 = (Button)findViewById(R.id.reservation_bt1);
         reservation_bt2 = (Button)findViewById(R.id.reservation_bt2);

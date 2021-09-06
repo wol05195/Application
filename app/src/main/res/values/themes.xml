@@ -7,5 +7,14 @@
         <item name="colorAccent">@color/lightpink</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <!-- 상단 색 변경 -->
+        <item name="colorAccent">@color/lightpink</item>
+        <!-- 선택한 날짜를 표시할 색상 -->
+        <item name="colorControlActivated">@color/pink_200</item>
+        <item name="colorControlHighlight">@color/ivory</item>
+        <!-- 취소/확인버튼 색상 -->
+        <item name="android:textColor">@color/brown</item>
+    </style>
 
 </resources>

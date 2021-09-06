@@ -28,14 +28,10 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
         }
 
         mapFragment.getMapAsync(this);
-
-
     }
-
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
-
         Marker marker = new Marker();
         marker.setPosition(new LatLng(37.55834853256298, 127.04990932947216));
         marker.setMap(naverMap);
@@ -44,12 +40,5 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
         marker.setIcon(OverlayImage.fromResource(R.drawable.h));
         marker.setCaptionText("한양여자대학교");
         marker.setCaptionRequestedWidth(200);
-
-
-
-
-
-
-
     }
 }

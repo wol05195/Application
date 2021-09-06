@@ -33,7 +33,6 @@
             android:background="@drawable/rectangle_line_button"
             android:clickable="true"
             android:editable="false"
-            android:focusable="false"
             android:gravity="center"
             android:text="날짜" />
 
@@ -46,7 +45,6 @@
             android:background="@drawable/rectangle_line_button"
             android:clickable="true"
             android:editable="false"
-            android:focusable="false"
             android:gravity="center"
             android:text="시간" />
 
@@ -58,7 +56,6 @@
             android:background="@drawable/rectangle_line_button"
             android:clickable="true"
             android:editable="false"
-            android:focusable="false"
             android:gravity="center"
             android:text="인원수" />
 

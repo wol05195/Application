@@ -22,13 +22,12 @@
         android:gravity="center"
         android:background="@color/begie"
         android:orientation="horizontal">
-        <EditText
+        <TextView
             android:id="@+id/reservation_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textSize="15dp"
-            android:hint="0000"/>
+            android:text="0000"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,8 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textSize="15dp"
-            android:hint="00"/>
+            android:text="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,19 +47,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textSize="15dp"
-            android:hint="00"/>
+            android:text="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="일 "/>
         <TextView
+            android:id="@+id/reservation_ap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:text="오전 "/>
+        <TextView
             android:id="@+id/reservation_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textSize="15dp"
-            android:hint="00"/>
+            android:text="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,8 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textSize="15dp"
-            android:hint="00"/>
+            android:text="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
