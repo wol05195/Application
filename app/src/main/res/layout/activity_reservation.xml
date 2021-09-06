@@ -22,11 +22,13 @@
         android:gravity="center"
         android:background="@color/begie"
         android:orientation="horizontal">
-        <TextView
+        <EditText
             android:id="@+id/reservation_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0000"/>
+            android:background="#00000000"
+            android:textSize="15dp"
+            android:hint="0000"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +37,9 @@
             android:id="@+id/reservation_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"/>
+            android:background="#00000000"
+            android:textSize="15dp"
+            android:hint="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +48,9 @@
             android:id="@+id/reservation_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"/>
+            android:background="#00000000"
+            android:textSize="15dp"
+            android:hint="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +59,9 @@
             android:id="@+id/reservation_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"/>
+            android:background="#00000000"
+            android:textSize="15dp"
+            android:hint="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +70,9 @@
             android:id="@+id/reservation_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"/>
+            android:background="#00000000"
+            android:textSize="15dp"
+            android:hint="00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,8 +95,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp">
         <Button
             android:id="@+id/reservation_bt1"
             android:layout_width="wrap_content"
