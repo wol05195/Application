@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/lightgray"
     tools:context=".ReservationCheck">
 
     <androidx.appcompat.widget.Toolbar
@@ -46,7 +45,9 @@
             android:layout_marginTop="80dp"
             android:layout_marginHorizontal="15dp"
             android:gravity="center"
+            android:orientation="horizontal"
             android:background="@drawable/line_background">
+
             <EditText
                 android:id="@+id/reservation_year"
                 android:layout_width="wrap_content"
@@ -118,6 +119,30 @@
                 android:textSize="20dp"/>
 
 
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/reservation_check_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_basic_button"
+                android:text="OK"
+                android:textAllCaps="true"
+                android:textColor="@color/brown"
+                app:backgroundTintMode="multiply" />
 
 
         </LinearLayout>
