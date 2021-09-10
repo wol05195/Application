@@ -64,9 +64,6 @@ public class Reservation extends AppCompatActivity {
         String people = getIntent().getExtras().getString("people");
         reservation_people.setText(people);
 
-//        int people = getIntent().getExtras().getInt("people");
-//        reservation_people.setText(String.valueOf(people));
-
         reservation_bt1 = (Button)findViewById(R.id.reservation_bt1);
         reservation_bt2 = (Button)findViewById(R.id.reservation_bt2);
         reservation_bt3 = (Button)findViewById(R.id.reservation_bt3);
