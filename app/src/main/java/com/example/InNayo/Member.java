@@ -84,7 +84,7 @@ public class Member extends Fragment {
                     String Phone = (String) params[3];
                     String Email = (String) params[4];
 
-                    String link = "http://192.168.0.6/Register.php";
+                    String link = "http://192.168.35.65/Register.php";
                     String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");

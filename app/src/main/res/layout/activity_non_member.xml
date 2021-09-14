@@ -36,6 +36,7 @@
             android:id="@+id/nonmember_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
@@ -49,6 +50,7 @@
             android:id="@+id/nonmember_et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="numberPassword"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
@@ -62,6 +64,7 @@
             android:id="@+id/nonmember_et4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="numberPassword"
             android:backgroundTint="@color/lightpink"/>
     </LinearLayout>
         <Button

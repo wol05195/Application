@@ -30,6 +30,7 @@ public class Booking extends AppCompatActivity {
     Calendar bookingCalendar = Calendar.getInstance();
     NumberPicker np;
     String state;
+    int tpselectedhour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class Booking extends AppCompatActivity {
             intent.putExtra("year", String.valueOf(bookingCalendar.get(Calendar.YEAR)));
             intent.putExtra("month", String.valueOf(bookingCalendar.get(Calendar.MONTH)+1));
             intent.putExtra("date", String.valueOf(bookingCalendar.get(Calendar.DATE)));
-            intent.putExtra("time", String.valueOf(bookingCalendar.get(Calendar.HOUR)));
+            intent.putExtra("time", String.valueOf(tpselectedhour));
             intent.putExtra("ap", String.valueOf(state));
             intent.putExtra("people", String.valueOf(np.getValue()));
             startActivity(intent);
@@ -105,9 +106,9 @@ public class Booking extends AppCompatActivity {
                     selectedHour = 12;
                     state = "PM";
                 }
-                selectedMinute =00;
+                tpselectedhour = selectedHour;
                 // EditText에 출력할 형식 지정
-                booking_edit2.setText("시간 : "+ state + " " + selectedHour + "시 " + selectedMinute +"0분");
+                booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 ");
             }
         }, hour, minute/60, false); // true의 경우 24시간 형식의 TimePicker 출현
         TimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
@@ -139,7 +140,7 @@ public class Booking extends AppCompatActivity {
         okkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booking_edit3.setText("인원수 : " + String.valueOf(np.getValue()) + "명");
+                booking_edit3.setText("인원수 : " + np.getValue() + "명");
                 numDialog.dismiss();
             }
         });

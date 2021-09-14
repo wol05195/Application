@@ -59,6 +59,7 @@ public class NonMember extends Fragment {
                 String Password = fpw.getText().toString();
 
                 updateExcel(Name, Password, Tel);
+                Toast.makeText(getContext(), "비회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
         return rootview;
