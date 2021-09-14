@@ -20,6 +20,7 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/nonmember_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"/>
@@ -32,8 +33,10 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/nonmember_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
@@ -44,10 +47,11 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/nonmember_et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="numberPassword"
             android:backgroundTint="@color/lightpink"/>
-
 
         <TextView
             android:layout_width="300dp"
@@ -57,8 +61,10 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/nonmember_et4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="numberPassword"
             android:backgroundTint="@color/lightpink"/>
     </LinearLayout>
         <Button
