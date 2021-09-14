@@ -29,98 +29,146 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:layout_marginHorizontal="10dp"
                 android:editable="false"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="님"
-                android:textSize="20dp"/>
+                android:textSize="25dp"/>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginTop="80dp"
             android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/line_background"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/line_background">
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/reservation_year"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:hint="0000"
-                android:textSize="20dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/reservation_check_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="__(장소)__"
+                    android:textSize="30dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="년 "
-                android:textSize="20dp" />
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/reservation_month"
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/reservation_check_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="0000"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="년 "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/reservation_check_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="00"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="월 "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/reservation_check_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="00"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일 "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:hint="00"
-                android:textSize="20dp" />
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/reservation_check_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="00"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시 "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/reservation_check_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="00"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일 "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="월 "
-                android:textSize="20dp"/>
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/reservation_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:hint="00"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="일 "
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/reservation_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:hint="00"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="시 "
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/reservation_people"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:hint="00"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="명 "
-                android:textSize="20dp"/>
-
-
-
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="예약을 진행하시겠습니까?"
+                    android:textColor="@color/lightpink"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
 
         </LinearLayout>
