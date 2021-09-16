@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".SideBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +26,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MyInformation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Reservation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

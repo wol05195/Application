@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,7 +29,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class Booking extends AppCompatActivity {
+public class Booking extends AppCompatActivity implements View.OnClickListener {
+    private String TAG = "BookingActivity";
+
+    private Context mContext = Booking.this;
+
+    private ViewGroup mainLayout;   //사이드 나왔을때 클릭방지할 영역
+    private ViewGroup viewLayout;   //전체 감싸는 영역
+    private ViewGroup sideLayout;   //사이드바만 감싸는 영역
+
+    private Boolean isMenuShow = false;
+    private Boolean isExitFlag = false;
+
     Button booking_button1;
     EditText booking_edit1, booking_edit2, booking_edit3;
     Intent intent;
@@ -35,6 +52,10 @@ public class Booking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+
+        init();
+        addSideView();  //사이드바 add
+
 
         booking_button1 = (Button) findViewById(R.id.booking_button1);
         booking_button1.setOnClickListener(v -> {
@@ -72,6 +93,75 @@ public class Booking extends AppCompatActivity {
                 NumberPicker();
             }
         });
+    }
+
+    private void init(){
+
+        findViewById(R.id.btn_menu).setOnClickListener(this);
+
+        mainLayout = findViewById(R.id.id_main);
+        viewLayout = findViewById(R.id.fl_silde);
+        sideLayout = findViewById(R.id.view_sildebar);
+
+    }
+
+    private void addSideView() {
+        SideBarView sidebar = new SideBarView(mContext);
+        sideLayout.addView(sidebar);
+
+        viewLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        sidebar.setEventListener(new SideBarView.EventListener() {
+
+            @Override
+            public void btnLevel1() {
+                Log.e(TAG, "btnLevel1");
+
+                closeMenu();
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.btn_menu:
+
+                showMenu();
+                break;
+        }
+    }
+
+    public void closeMenu() {
+
+        isMenuShow = false;
+        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
+        sideLayout.startAnimation(slide);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewLayout.setVisibility(View.GONE);
+                viewLayout.setEnabled(false);
+                mainLayout.setEnabled(true);
+            }
+        }, 450);
+    }
+
+    public void showMenu() {
+
+        isMenuShow = true;
+        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
+        sideLayout.startAnimation(slide);
+        viewLayout.setVisibility(View.VISIBLE);
+        viewLayout.setEnabled(true);
+        mainLayout.setEnabled(false);
+        Log.e(TAG, "메뉴버튼 클릭");
     }
 
     private void DatePicker(){
@@ -173,4 +263,10 @@ public class Booking extends AppCompatActivity {
             }
         }
     }
+
+
+
+
+
+
 }

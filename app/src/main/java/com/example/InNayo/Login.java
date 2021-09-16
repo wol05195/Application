@@ -34,13 +34,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Boolean isMenuShow = false;
     private Boolean isExitFlag = false;
     ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         init();
-
         addSideView();  //사이드바 add
 
         viewPager = findViewById(R.id.login_viewpager);
@@ -76,12 +76,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         sidebar.setEventListener(new SideBarView.EventListener() {
 
             @Override
-            public void btnCancel() {
-                Log.e(TAG, "btnCancel");
-                closeMenu();
-            }
-
-            @Override
             public void btnLevel1() {
                 Log.e(TAG, "btnLevel1");
 
@@ -99,7 +93,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 showMenu();
                 break;
         }
-
     }
 
     public void closeMenu() {
@@ -127,9 +120,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mainLayout.setEnabled(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
-
-
-
 }
 
 class ViewpagerAdapter2 extends FragmentStatePagerAdapter {

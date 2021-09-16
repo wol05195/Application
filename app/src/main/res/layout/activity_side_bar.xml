@@ -67,80 +67,62 @@
         android:orientation="vertical"
         android:background="@drawable/round_border">
 
-        <RelativeLayout
+        <Button
             android:id="@+id/side_menu1"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#00ff0000"
+            android:text="홈"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textColor="#786a73">
+        </Button>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:text="홈"
-                android:textColor="#786a73"/>
-
-        </RelativeLayout>
-        <RelativeLayout
+        <Button
             android:id="@+id/side_menu2"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#00ff0000"
+            android:text="혼잡도"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textColor="#786a73">
+        </Button>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:text="혼잡도"
-                android:textColor="#786a73"/>
-
-
-
-        </RelativeLayout>
-        <RelativeLayout
+        <Button
             android:id="@+id/side_menu3"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#00ff0000"
+            android:text="예약하기"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textColor="#786a73">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:text="예약하기"
-                android:textColor="#786a73"/>
-
-
-        </RelativeLayout>
-        <RelativeLayout
+        </Button>
+        <Button
             android:id="@+id/side_menu4"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#00ff0000"
+            android:text="개인정보수정"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textColor="#786a73">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:text="개인정보수정"
-                android:textColor="#786a73"/>
 
-        </RelativeLayout>
-        <RelativeLayout
+        </Button>
+        <Button
             android:id="@+id/side_menu5"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#00ff0000"
+            android:text="예약내역확인"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textColor="#786a73">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:text="예약내역확인"
-                android:textColor="#786a73"/>
-
-
-        </RelativeLayout>
+        </Button>
     </LinearLayout>
 
     <LinearLayout
@@ -150,10 +132,11 @@
         android:gravity="center"
         android:background="@drawable/round_border">
 
-        <TextView
+        <Button
             android:id="@+id/side_logout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#00ff0000"
             android:text="로그아웃"
             android:textColor="#786a73"/>
 
