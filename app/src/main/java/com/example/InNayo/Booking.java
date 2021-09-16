@@ -196,9 +196,10 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                     selectedHour = 12;
                     state = "PM";
                 }
+                selectedMinute = 00;
                 tpselectedhour = selectedHour;
                 // EditText에 출력할 형식 지정
-                booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 ");
+                booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 " + selectedMinute +"0분");
             }
         }, hour, minute/60, false); // true의 경우 24시간 형식의 TimePicker 출현
         TimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
