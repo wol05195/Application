@@ -35,7 +35,7 @@
                 android:layout_toLeftOf="@+id/congestion_bt2"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/corner_line_button"
-                android:text="전체"/>
+                android:text="식당"/>
             <Button
                 android:id="@+id/congestion_bt2"
                 android:layout_width="75dp"
@@ -45,7 +45,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/corner_line_button"
-                android:text="강의실"/>
+                android:text="카페"/>
 
             <Button
                 android:id="@+id/congestion_bt3"
@@ -55,7 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/corner_line_button"
-                android:text="도서관" />
+                android:text="편의점" />
             <Button
                 android:id="@+id/congestion_bt4"
                 android:layout_width="75dp"
@@ -65,7 +65,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/corner_line_button"
-                android:text="카페" />
+                android:text="도서관" />
             <Button
                 android:id="@+id/congestion_bt5"
                 android:layout_width="75dp"
@@ -74,8 +74,40 @@
                 android:layout_toRightOf="@+id/congestion_bt4"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/corner_line_button"
-                android:text="식당" />
-
+                android:text="혼잡도별" />
+            <Button
+                android:id="@+id/congestion_bt6"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/congestion_bt5"
+                android:layout_toRightOf="@+id/congestion_bt4"
+                android:layout_marginTop="5dp"
+                android:text="혼잡"
+                android:visibility="invisible"
+                android:background="@drawable/corner_line_button"
+                android:drawableLeft="@drawable/image_size_r"/>
+            <Button
+                android:id="@+id/congestion_bt7"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/congestion_bt6"
+                android:layout_toRightOf="@+id/congestion_bt4"
+                android:layout_marginTop="5dp"
+                android:text="보통"
+                android:visibility="invisible"
+                android:background="@drawable/corner_line_button"
+                android:drawableLeft="@drawable/image_size_y"/>
+            <Button
+                android:id="@+id/congestion_bt8"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/congestion_bt7"
+                android:layout_toRightOf="@+id/congestion_bt4"
+                android:layout_marginTop="5dp"
+                android:text="여유"
+                android:visibility="invisible"
+                android:background="@drawable/corner_line_button"
+                android:drawableLeft="@drawable/image_size_g"/>
             <fragment
                 android:id="@+id/map"
                 android:name="com.naver.maps.map.MapFragment"

@@ -96,7 +96,7 @@ public class MemberLogin extends Fragment {
     void login() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.65/Login.php");
+            httppost = new HttpPost("http://192.168.219.108/Login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Pw", mPassword.getText().toString()));
