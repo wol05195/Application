@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,7 +78,7 @@ public class Reservation extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://192.168.219.108/Facilities.php");
+                        getData("http://192.168.35.59/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -88,11 +90,11 @@ public class Reservation extends AppCompatActivity {
 //                        break;
                     case R.id.reservation_bt4:
                         personList.clear();
-                        getData("http://192.168.219.108/Facilities_cafe.php");
+                        getData("http://192.168.35.59/Facilities_cafe.php");
                         break;
                     case R.id.reservation_bt5:
                         personList.clear();
-                        getData("http://192.168.219.108/Facilities_restaurant.php");
+                        getData("http://192.168.35.59/Facilities_restaurant.php");
                         break;
                 }
             }
@@ -105,7 +107,19 @@ public class Reservation extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.219.108/Facilities.php");
+        getData("http://192.168.35.59/Facilities.php");
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                String sp = String.valueOf(arg0.getAdapter().getItem(arg2));
+                sp = sp.substring(sp.indexOf("=")+1,sp.indexOf("}"));
+                Intent intent = new Intent(getApplicationContext(), ReservationCheck.class);
+                intent.putExtra("selectedplace", sp);
+                startActivity(intent);
+            }
+        });
+
     }
 
     protected void showList(){

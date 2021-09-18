@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/id_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -41,13 +41,15 @@
                 android:background="@drawable/menu_btn"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="52dp">
 
         <EditText
             android:id="@+id/booking_edit1"
@@ -94,7 +96,6 @@
             android:textColor="@color/brown"
             app:backgroundTintMode="multiply" />
     </LinearLayout>
-    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fl_silde"
