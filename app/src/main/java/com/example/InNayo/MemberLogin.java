@@ -120,8 +120,6 @@ public class MemberLogin extends Fragment {
                         toast.show();
                     }
                 });
-//                startActivity((new Intent(getContext(), Main.class)));
-//                finish();
             } else {
                 handler.post(new Runnable() {
                     @Override

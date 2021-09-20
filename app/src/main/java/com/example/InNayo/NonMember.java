@@ -1,8 +1,7 @@
 package com.example.InNayo;
 
 import android.Manifest;
-import android.app.Fragment;
-import android.content.Context;
+import androidx.fragment.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
