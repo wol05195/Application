@@ -23,7 +23,28 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시설 카테고리"
+                android:textColor="@color/darkpurple"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
+            <Spinner
+                android:id="@+id/admin_spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <View
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:background="@color/lightpink"
+            android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -78,36 +99,47 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"
             android:inputType="number"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="예약 가능 시작 시간"
-            android:textColor="@color/darkpurple"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/admin_et5"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="예약 가능 시작 시간"
+                android:textColor="@color/darkpurple"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="예약 가능 종료 시간"
+                android:textColor="@color/darkpurple"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/lightpink"
-            android:inputType="time"/>
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="예약 가능 종료 시간"
-            android:textColor="@color/darkpurple"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/admin_et6"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/lightpink"
-            android:inputType="time"/>
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/admin_spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Spinner
+                android:id="@+id/admin_spinner3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+            <View
+                android:layout_width="300dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/lightpink"/>
     </LinearLayout>
-
     <Button
         android:id="@+id/admin_button1"
         android:layout_width="300dp"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>식당</item>
+        <item>카페</item>
+        <item>편의점</item>
+    </string-array>
+    <string-array name="hour_start">
+        <item>AM 08:00</item>
+        <item>AM 09:00</item>
+        <item>AM 10:00</item>
+        <item>AM 11:00</item>
+    </string-array>
+
+    <string-array name="hour_end">
+        <item>PM 20:00</item>
+        <item>PM 21:00</item>
+        <item>PM 22:00</item>
+        <item>PM 23:00</item>
+    </string-array>
+
+</resources>

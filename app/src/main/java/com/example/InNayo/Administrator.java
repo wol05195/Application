@@ -14,8 +14,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -40,6 +43,7 @@ import java.net.URLEncoder;
 public class Administrator extends AppCompatActivity {
     EditText admin_et1, admin_et2, admin_et3, admin_et4, admin_et5, admin_et6;
     Button admin_button1;
+    String Category, StartTime, EndTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +53,93 @@ public class Administrator extends AppCompatActivity {
         admin_et2 = (EditText)findViewById(R.id.admin_et2);
         admin_et3 = (EditText)findViewById(R.id.admin_et3);
         admin_et4 = (EditText)findViewById(R.id.admin_et4);
-        admin_et5 = (EditText)findViewById(R.id.admin_et5);
-        admin_et6 = (EditText)findViewById(R.id.admin_et6);
+
+        Spinner categorySpinner = (Spinner)findViewById(R.id.admin_spinner1);
+        ArrayAdapter categoryAdapter = ArrayAdapter.createFromResource(this,
+                R.array.category, android.R.layout.simple_spinner_item);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(categoryAdapter);
+
+        Spinner startSpinner = (Spinner)findViewById(R.id.admin_spinner2);
+        ArrayAdapter startAdapter = ArrayAdapter.createFromResource(this,
+                R.array.hour_start, android.R.layout.simple_spinner_item);
+        startAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        startSpinner.setAdapter(startAdapter);
+
+        Spinner endSpinner = (Spinner)findViewById(R.id.admin_spinner3);
+        ArrayAdapter endAdapter = ArrayAdapter.createFromResource(this,
+                R.array.hour_end, android.R.layout.simple_spinner_item);
+        endAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        endSpinner.setAdapter(endAdapter);
+
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long arg3) {
+                switch (position){
+                    case 0:
+                        Category = "4";
+                        break;
+                    case 1:
+                        Category = "1";
+                        break;
+                    case 2:
+                        Category = "5";
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        startSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        StartTime = "08:00:00";
+                        break;
+                    case 1:
+                        StartTime = "09:00:00";
+                        break;
+                    case 2:
+                        StartTime = "10:00:00";
+                        break;
+                    case 3:
+                        StartTime = "11:00:00";
+                        break;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+        });
+        endSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        EndTime = "20:00:00";
+                        break;
+                    case 1:
+                        EndTime = "21:00:00";
+                        break;
+                    case 2:
+                        EndTime = "22:00:00";
+                        break;
+                    case 3:
+                        EndTime = "23:00:00";
+                        break;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         admin_button1 = (Button)findViewById(R.id.admin_button1);
         admin_button1.setOnClickListener(new View.OnClickListener() {
@@ -60,15 +149,13 @@ public class Administrator extends AppCompatActivity {
                 String Location = admin_et2.getText().toString();
                 String Phone = admin_et3.getText().toString();
                 String TotalPerson = admin_et4.getText().toString();
-                String StartTime = admin_et5.getText().toString();
-                String EndTime = admin_et6.getText().toString();
 
-                insertToDatabases(Name, Location, Phone, TotalPerson, StartTime, EndTime);
+                insertToDatabases(Category, Name, Location, Phone, TotalPerson, StartTime, EndTime);
             }
         });
     }
 
-    private void insertToDatabases(String Name, String Location, String Phone, String TotalPerson, String StartTime, String EndTime) {
+    private void insertToDatabases(String Category, String Name, String Location, String Phone, String TotalPerson, String StartTime, String EndTime) {
         class InsertData extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
 
@@ -90,15 +177,17 @@ public class Administrator extends AppCompatActivity {
             @Override
             protected String doInBackground(String... params) {
                 try {
-                    String Name = (String) params[0];
-                    String Location = (String) params[1];
-                    String Phone = (String) params[2];
-                    String TotalPerson = (String) params[3];
-                    String StartTime = (String) params[4];
-                    String EndTime = (String) params[5];
+                    String Category = (String) params[0];
+                    String Name = (String) params[1];
+                    String Location = (String) params[2];
+                    String Phone = (String) params[3];
+                    String TotalPerson = (String) params[4];
+                    String StartTime = (String) params[5];
+                    String EndTime = (String) params[6];
 
-                    String link = "http://192.168.0.8/Administrator.php";
-                    String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
+                    String link = "http://192.168.35.88/Administrator.php";
+                    String data = URLEncoder.encode("Category", "UTF-8") + "=" + URLEncoder.encode(Category, "UTF-8");
+                    data += "&" + URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Location", "UTF-8") + "=" + URLEncoder.encode(Location, "UTF-8");
                     data += "&" + URLEncoder.encode("Phone", "UTF-8") + "=" + URLEncoder.encode(Phone, "UTF-8");
                     data += "&" + URLEncoder.encode("TotalPerson", "UTF-8") + "=" + URLEncoder.encode(TotalPerson, "UTF-8");
@@ -130,6 +219,6 @@ public class Administrator extends AppCompatActivity {
             }
         }
         InsertData task = new InsertData();
-        task.execute(Name, Location, Phone, TotalPerson, StartTime, EndTime);
+        task.execute(Category, Name, Location, Phone, TotalPerson, StartTime, EndTime);
     }
 }
