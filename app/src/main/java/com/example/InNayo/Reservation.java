@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +40,9 @@ public class Reservation extends AppCompatActivity {
 
     ArrayList<HashMap<String, String>> personList;
     ListView list;
+    EditText editTextFilter;
+    ArrayList<HashMap<String, String>> arraylist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +113,9 @@ public class Reservation extends AppCompatActivity {
         reservation_bt5.setOnClickListener(onClickListener);
 
         list = (ListView)findViewById(R.id.listview);
+        editTextFilter = (EditText)findViewById(R.id.editTextFilter);
         personList = new ArrayList<HashMap<String, String>>();
+        arraylist = new ArrayList<HashMap<String, String>>();
         getData("http://192.168.0.8/Facilities.php");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -150,6 +158,30 @@ public class Reservation extends AppCompatActivity {
                     new int[]{R.id.list_item_name}
             );
             list.setAdapter(adapter);
+
+            EditText editTextFilter = (EditText)findViewById(R.id.editTextFilter);
+            editTextFilter.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable edit) {
+                    String filterText = edit.toString();
+                    if (filterText.length() > 0) {
+                        list.setFilterText(filterText);
+                    } else {
+                        list.clearTextFilter();
+                    }
+
+                }
+            });
 
         } catch (JSONException e){
             e.printStackTrace();
