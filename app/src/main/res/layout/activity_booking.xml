@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="예약하기"
             android:textColor="@color/brown"
+            android:fontFamily="@font/gowunbatangbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         <LinearLayout

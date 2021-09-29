@@ -16,5 +16,10 @@
         <!-- 취소/확인버튼 색상 -->
         <item name="android:textColor">@color/brown</item>
     </style>
+    <style name="ToolbarTitle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/gowunbatangbold</item>
+        <item name="android:textColor">@color/ivory</item>
+
+    </style>
 
 </resources>
