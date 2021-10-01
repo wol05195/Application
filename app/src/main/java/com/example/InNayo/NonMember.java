@@ -4,7 +4,9 @@ import android.Manifest;
 import androidx.fragment.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,19 +36,35 @@ import java.io.IOException;
 public class NonMember extends Fragment {
     Button non_member_bt;
     EditText fname, ftel, fpw, nonmember_et4;
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_non_member,container,false);
 
         checkSelfPermission();
-        createExcel();
 
         fname = (EditText)rootview.findViewById(R.id.nonmember_et1);
         ftel = (EditText)rootview.findViewById(R.id.nonmember_et2);
         fpw = (EditText)rootview.findViewById(R.id.nonmember_et3);
+        nonmember_et4 = (EditText)rootview.findViewById(R.id.nonmember_et4);
+
+        nonmember_et4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(fpw.getText().toString().equals(nonmember_et4.getText().toString())){
+                }else {
+                    Toast.makeText(getContext(), "비밀번호를 동일하게 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         non_member_bt = (Button) rootview.findViewById(R.id.non_member_bt);
         non_member_bt.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +74,12 @@ public class NonMember extends Fragment {
                 String Tel = ftel.getText().toString();
                 String Password = fpw.getText().toString();
 
-                updateExcel(Name, Password, Tel);
+                if(new File(getContext().getExternalFilesDir(null), "NonMember.xls").exists()) {
+                    updateExcel(Name, Password, Tel);
+                }else{
+                    createExcel();
+                    updateExcel(Name, Password, Tel);
+                }
                 Toast.makeText(getContext(), "비회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -85,7 +108,7 @@ public class NonMember extends Fragment {
                 }
             }
 
-            File xlsFile = new File(getContext().getExternalFilesDir(null),"JavaBooks.xls");
+            File xlsFile = new File(getContext().getExternalFilesDir(null),"NonMember.xls");
             try {
                 FileOutputStream os = new FileOutputStream(xlsFile);
                 workbook.write(os); // 외부 저장소에 엑셀 파일 생성
@@ -96,7 +119,7 @@ public class NonMember extends Fragment {
     }
 
     private void updateExcel(String Name, String Tel, String Password) {
-        File excelFilePath = new File(getContext().getExternalFilesDir(null), "JavaBooks.xls");
+        File excelFilePath = new File(getContext().getExternalFilesDir(null), "NonMember.xls");
         try {
             FileInputStream inputStream = new FileInputStream(excelFilePath);
             Workbook workbook = WorkbookFactory.create(inputStream);
@@ -129,7 +152,7 @@ public class NonMember extends Fragment {
             }
 
             inputStream.close();
-            File xlsFile = new File(getContext().getExternalFilesDir(null), "JavaBooks.xls");
+            File xlsFile = new File(getContext().getExternalFilesDir(null), "NonMember.xls");
             FileOutputStream outputStream = new FileOutputStream(xlsFile);
             workbook.write(outputStream);
             workbook.close();
@@ -144,7 +167,6 @@ public class NonMember extends Fragment {
         if(requestCode == 1){
             int length = permissions.length; for (int i = 0; i < length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                    // 동의
                     Log.d("MainActivity","권한 허용 : " + permissions[i]); }
             }
         }

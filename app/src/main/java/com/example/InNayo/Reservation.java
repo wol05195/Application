@@ -40,8 +40,8 @@ public class Reservation extends AppCompatActivity {
 
     ArrayList<HashMap<String, String>> personList;
     ListView list;
-    EditText editTextFilter;
-    ArrayList<HashMap<String, String>> arraylist;
+//    EditText editTextFilter;
+//    ArrayList<HashMap<String, String>> arraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class Reservation extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://192.168.0.8/Facilities.php");
+                        getData("http://192.168.35.67/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -97,11 +97,11 @@ public class Reservation extends AppCompatActivity {
 //                        break;
                     case R.id.reservation_bt4:
                         personList.clear();
-                        getData("http://192.168.0.8/Facilities_cafe.php");
+                        getData("http://192.168.35.67/Facilities_cafe.php");
                         break;
                     case R.id.reservation_bt5:
                         personList.clear();
-                        getData("http://192.168.0.8/Facilities_restaurant.php");
+                        getData("http://192.168.35.67/Facilities_restaurant.php");
                         break;
                 }
             }
@@ -113,10 +113,10 @@ public class Reservation extends AppCompatActivity {
         reservation_bt5.setOnClickListener(onClickListener);
 
         list = (ListView)findViewById(R.id.listview);
-        editTextFilter = (EditText)findViewById(R.id.editTextFilter);
+//        editTextFilter = (EditText)findViewById(R.id.editTextFilter);
         personList = new ArrayList<HashMap<String, String>>();
-        arraylist = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.0.8/Facilities.php");
+//        arraylist = new ArrayList<HashMap<String, String>>();
+        getData("http://192.168.35.67/Facilities.php");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -125,12 +125,12 @@ public class Reservation extends AppCompatActivity {
                 sp = sp.substring(sp.indexOf("=")+1,sp.indexOf("}"));
                 Intent intent = new Intent(Reservation.this, ReservationCheck.class);
                 intent.putExtra("selectedplace", sp);
-//                intent.putExtra("selectedyear", year);
-//                intent.putExtra("selectedmonth", month);
-//                intent.putExtra("selecteddate", date);
-//                intent.putExtra("selectedtime", time);
-//                intent.putExtra("selectedap", ap);
-//                intent.putExtra("selectedpeople", people);
+                intent.putExtra("selectedyear", year);
+                intent.putExtra("selectedmonth", month);
+                intent.putExtra("selecteddate", date);
+                intent.putExtra("selectedhour", time);
+                intent.putExtra("selectedap", ap);
+                intent.putExtra("selectedpp", people);
                 startActivity(intent);
             }
         });
@@ -159,30 +159,30 @@ public class Reservation extends AppCompatActivity {
             );
             list.setAdapter(adapter);
 
-            EditText editTextFilter = (EditText)findViewById(R.id.editTextFilter);
-            editTextFilter.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable edit) {
-                    String filterText = edit.toString();
-                    if (filterText.length() > 0) {
-                        list.setFilterText(filterText);
-                    } else {
-                        list.clearTextFilter();
-                    }
-
-                }
-            });
-
+//            EditText editTextFilter = (EditText)findViewById(R.id.editTextFilter);
+//            editTextFilter.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable edit) {
+//                    String filterText = edit.toString();
+//                    if (filterText.length() > 0) {
+//                        list.setFilterText(filterText);
+//                    } else {
+//                        list.clearTextFilter();
+//                    }
+//
+//                }
+//            });
+//
         } catch (JSONException e){
             e.printStackTrace();
         }
