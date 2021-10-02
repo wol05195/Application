@@ -153,7 +153,7 @@ public class Reservation extends AppCompatActivity {
                 personList.add(persons);
             }
             ListAdapter adapter = new SimpleAdapter(
-                    Reservation.this, personList, R.layout.list_item,
+                    Reservation.this, personList, R.layout.list_item_reservation,
                     new String[]{TAG_NAME},
                     new int[]{R.id.list_item_name}
             );
