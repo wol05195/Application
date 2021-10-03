@@ -26,11 +26,8 @@ public class MyBookingCheck extends AppCompatActivity {
     ArrayList<HashMap<String, String>> personList;
     ListView list;
 
-    private static final String TAG_RESULTS = "result";
-    private static final String TAG_DATE = "rdate";
-    private static final String TAG_TIME = "rtime";
-    private static final String TAG_PEOPLE = "enter_count";
-    private static final String TAG_NAME = "fname";
+    private static final String TAG_RESULTS = "result", TAG_DATE = "rdate",
+            TAG_TIME = "rtime", TAG_PEOPLE = "enter_count", TAG_NAME = "fname";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +36,7 @@ public class MyBookingCheck extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.195/Reservation.php");
+        getData("http://192.168.35.64/Reservation.php");
     }
     protected void showList(){
         try{
