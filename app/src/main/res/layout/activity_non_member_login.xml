@@ -31,6 +31,8 @@
             android:textColor="#ACACAC"
             android:textSize="15dp"
             android:paddingLeft="15dp"
+            android:inputType="number"
+            android:maxLength="4"
             android:hint="PW"/>
 
 

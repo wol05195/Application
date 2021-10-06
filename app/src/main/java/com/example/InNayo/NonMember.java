@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,41 +31,29 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class NonMember extends Fragment {
     Button non_member_bt;
     EditText fname, ftel, fpw, nonmember_et4;
+    String value="";
+    ArrayList<String> nonmember;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_non_member,container,false);
 
         checkSelfPermission();
+        readExcel();
 
         fname = (EditText)rootview.findViewById(R.id.nonmember_et1);
         ftel = (EditText)rootview.findViewById(R.id.nonmember_et2);
         fpw = (EditText)rootview.findViewById(R.id.nonmember_et3);
         nonmember_et4 = (EditText)rootview.findViewById(R.id.nonmember_et4);
-
-        nonmember_et4.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(fpw.getText().toString().equals(nonmember_et4.getText().toString())){
-                }else {
-                    Toast.makeText(getContext(), "비밀번호를 동일하게 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         non_member_bt = (Button) rootview.findViewById(R.id.non_member_bt);
         non_member_bt.setOnClickListener(new View.OnClickListener() {
@@ -74,13 +63,17 @@ public class NonMember extends Fragment {
                 String Tel = ftel.getText().toString();
                 String Password = fpw.getText().toString();
 
-                if(new File(getContext().getExternalFilesDir(null), "NonMember.xls").exists()) {
-                    updateExcel(Name, Password, Tel);
-                }else{
-                    createExcel();
-                    updateExcel(Name, Password, Tel);
+                if(fpw.getText().toString().equals(nonmember_et4.getText().toString()) == true){
+                    if(new File(getContext().getExternalFilesDir(null), "NonMember.xls").exists()) {
+                        updateExcel(Name, Tel, Password);
+                    }else{
+                        createExcel();
+                        updateExcel(Name, Tel, Password);
+                    }
+                    Toast.makeText(getContext(), "비회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "비밀번호를 동일하게 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(getContext(), "비회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
         return rootview;
@@ -162,6 +155,54 @@ public class NonMember extends Fragment {
             ex.printStackTrace();
         }
     }
+
+    private void readExcel() {
+        File excelFilePath = new File(getContext().getExternalFilesDir(null), "NonMember.xls");
+
+        try {
+            FileInputStream inputStream = new FileInputStream(excelFilePath);
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> iterator = sheet.iterator();
+
+            while (iterator.hasNext()) {
+                Row nextRow = iterator.next();
+                Iterator<Cell> cellIterator = nextRow.cellIterator();
+
+                while (cellIterator.hasNext()) {
+                    Cell cell = cellIterator.next();
+
+                    switch (cell.getCellType()) { // 각 셀에 담겨있는 데이터의 타입을 체크하고 해당 타입에 맞게 가져온다.
+                        case NUMERIC:
+                            value = cell.getNumericCellValue() + "";
+                            break;
+                        case STRING:
+                            value = cell.getStringCellValue() + "";
+                            break;
+                        case BLANK:
+                            value = cell.getBooleanCellValue() + "";
+                            break;
+                        case ERROR:
+                            value = cell.getErrorCellValue() + "";
+                            break;
+                    }
+
+                    if(nextRow.getRowNum()>=2){
+                        nonmember.add(value);
+                    }else{
+                    }
+                }
+            }
+            workbook.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         //권한을 허용 했을 경우
         if(requestCode == 1){
@@ -187,7 +228,7 @@ public class NonMember extends Fragment {
             ActivityCompat.requestPermissions(getActivity(), temp.trim().split(" "), 1);
         } else {
             // 모두 허용 상태
-            Toast.makeText(getContext(), "권한을 모두 허용", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "권한을 모두 허용", Toast.LENGTH_SHORT).show();
         }
     }
 }

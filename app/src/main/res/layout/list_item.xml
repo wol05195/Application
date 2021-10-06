@@ -5,36 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/ivory"
-        android:elevation="1dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="나의 예약 내역 확인"
-            android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_menu"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/menu_btn"/>
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,11 +51,11 @@
                     android:background="@color/lightpurple_200"
                     android:layout_marginRight="10dp"
                     android:text="예약일"/>
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="|"/>-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginRight="10dp"-->
+                <!--                    android:text="|"/>-->
                 <TextView
                     android:id="@+id/list_item_date"
                     android:layout_width="match_parent"
@@ -149,14 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"/>
-
             </LinearLayout>
-
-
-
         </LinearLayout>
-
     </LinearLayout>
-
-
 </LinearLayout>
