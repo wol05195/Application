@@ -185,7 +185,7 @@ public class Administrator extends AppCompatActivity {
                     String StartTime = (String) params[5];
                     String EndTime = (String) params[6];
 
-                    String link = "http://192.168.35.88/Administrator.php";
+                    String link = "http://172.30.1.33/Administrator.php";
                     String data = URLEncoder.encode("Category", "UTF-8") + "=" + URLEncoder.encode(Category, "UTF-8");
                     data += "&" + URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Location", "UTF-8") + "=" + URLEncoder.encode(Location, "UTF-8");

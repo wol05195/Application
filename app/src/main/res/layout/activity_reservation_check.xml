@@ -12,10 +12,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/ivory"
-        app:titleTextColor="@color/brown"
         android:elevation="1dp"
-        app:title="예약하기"
-       android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약하기"
+            android:textColor="@color/brown"
+            android:fontFamily="@font/gowunbatangbold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/menu_btn"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -36,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="님"
+                android:fontFamily="@font/hssaemaeul"
                 android:textSize="25dp"/>
         </LinearLayout>
 
@@ -45,7 +68,7 @@
             android:layout_height="400dp"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="80dp"
-            android:background="@drawable/line_background"
+            android:background="@drawable/round_border"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -53,13 +76,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:gravity="center_horizontal">
+                android:gravity="fill_horizontal">
 
                 <EditText
                     android:id="@+id/reservation_check_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:hint="_(장소)_"
+                    android:fontFamily="@font/hssaemaeul"
                     android:textSize="25dp"/>
             </LinearLayout>
 
@@ -82,6 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="년 "
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -97,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="월 "
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -112,6 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일 "
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -122,12 +150,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
-                <EditText
-                    android:id="@+id/reservation_check_ap"
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:hint="00 "
+                    android:text="시간 : "
+                    android:fontFamily="@font/hssaemaeul"
+                    android:textColor="@color/black"
                     android:textSize="25dp" />
 
                 <EditText
@@ -135,33 +164,51 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00000000"
-                    android:hint="0"
+                    android:hint="00 "
                     android:textSize="25dp" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="시 "
+                    android:text=" : "
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
                 <EditText
-                    android:id="@+id/reservation_check_people"
+                    android:id="@+id/reservation_check_minute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00000000"
-                    android:hint="0"
+                    android:hint="00"
                     android:textSize="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="명"
+                    android:text="인원 : "
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
+                <EditText
+                    android:id="@+id/reservation_check_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="00 "
+                    android:textSize="25dp" />
 
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -174,6 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="예약을 진행하시겠습니까?"
+                    android:fontFamily="@font/hssaemaeul"
                     android:textColor="@color/lightpink"
                     android:textSize="25dp"
                     android:textStyle="bold" />
