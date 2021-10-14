@@ -1,10 +1,13 @@
 package com.example.InNayo;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -17,6 +20,15 @@ import android.text.TextWatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,14 +37,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class Reservation extends AppCompatActivity {
     String myJSON;
-    Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5;
+    Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
+    EditText reservation_edit1;
+
     private static final String TAG_RESULTS = "result";
     private static final String TAG_NAME = "fname";
 
@@ -41,10 +57,19 @@ public class Reservation extends AppCompatActivity {
     ArrayList<HashMap<String, String>> personList;
     ListView list;
 
+    ProgressDialog dialog = null;
+    HttpPost httppost;
+    HttpResponse response;
+    HttpClient httpclient;
+    List<NameValuePair> nameValuePairs;
+    String[] searchresult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         reservation_year = (TextView) findViewById(R.id.reservation_year);
         reservation_month = (TextView)findViewById(R.id.reservation_month);
@@ -76,6 +101,8 @@ public class Reservation extends AppCompatActivity {
         reservation_bt3 = (Button)findViewById(R.id.reservation_bt3);
         reservation_bt4 = (Button)findViewById(R.id.reservation_bt4);
         reservation_bt5 = (Button)findViewById(R.id.reservation_bt5);
+        reservation_bt6 = (Button)findViewById(R.id.reservation_bt6);
+        reservation_edit1 = (EditText) findViewById(R.id.reservation_edit1);
 
         Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
@@ -83,7 +110,7 @@ public class Reservation extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://192.168.35.240/Facilities.php");
+                        getData("http://192.168.35.229/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -95,11 +122,20 @@ public class Reservation extends AppCompatActivity {
 //                        break;
                     case R.id.reservation_bt4:
                         personList.clear();
-                        getData("http://192.168.35.240/Facilities_cafe.php");
+                        getData("http://192.168.35.229/Facilities_cafe.php");
                         break;
                     case R.id.reservation_bt5:
                         personList.clear();
-                        getData("http://192.168.35.240/Facilities_restaurant.php");
+                        getData("http://192.168.35.229/Facilities_restaurant.php");
+                        break;
+                    case R.id.reservation_bt6:
+                        dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                SearchDatabase();
+                            }
+                        }).start();
                         break;
                 }
             }
@@ -109,10 +145,11 @@ public class Reservation extends AppCompatActivity {
         reservation_bt3.setOnClickListener(onClickListener);
         reservation_bt4.setOnClickListener(onClickListener);
         reservation_bt5.setOnClickListener(onClickListener);
+        reservation_bt6.setOnClickListener(onClickListener);
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.240/Facilities.php");
+        getData("http://192.168.35.229/Facilities.php");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -132,7 +169,49 @@ public class Reservation extends AppCompatActivity {
         });
 
     }
-
+    void SearchDatabase() {
+        try {
+            String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
+            httpclient = new DefaultHttpClient();
+            httppost = new HttpPost("http://192.168.35.229/Facilities_search.php");
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            response = httpclient.execute(httppost);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            final String response = httpclient.execute(httppost, responseHandler);
+            String res = response.replace('"', ' ').replace("[", "").replace("]","").replace(" ","");
+            searchresult = res.split(",");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.dismiss();
+                }
+            });
+            if (response.equalsIgnoreCase("No Such User Found")) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+//                        Toast.makeText(Reservation.this, "Login Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter<String> itemsAdapter =
+                                new ArrayAdapter<String>(Reservation.this, android.R.layout.simple_list_item_1, searchresult);
+                        list.setAdapter(itemsAdapter);
+                    }
+                });
+            }
+        }
+        catch(Exception e)
+        {
+            dialog.dismiss();
+            System.out.println("Exception : " + e.getMessage());
+        }
+    }
     protected void showList(){
         try{
             JSONObject jsonObj = new JSONObject(myJSON);

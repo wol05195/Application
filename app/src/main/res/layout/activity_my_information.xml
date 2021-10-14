@@ -44,7 +44,12 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_gravity="center">
-
+        <EditText
+            android:id="@+id/my_information_et0"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lightpink"
+            android:hint="이름 입력."/>
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -53,6 +58,7 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/my_information_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"/>
@@ -63,9 +69,11 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/my_information_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/lightpink"/>
+            android:backgroundTint="@color/lightpink"
+            android:editable="false"/>
 
         <TextView
             android:layout_width="300dp"
@@ -74,6 +82,7 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/my_information_et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"/>
@@ -84,6 +93,7 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/my_information_et4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"/>
@@ -94,6 +104,7 @@
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/my_information_et5"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"/>
@@ -105,6 +116,16 @@
         android:background="@drawable/gradient_basic_button"
         android:textAllCaps="false"
         android:text="OK"
+        android:textColor="@color/darkpurple"
+        android:layout_gravity="center"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/my_information_bt2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_basic_button"
+        android:textAllCaps="false"
+        android:text="get data"
         android:textColor="@color/darkpurple"
         android:layout_gravity="center"
         android:textSize="20dp"/>
