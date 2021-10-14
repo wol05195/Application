@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ReservationCheck extends AppCompatActivity {
     EditText reservation_check_place, reservation_check_year, reservation_check_month, reservation_check_date,
-            reservation_check_ap, reservation_check_hour, reservation_check_people;
+            reservation_check_ap, reservation_check_hour, reservation_check_person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class ReservationCheck extends AppCompatActivity {
         reservation_check_date = (EditText)findViewById(R.id.reservation_check_date);
         reservation_check_ap = (EditText)findViewById(R.id.reservation_check_ap);
         reservation_check_hour = (EditText)findViewById(R.id.reservation_check_hour);
-        reservation_check_people = (EditText)findViewById(R.id.reservation_check_people);
+        reservation_check_person = (EditText)findViewById(R.id.reservation_check_person);
 
         String checkplace = getIntent().getExtras().getString("selectedplace");
         reservation_check_place.setText(checkplace);
@@ -46,7 +46,7 @@ public class ReservationCheck extends AppCompatActivity {
         reservation_check_hour.setText(selectedhour);
 
         String selectedpp = getIntent().getExtras().getString("selectedpp");
-        reservation_check_people.setText(selectedpp);
+        reservation_check_person.setText(selectedpp);
 
     }
 }

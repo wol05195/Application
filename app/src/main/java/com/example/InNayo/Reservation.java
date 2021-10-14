@@ -110,7 +110,7 @@ public class Reservation extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://192.168.35.229/Facilities.php");
+                        getData("http://192.168.35.116/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -122,11 +122,11 @@ public class Reservation extends AppCompatActivity {
 //                        break;
                     case R.id.reservation_bt4:
                         personList.clear();
-                        getData("http://192.168.35.229/Facilities_cafe.php");
+                        getData("http://192.168.35.116/Facilities_cafe.php");
                         break;
                     case R.id.reservation_bt5:
                         personList.clear();
-                        getData("http://192.168.35.229/Facilities_restaurant.php");
+                        getData("http://192.168.35.116/Facilities_restaurant.php");
                         break;
                     case R.id.reservation_bt6:
                         dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
@@ -149,13 +149,15 @@ public class Reservation extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.229/Facilities.php");
+        getData("http://192.168.35.116/Facilities.php");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String sp = String.valueOf(arg0.getAdapter().getItem(arg2));
-                sp = sp.substring(sp.indexOf("=")+1,sp.indexOf("}"));
+                if (sp.indexOf("=")>=1){
+                    sp = sp.substring(sp.indexOf("=")+1,sp.indexOf("}"));
+                }
                 Intent intent = new Intent(Reservation.this, ReservationCheck.class);
                 intent.putExtra("selectedplace", sp);
                 intent.putExtra("selectedyear", year);
@@ -173,7 +175,7 @@ public class Reservation extends AppCompatActivity {
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.229/Facilities_search.php");
+            httppost = new HttpPost("http://192.168.35.116/Facilities_search.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
