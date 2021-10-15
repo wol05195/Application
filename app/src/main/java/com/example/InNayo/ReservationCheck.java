@@ -2,6 +2,7 @@ package com.example.InNayo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -99,9 +100,18 @@ public class ReservationCheck extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast toast = Toast.makeText(ReservationCheck.this, s, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 30);
-                toast.show();
+//                Toast toast = Toast.makeText(ReservationCheck.this, s, Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 30);
+//                toast.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReservationCheck.this);
+//                builder.setTitle("제목");
+                if (s.equals("예약 등록 완료")){
+                    builder.setMessage("예약이 완료되었습니다.");
+                }else{
+                    builder.setMessage("예약을 실패하였습니다. 재시도 바랍니다.");
+                }
+                builder.setPositiveButton("확인",null);
+                builder.create().show();
             }
 
             @Override
