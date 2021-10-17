@@ -53,8 +53,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
     Intent intent;
     Calendar bookingCalendar = Calendar.getInstance();
     NumberPicker np;
-    String state;
-    int tpselectedhour;
+    String state, selectedhour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +69,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             intent.putExtra("year", String.valueOf(bookingCalendar.get(Calendar.YEAR)));
             intent.putExtra("month", String.valueOf(bookingCalendar.get(Calendar.MONTH)+1));
             intent.putExtra("date", String.valueOf(bookingCalendar.get(Calendar.DATE)));
-            intent.putExtra("time", String.valueOf(tpselectedhour));
+            intent.putExtra("time", String.valueOf(selectedhour));
             intent.putExtra("ap", String.valueOf(state));
             intent.putExtra("people", String.valueOf(np.getValue()));
             startActivity(intent);
@@ -100,7 +99,20 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int pos)
                     {
                         String[] items = getResources().getStringArray(R.array.TIME);
-                        booking_edit2.setText("시간 : " + items[pos]);
+
+                        try {
+                            if (pos <= 3) {
+                                state = "AM";
+                                selectedhour = items[pos].substring(0,2);
+                            } else {
+                                state = "PM";
+                                selectedhour = String.valueOf(Integer.valueOf(items[pos].substring(0,2))-12);
+                            }
+                        }finally{
+                            booking_edit2.setText("시간 : " + state + " " + items[pos]);
+
+                    }
+                        
                     }
                 });
                 AlertDialog alertDialog = dlg.create();
@@ -193,7 +205,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 bookingCalendar.set(Calendar.YEAR, year);
                 bookingCalendar.set(Calendar.MONTH, month);
-                bookingCalendar.add(bookingCalendar.YEAR, 1);
+                bookingCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 String Format = "yyyy년 M월 d일";    // 출력형식   2018/11/28
                 SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
