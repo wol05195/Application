@@ -1,11 +1,17 @@
 package com.example.InNayo;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,14 +49,24 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class Reservation extends AppCompatActivity {
+public class Reservation extends AppCompatActivity implements View.OnClickListener {
     String myJSON;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
 
+    private String TAG = "Reservation";
     private static final String TAG_RESULTS = "result";
     private static final String TAG_NAME = "fname";
+
+    private Context mContext = Reservation.this;
+
+    private ViewGroup mainLayout;   //사이드 나왔을때 클릭방지할 영역
+    private ViewGroup viewLayout;   //전체 감싸는 영역
+    private ViewGroup sideLayout;   //사이드바만 감싸는 영역
+
+    private Boolean isMenuShow = false;
+    private Boolean isExitFlag = false;
 
     JSONArray peoples=null;
 
@@ -67,6 +83,9 @@ public class Reservation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+
+        init();
+        addSideView();  //사이드바 add
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -171,6 +190,76 @@ public class Reservation extends AppCompatActivity {
         });
 
     }
+
+    private void init(){
+
+        findViewById(R.id.btn_menu).setOnClickListener(this);
+
+        mainLayout = findViewById(R.id.id_main);
+        viewLayout = findViewById(R.id.fl_silde);
+        sideLayout = findViewById(R.id.view_sildebar);
+
+    }
+
+    private void addSideView() {
+        SideBarView sidebar = new SideBarView(mContext);
+        sideLayout.addView(sidebar);
+
+        viewLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        sidebar.setEventListener(new SideBarView.EventListener() {
+
+            @Override
+            public void btnLevel1() {
+                Log.e(TAG, "btnLevel1");
+
+                closeMenu();
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.btn_menu:
+
+                showMenu();
+                break;
+        }
+    }
+
+    public void closeMenu() {
+
+        isMenuShow = false;
+        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
+        sideLayout.startAnimation(slide);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewLayout.setVisibility(View.GONE);
+                viewLayout.setEnabled(false);
+                mainLayout.setEnabled(true);
+            }
+        }, 450);
+    }
+
+    public void showMenu() {
+
+        isMenuShow = true;
+        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
+        sideLayout.startAnimation(slide);
+        viewLayout.setVisibility(View.VISIBLE);
+        viewLayout.setEnabled(true);
+        mainLayout.setEnabled(false);
+        Log.e(TAG, "메뉴버튼 클릭");
+    }
+
     void SearchDatabase() {
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");

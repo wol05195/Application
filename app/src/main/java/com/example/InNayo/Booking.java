@@ -101,7 +101,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                         try {
                             if (pos <= 3) {
                                 state = "AM";
-                                selectedhour = items[pos].substring(0,2);
+                                selectedhour = items[pos].substring(0,1);
                                 booking_edit2.setText("시간 : " + state + " " + items[pos]);
 
                             }
