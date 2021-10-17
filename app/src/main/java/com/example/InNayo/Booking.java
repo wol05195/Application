@@ -1,11 +1,13 @@
 package com.example.InNayo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -20,13 +22,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.BreakIterator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -84,9 +89,25 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
         booking_edit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePicker();
+
+                AlertDialog.Builder dlg = new AlertDialog.Builder(Booking.this);
+                dlg.setTitle("예약할 시간을 선택해주세요");
+                dlg.setIcon(R.drawable.ic_time);
+
+
+                dlg.setItems(R.array.TIME, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int pos)
+                    {
+                        String[] items = getResources().getStringArray(R.array.TIME);
+                        booking_edit2.setText("시간 : " + items[pos]);
+                    }
+                });
+                AlertDialog alertDialog = dlg.create();
+                alertDialog.show();
+
             }
-        });
+       });
 
         booking_edit3 = (EditText)findViewById(R.id.booking_edit3);
         booking_edit3.setOnClickListener(new View.OnClickListener() {
@@ -185,33 +206,33 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
         DatePicker.show();
     }
 
-    private void TimePicker(){
-        int hour = bookingCalendar.get(Calendar.HOUR_OF_DAY);
-        int minute = bookingCalendar.get(Calendar.MINUTE);
-
-        final TimePickerDialog TimePicker = new TimePickerDialog(Booking.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                state = "AM";
-                // 선택한 시간이 12를 넘을경우 "PM"으로 변경 및 -12시간하여 출력 (ex : PM 6시 30분)
-                if (selectedHour > 12) {
-                    selectedHour -= 12;
-                    state = "PM";
-                }else if(selectedHour == 12){
-                    selectedHour = 12;
-                    state = "PM";
-                }
-                selectedMinute = 00;
-                tpselectedhour = selectedHour;
-                // EditText에 출력할 형식 지정
-                booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 " + selectedMinute +"0분");
-            }
-        }, hour, minute/60, false); // true의 경우 24시간 형식의 TimePicker 출현
-
-        TimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        TimePicker.setTitle("시간을 선택해주세요");
-        TimePicker.show();
-    }
+//    private void TimePicker(){
+//        int hour = bookingCalendar.get(Calendar.HOUR_OF_DAY);
+//        int minute = bookingCalendar.get(Calendar.MINUTE);
+//
+//        final TimePickerDialog TimePicker = new TimePickerDialog(Booking.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+//            @Override
+//            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+//                state = "AM";
+//                // 선택한 시간이 12를 넘을경우 "PM"으로 변경 및 -12시간하여 출력 (ex : PM 6시 30분)
+//                if (selectedHour > 12) {
+//                    selectedHour -= 12;
+//                    state = "PM";
+//                }else if(selectedHour == 12){
+//                    selectedHour = 12;
+//                    state = "PM";
+//                }
+//                selectedMinute = 00;
+//                tpselectedhour = selectedHour;
+//                // EditText에 출력할 형식 지정
+//                booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 " + selectedMinute +"0분");
+//            }
+//        }, hour, minute/60, false); // true의 경우 24시간 형식의 TimePicker 출현
+//
+//        TimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//        TimePicker.setTitle("시간을 선택해주세요");
+//        TimePicker.show();
+//    }
 
     private void NumberPicker() {
         final Dialog numDialog = new Dialog(this);
