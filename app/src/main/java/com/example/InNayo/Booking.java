@@ -92,8 +92,6 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(Booking.this);
                 dlg.setTitle("예약할 시간을 선택해주세요");
                 dlg.setIcon(R.drawable.ic_time);
-
-
                 dlg.setItems(R.array.TIME, new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int pos)
@@ -104,14 +102,25 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                             if (pos <= 3) {
                                 state = "AM";
                                 selectedhour = items[pos].substring(0,2);
-                            } else {
+                                booking_edit2.setText("시간 : " + state + " " + items[pos]);
+
+                            }
+                            else if(pos==4){
+                                state = "PM";
+                                selectedhour = items[pos].substring(0,2);
+                                booking_edit2.setText("시간 : " + state + " " + items[pos]);
+
+                            }
+                            else {
                                 state = "PM";
                                 selectedhour = String.valueOf(Integer.valueOf(items[pos].substring(0,2))-12);
+                                booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
+
                             }
                         }finally{
-                            booking_edit2.setText("시간 : " + state + " " + items[pos]);
+//                            booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
 
-                    }
+                        }
                         
                     }
                 });
