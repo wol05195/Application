@@ -26,7 +26,9 @@ import android.widget.Toast;
 
 import java.text.BreakIterator;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class Booking extends AppCompatActivity implements View.OnClickListener {
@@ -170,13 +172,16 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 bookingCalendar.set(Calendar.YEAR, year);
                 bookingCalendar.set(Calendar.MONTH, month);
-                bookingCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                bookingCalendar.add(bookingCalendar.YEAR, 1);
 
                 String Format = "yyyy년 M월 d일";    // 출력형식   2018/11/28
                 SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
                 booking_edit1.setText("날짜 : " + sdf.format(bookingCalendar.getTime()));
             }
         },bookingCalendar.get(Calendar.YEAR), bookingCalendar.get(Calendar.MONTH), bookingCalendar.get(Calendar.DAY_OF_MONTH));
+        DatePicker.getDatePicker().setMinDate(System.currentTimeMillis());
+        DatePicker.getDatePicker().setMaxDate(System.currentTimeMillis()+1123200000);
+
         DatePicker.show();
     }
 
@@ -202,6 +207,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                 booking_edit2.setText("시간 : "+ state + " " + selectedHour+ "시 " + selectedMinute +"0분");
             }
         }, hour, minute/60, false); // true의 경우 24시간 형식의 TimePicker 출현
+
         TimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         TimePicker.setTitle("시간을 선택해주세요");
         TimePicker.show();
