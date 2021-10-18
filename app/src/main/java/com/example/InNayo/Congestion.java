@@ -96,6 +96,7 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
         });
     }
 
+
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         Marker marker = new Marker();
