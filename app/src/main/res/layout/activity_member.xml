@@ -34,6 +34,7 @@
                     android:id="@+id/member_et1"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:maxLength="3"
                     android:backgroundTint="@color/lightpink"/>
 
                 <TextView
@@ -47,7 +48,9 @@
                     android:id="@+id/member_et2"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/lightpink"/>
+                    android:inputType="number"
+                    android:maxLength="7"
+                    android:backgroundTint="@color/lightpink" />
 
                 <TextView
                     android:layout_width="300dp"
@@ -60,6 +63,7 @@
                     android:id="@+id/member_et3"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:maxLength="8"
                     android:backgroundTint="@color/lightpink"/>
 
                 <TextView
@@ -73,6 +77,7 @@
                     android:id="@+id/member_et4"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:maxLength="8"
                     android:backgroundTint="@color/lightpink"/>
 
                 <TextView
@@ -86,6 +91,7 @@
                     android:id="@+id/member_et5"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:maxLength="30"
                     android:backgroundTint="@color/lightpink"/>
 
                 <TextView
@@ -99,6 +105,7 @@
                     android:id="@+id/member_et6"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="phone"
                     android:backgroundTint="@color/lightpink"/>
             </LinearLayout>
         </ScrollView>
