@@ -23,6 +23,8 @@
             android:id="@+id/id_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:maxLength="8"
+            android:inputType="number"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
@@ -35,6 +37,8 @@
             android:id="@+id/id_et2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:maxLength="13"
+            android:inputType="phone"
             android:backgroundTint="@color/lightpink"/>
         <TextView
             android:id="@+id/id_tv1"

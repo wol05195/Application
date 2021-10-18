@@ -23,6 +23,7 @@
             android:id="@+id/nonmember_et1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:maxLength="3"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:inputType="phone"
+            android:maxLength="13"
             android:backgroundTint="@color/lightpink"/>
 
         <TextView
