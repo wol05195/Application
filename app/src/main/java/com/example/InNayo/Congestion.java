@@ -1,21 +1,41 @@
 package com.example.InNayo;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.OverlayImage;
+import com.naver.maps.map.util.FusedLocationSource;
+
+import org.apache.poi.ss.formula.functions.Na;
+
+import java.security.Permission;
 
 
 public class Congestion extends AppCompatActivity implements OnMapReadyCallback {
+    private static final String TAG = "CongestionActivity";
+
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private static final String[] PERMISSION = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+
+    private FusedLocationSource mLocationSource;
+    private NaverMap mNaverMap;
+
+
     Button congestion_bt5, congestion_bt6, congestion_bt7, congestion_bt8;
 
     @Override
@@ -30,6 +50,8 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
         }
 
         mapFragment.getMapAsync(this);
+
+        mLocationSource = new FusedLocationSource(this, PERMISSION_REQUEST_CODE);
 
         congestion_bt5 = (Button)findViewById(R.id.congestion_bt5);
         congestion_bt6 = (Button)findViewById(R.id.congestion_bt6);
@@ -85,4 +107,20 @@ public class Congestion extends AppCompatActivity implements OnMapReadyCallback 
         marker.setCaptionText("한양여자대학교");
         marker.setCaptionRequestedWidth(200);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull  int[] grantResults) {
+        if (mLocationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if(!mLocationSource.isActivated()) {
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.None);
+                return;
+            } else {
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+            }
+
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    }
+
 }
