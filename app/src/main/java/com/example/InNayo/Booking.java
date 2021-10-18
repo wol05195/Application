@@ -101,8 +101,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                         try {
                             if (pos <= 3) {
                                 state = "AM";
-                                selectedhour = items[pos].substring(0,2);
-                                booking_edit2.setText("시간 : " + state + " " + items[pos]);
+                                selectedhour = String.valueOf(Integer.valueOf(items[pos].substring(0,items[pos].indexOf(":"))));
 
                             }
                             else if(pos==4){
@@ -114,12 +113,10 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                             else {
                                 state = "PM";
                                 selectedhour = String.valueOf(Integer.valueOf(items[pos].substring(0,2))-12);
-                                booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
 
                             }
                         }finally{
-//                            booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
-
+                            booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
                         }
                         
                     }
