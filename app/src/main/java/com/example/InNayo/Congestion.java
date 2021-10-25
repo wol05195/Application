@@ -19,6 +19,7 @@ import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.NaverMapOptions;
 import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
@@ -30,16 +31,6 @@ import java.security.Permission;
 
 public class Congestion extends FragmentActivity implements OnMapReadyCallback {
 
-//    private static final int PERMISSION_REQUEST_CODE = 1000;
-//    private static final String[] PERMISSION = {
-//            Manifest.permission.ACCESS_COARSE_LOCATION,
-//            Manifest.permission.ACCESS_FINE_LOCATION
-//    };
-//
-//    private FusedLocationSource locationSource;
-//    private NaverMap naverMap;
-
-
     Button congestion_bt5, congestion_bt6, congestion_bt7, congestion_bt8;
 
     @Override
@@ -47,11 +38,6 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congestion);
 
-
-//        NaverMapOptions options = new NaverMapOptions()
-//                .camera(new CameraPosition(new LatLng(37.55834853256298, 127.04990932947216), 8));
-
-//
         MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance();
@@ -106,7 +92,8 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
-
+        UiSettings uiSettings = naverMap.getUiSettings();
+        uiSettings.setLocationButtonEnabled(true);
 
         Marker marker = new Marker();
         marker.setPosition(new LatLng(37.55834853256298, 127.04990932947216));
@@ -120,17 +107,7 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull  int[] grantResults) {
-//        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
-//            if(!locationSource.isActivated()) {
-//                naverMap.setLocationTrackingMode(LocationTrackingMode.None);
-//                return;
-//            } else {
-//                naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-//            }
-//
-//        }
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//
+
     }
 
 }
