@@ -129,14 +129,26 @@
                 android:visibility="invisible"
                 android:background="@drawable/corner_line_button"
                 android:drawableLeft="@drawable/image_size_g"/>
-            <fragment
+<!--            <fragment-->
+<!--                android:id="@+id/map"-->
+<!--                android:name="com.naver.maps.map.MapFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:navermap_latitude="37.55834"-->
+<!--                app:navermap_longitude="127.04984"-->
+<!--                app:navermap_zoom="16"/>-->
+<!--            <fragment-->
+<!--                android:id="@+id/map"-->
+<!--                android:name="com.naver.maps.map.MapFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:navermap_zoom="16"/>-->
+
+            <com.naver.maps.map.MapView
                 android:id="@+id/map"
-                android:name="com.naver.maps.map.MapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:navermap_latitude="37.55834"
-                app:navermap_longitude="127.04984"
-                app:navermap_zoom="16"/>
+                android:layout_height="match_parent"/>
+
         </RelativeLayout>
     </LinearLayout>
 

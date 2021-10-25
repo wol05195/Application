@@ -120,7 +120,7 @@ public class ReservationCheck extends AppCompatActivity {
                 String Time = (String) params[2];
                 String Person = (String) params[3];
 
-                String link = "http://192.168.35.139/Reservation.php";
+                String link = "http://172.30.1.3/Reservation.php";
                 String data = URLEncoder.encode("Place", "UTF-8") + "=" + URLEncoder.encode(Place, "UTF-8");
                 data += "&" + URLEncoder.encode("Date", "UTF-8") + "=" + URLEncoder.encode(Date, "UTF-8");
                 data += "&" + URLEncoder.encode("Time", "UTF-8") + "=" + URLEncoder.encode(Time, "UTF-8");

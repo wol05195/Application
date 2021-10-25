@@ -129,7 +129,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://192.168.35.116/Facilities.php");
+                        getData("http://172.30.1.3/Facilities.php");
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -139,14 +139,14 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 //                        personList.clear();
 //                        getData("http://172.30.1.49/Facilities_library.php");
 //                        break;
-                    case R.id.reservation_bt4:
-                        personList.clear();
-                        getData("http://192.168.35.116/Facilities_cafe.php");
-                        break;
-                    case R.id.reservation_bt5:
-                        personList.clear();
-                        getData("http://192.168.35.116/Facilities_restaurant.php");
-                        break;
+//                    case R.id.reservation_bt4:
+//                        personList.clear();
+//                        getData("http://172.30.1.19/Facilities_cafe.php");
+//                        break;
+//                    case R.id.reservation_bt5:
+//                        personList.clear();
+//                        getData("http://172.30.1.19/Facilities_restaurant.php");
+//                        break;
                     case R.id.reservation_bt6:
                         dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
                         new Thread(new Runnable() {
@@ -168,7 +168,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.116/Facilities.php");
+        getData("http://172.30.1.3/Facilities.php");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -264,7 +264,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.116/Facilities_search.php");
+            httppost = new HttpPost("http://172.30.1.3/Facilities_search.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
