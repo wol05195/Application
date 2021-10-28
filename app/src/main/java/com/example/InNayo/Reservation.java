@@ -41,6 +41,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -50,15 +51,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
-    String myJSON;
+    String DATE, TIME, RDATE, RTIME;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
 
     private String TAG = "Reservation";
-    private static final String TAG_RESULTS = "result";
-    private static final String TAG_NAME = "fname";
-
     private Context mContext = Reservation.this;
 
     private ViewGroup mainLayout;   //사이드 나왔을때 클릭방지할 영역
@@ -78,7 +76,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
     HttpResponse response;
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
-    String[] searchresult;
+    String[] searchresult, selectresult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +113,21 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         String people = getIntent().getExtras().getString("people");
         reservation_people.setText(people);
 
+        DATE = year + "-" + month + "-" + date;
+        if(ap.equals("AM") == true){
+            TIME = time + ":00:00";
+        }else{
+            TIME = String.valueOf(Integer.valueOf(time) + 12) + ":00:00";
+        }
+
+        try{
+            RDATE = URLEncoder.encode(DATE, "UTF-8");
+            RTIME = URLEncoder.encode(TIME, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
         reservation_bt1 = (Button)findViewById(R.id.reservation_bt1);
         reservation_bt2 = (Button)findViewById(R.id.reservation_bt2);
         reservation_bt3 = (Button)findViewById(R.id.reservation_bt3);
@@ -129,7 +142,13 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                 switch (v.getId()){
                     case R.id.reservation_bt1:
                         personList.clear();
-                        getData("http://172.30.1.3/Facilities.php");
+                        dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                SelectDatabase("http://192.168.35.174/Facilities.php");
+                            }
+                        }).start();
                         break;
 //                    case R.id.reservation_bt2:
 //                        personList.clear();
@@ -139,15 +158,28 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 //                        personList.clear();
 //                        getData("http://172.30.1.49/Facilities_library.php");
 //                        break;
-//                    case R.id.reservation_bt4:
-//                        personList.clear();
-//                        getData("http://172.30.1.19/Facilities_cafe.php");
-//                        break;
-//                    case R.id.reservation_bt5:
-//                        personList.clear();
-//                        getData("http://172.30.1.19/Facilities_restaurant.php");
-//                        break;
+                    case R.id.reservation_bt4:
+                        personList.clear();
+                        dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                SelectDatabase("http://192.168.35.174/Facilities_cafe.php");
+                            }
+                        }).start();
+                        break;
+                    case R.id.reservation_bt5:
+                        personList.clear();
+                        dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                SelectDatabase("http://192.168.35.174/Facilities_restaurant.php");
+                            }
+                        }).start();
+                        break;
                     case R.id.reservation_bt6:
+                        personList.clear();
                         dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
                         new Thread(new Runnable() {
                             @Override
@@ -168,7 +200,13 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://172.30.1.3/Facilities.php");
+        dialog = ProgressDialog.show(Reservation.this,"","Validating user...",true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SelectDatabase("http://192.168.35.174/Facilities.php");
+            }
+        }).start();
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -186,6 +224,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                 intent.putExtra("selectedap", ap);
                 intent.putExtra("selectedpp", people);
                 startActivity(intent);
+
             }
         });
 
@@ -259,14 +298,58 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         mainLayout.setEnabled(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
-
+    void SelectDatabase(String link) {
+        try {
+            httpclient = new DefaultHttpClient();
+            httppost = new HttpPost(link);
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));
+            nameValuePairs.add(new BasicNameValuePair("Rtime", RTIME));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            response = httpclient.execute(httppost);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            final String response2 = httpclient.execute(httppost, responseHandler);
+            String res = response2.replace('"', ' ').replace("[", "").replace("]","").replace(" ","");
+            selectresult = res.split(",");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.dismiss();
+                }
+            });
+            if (response2.equalsIgnoreCase("No Such User Found")) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+//                        Toast.makeText(Reservation.this, "Login Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter<String> itemsAdapter =
+                                new ArrayAdapter<String>(Reservation.this, android.R.layout.simple_list_item_1, selectresult);
+                        list.setAdapter(itemsAdapter);
+                    }
+                });
+            }
+        }
+        catch(Exception e)
+        {
+            dialog.dismiss();
+            System.out.println("Exception : " + e.getMessage());
+        }
+    }
     void SearchDatabase() {
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://172.30.1.3/Facilities_search.php");
+            httppost = new HttpPost("http://192.168.35.174/Facilities_search.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
+            nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));
+            nameValuePairs.add(new BasicNameValuePair("Rtime", RTIME));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -302,66 +385,5 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
             dialog.dismiss();
             System.out.println("Exception : " + e.getMessage());
         }
-    }
-    protected void showList(){
-        try{
-            JSONObject jsonObj = new JSONObject(myJSON);
-            peoples = jsonObj.getJSONArray(TAG_RESULTS);
-
-            for(int i=0; i<peoples.length(); i++){
-                JSONObject c = peoples.getJSONObject(i);
-                String list_item_name = c.getString(TAG_NAME);
-
-                HashMap<String,String> persons = new HashMap<String, String>();
-
-                persons.put(TAG_NAME, list_item_name);
-
-                personList.add(persons);
-            }
-            ListAdapter adapter = new SimpleAdapter(
-                    Reservation.this, personList, R.layout.list_item_reservation,
-                    new String[]{TAG_NAME},
-                    new int[]{R.id.list_item_name}
-            );
-            list.setAdapter(adapter);
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-    }
-    public void getData(String url) {
-        class GetDataJson extends AsyncTask<String, Void, String> {
-
-            @Override
-            protected String doInBackground(String... params) {
-                String uri = params[0];
-
-                BufferedReader bufferedReader = null;
-                try{
-                    URL url = new URL(uri);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-
-                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null){
-                        sb.append(json + '\n');
-                    }
-                    return sb.toString().trim();
-                } catch(Exception e){
-                    return null;
-                }
-
-            }
-
-            @Override
-            protected void onPostExecute(String result){
-                myJSON = result;
-                showList();
-            }
-        }
-        GetDataJson g = new GetDataJson();
-        g.execute(url);
-
     }
 }
