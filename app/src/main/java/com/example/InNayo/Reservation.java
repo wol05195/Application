@@ -115,7 +115,11 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 
         DATE = year + "-" + month + "-" + date;
         if(ap.equals("AM") == true){
-            TIME = time + ":00:00";
+            if (Integer.valueOf(time) <= 9) {
+                TIME = "0" + time + ":00:00";
+            }else{
+                TIME = time + ":00:00";
+            }
         }else{
             TIME = String.valueOf(Integer.valueOf(time) + 12) + ":00:00";
         }
