@@ -96,7 +96,7 @@ public class MemberLogin extends Fragment {
     void login() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.108/Login.php");
+            httppost = new HttpPost("http://172.30.1.24/Login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Pw", mPassword.getText().toString()));
@@ -105,26 +105,27 @@ public class MemberLogin extends Fragment {
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             final String response = httpclient.execute(httppost, responseHandler);
             System.out.println("Response : " + response);
+            String res = response.replace('"', ' ');
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     dialog.dismiss();
                 }
             });
-            if (response.equalsIgnoreCase("User Found")) {
+            if (response.equalsIgnoreCase("No Such User Found")) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toast = Toast.makeText(memberlogincontext, "Login Success", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
-                        toast.show();
+                        Toast.makeText(memberlogincontext, "Login Fail" , Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(memberlogincontext, "Login Fail" , Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(memberlogincontext, "사용자 이름" + res + "입니다.", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
+                        toast.show();
                     }
                 });
             }
