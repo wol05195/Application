@@ -50,7 +50,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-//한희 내가 쓴 거 보이니..?
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
     String DATE, TIME, RDATE, RTIME;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
