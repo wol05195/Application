@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -108,7 +110,13 @@ public class ReservationCheck extends AppCompatActivity {
                 } else {
                     builder.setMessage("예약을 실패하였습니다. 재시도 바랍니다.");
                 }
-                builder.setPositiveButton("확인", null);
+                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(ReservationCheck.this, MyBookingCheck.class);
+                        startActivity(intent);
+                    }
+                });
                 builder.create().show();
             }
 
@@ -120,7 +128,7 @@ public class ReservationCheck extends AppCompatActivity {
                 String Time = (String) params[2];
                 String Person = (String) params[3];
 
-                String link = "http://172.30.1.3/Reservation.php";
+                String link = "http://192.168.35.121/Reservation.php";
                 String data = URLEncoder.encode("Place", "UTF-8") + "=" + URLEncoder.encode(Place, "UTF-8");
                 data += "&" + URLEncoder.encode("Date", "UTF-8") + "=" + URLEncoder.encode(Date, "UTF-8");
                 data += "&" + URLEncoder.encode("Time", "UTF-8") + "=" + URLEncoder.encode(Time, "UTF-8");
