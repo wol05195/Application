@@ -36,7 +36,7 @@ public class MyBookingCheck extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.58/My_Booking_Check.php");
+        getData("http://192.168.35.202/My_Booking_Check.php");
     }
     protected void showList(){
         try{
