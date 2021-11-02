@@ -92,7 +92,6 @@ public class MemberLogin extends Fragment {
         return rootview;
     }
 
-
     void login() {
         try {
             httpclient = new DefaultHttpClient();
