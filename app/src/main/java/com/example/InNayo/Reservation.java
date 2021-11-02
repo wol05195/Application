@@ -121,7 +121,11 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                 TIME = time + ":00:00";
             }
         }else{
-            TIME = String.valueOf(Integer.valueOf(time) + 12) + ":00:00";
+            if(Integer.valueOf(time)==12){
+                TIME = time + ":00:00";
+            }else {
+                TIME = String.valueOf(Integer.valueOf(time) + 12) + ":00:00";
+            }
         }
 
         try{
