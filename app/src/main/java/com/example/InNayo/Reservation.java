@@ -50,6 +50,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+//한희 내가 쓴 거 보이니..?
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
     String DATE, TIME, RDATE, RTIME;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
@@ -150,7 +151,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.174/Facilities.php");
+                                SelectDatabase("http://192.168.35.121/Facilities.php");
                             }
                         }).start();
                         break;
@@ -168,7 +169,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.174/Facilities_cafe.php");
+                                SelectDatabase("http://192.168.35.121/Facilities_cafe.php");
                             }
                         }).start();
                         break;
@@ -178,7 +179,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.174/Facilities_restaurant.php");
+                                SelectDatabase("http://192.168.35.121/Facilities_restaurant.php");
                             }
                         }).start();
                         break;
@@ -208,7 +209,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SelectDatabase("http://192.168.35.174/Facilities.php");
+                SelectDatabase("http://192.168.35.121/Facilities.php");
             }
         }).start();
 
@@ -349,7 +350,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.174/Facilities_search.php");
+            httppost = new HttpPost("http://192.168.35.121/Facilities_search.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
             nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));
