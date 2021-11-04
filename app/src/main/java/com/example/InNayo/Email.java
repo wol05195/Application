@@ -32,6 +32,8 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class Email extends Fragment {
     EditText mEmail, mPhone;
     TextView email_tv1;
@@ -84,7 +86,7 @@ public class Email extends Fragment {
     void find_email() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.0.8/Find_Email.php");
+            httppost = new HttpPost(urls+"Find_Email.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Email", mEmail.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Phone", mPhone.getText().toString()));

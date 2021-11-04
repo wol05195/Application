@@ -1,37 +1,31 @@
 package com.example.InNayo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 public class SideBar extends AppCompatActivity {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side_bar);
-
-
     }
 }
 
 class SideBarView extends RelativeLayout implements View.OnClickListener {
     Intent intent;
-
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+    EditText et_side_name;
     /** 메뉴버튼 클릭 이벤트 리스너 */
     public EventListener listener;
     public void setEventListener(EventListener l) {
@@ -93,6 +87,13 @@ class SideBarView extends RelativeLayout implements View.OnClickListener {
         findViewById(R.id.side_logout).setOnClickListener(new View.OnClickListener() { //로그아웃 !! -> 메인
             @Override
             public void onClick(View v) {
+                pref= getContext().getSharedPreferences("pref", Activity.MODE_PRIVATE);
+                editor = pref.edit();
+
+                editor.putString("logined_name", "");
+                editor.apply();
+                et_side_name = (EditText)findViewById(R.id.et_side_name);
+                et_side_name.setText("");
                 Intent intent = new Intent(getContext(), Main.class);
                 getContext().startActivity(intent);
             }

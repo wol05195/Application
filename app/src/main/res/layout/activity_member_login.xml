@@ -30,7 +30,8 @@
             android:background="@drawable/corner_line_button"
             android:textSize="15dp"
             android:paddingLeft="15dp"
-            android:hint="PW"/>
+            android:hint="PW"
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/member_login_tv1"

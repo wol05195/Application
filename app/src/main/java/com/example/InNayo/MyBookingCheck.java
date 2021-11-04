@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class MyBookingCheck extends AppCompatActivity {
     String myJSON;
     JSONArray peoples=null;
@@ -36,7 +38,7 @@ public class MyBookingCheck extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.35.202/My_Booking_Check.php");
+        getData(urls+"My_Booking_Check.php");
     }
     protected void showList(){
         try{

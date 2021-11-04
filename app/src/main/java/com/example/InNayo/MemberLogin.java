@@ -1,8 +1,10 @@
 package com.example.InNayo;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -33,6 +36,8 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.InNayo.Reservation.urls;
+
 
 public class MemberLogin extends Fragment {
     EditText mID, mPassword;
@@ -43,11 +48,17 @@ public class MemberLogin extends Fragment {
     List<NameValuePair> nameValuePairs;
     Context memberlogincontext;
     Handler handler;
+    String res;
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.activity_member_login, container, false);
         memberlogincontext = container.getContext();
+
+        pref = memberlogincontext.getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
 
         TextView member_login_tv1 = (TextView) rootview.findViewById(R.id.member_login_tv1);
         member_login_tv1.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +106,7 @@ public class MemberLogin extends Fragment {
     void login() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://172.30.1.24/Login.php");
+            httppost = new HttpPost(urls+"Login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Pw", mPassword.getText().toString()));
@@ -104,7 +115,7 @@ public class MemberLogin extends Fragment {
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             final String response = httpclient.execute(httppost, responseHandler);
             System.out.println("Response : " + response);
-            String res = response.replace('"', ' ');
+            res = response.replace('"', ' ');
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -125,6 +136,9 @@ public class MemberLogin extends Fragment {
                         Toast toast = Toast.makeText(memberlogincontext, "사용자 이름" + res + "입니다.", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                         toast.show();
+                        editor.putString("logined_name", res);
+                        editor.apply();
+                        ((Login)getActivity()).refresh();
                     }
                 });
             }

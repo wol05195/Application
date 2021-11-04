@@ -23,6 +23,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class Member extends Fragment {
     private EditText mName, mID, mPassword, mRePassword, mPhone, mEmail;
     Context membercontext;
@@ -84,7 +86,7 @@ public class Member extends Fragment {
                     String Phone = (String) params[3];
                     String Email = (String) params[4];
 
-                    String link = "http://192.168.0.8/Register.php";
+                    String link = urls+"Register.php";
                     String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");

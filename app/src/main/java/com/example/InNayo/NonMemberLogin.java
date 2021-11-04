@@ -1,7 +1,10 @@
 package com.example.InNayo;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,15 +43,23 @@ public class NonMemberLogin extends Fragment {
     TextView non_member_login_tv;
     int indexfname, indexbname, indexpass;
     ArrayList<String> nonmember;
+    Context nonmemberlogincontext;
     String value = "";
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.activity_non_member_login,container,false);
         nonmember = new ArrayList<>();
 
+        nonmemberlogincontext = container.getContext();
+
         checkSelfPermission();
         readExcel();
+
+        pref = nonmemberlogincontext.getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
 
         non_member_login_et1= (EditText)rootview.findViewById(R.id.non_member_login_et1);
         non_member_login_et2= (EditText)rootview.findViewById(R.id.non_member_login_et2);
@@ -66,11 +77,17 @@ public class NonMemberLogin extends Fragment {
                             Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                             toast.show();
+                            editor.putString("logined_name", non_member_login_et1.getText().toString());
+                            editor.apply();
+                            ((Login)getActivity()).refresh();
                         }else{
                             if(non_member_login_et2.getText().toString().equals(nonmember.get(indexfname+2)) == true){
                                 Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                                 toast.show();
+                                editor.putString("logined_name", non_member_login_et1.getText().toString());
+                                editor.apply();
+                                ((Login)getActivity()).refresh();
                             }else{
                                 Toast.makeText(getContext(), "errorsection 1", Toast.LENGTH_SHORT).show();
                             }
@@ -80,6 +97,9 @@ public class NonMemberLogin extends Fragment {
                             Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                             toast.show();
+                            editor.putString("logined_name", non_member_login_et1.getText().toString());
+                            editor.apply();
+                            ((Login)getActivity()).refresh();
                         }else{
                             Toast.makeText(getContext(), "errorsection 2", Toast.LENGTH_SHORT).show();
                         }

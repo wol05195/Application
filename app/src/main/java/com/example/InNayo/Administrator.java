@@ -40,6 +40,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class Administrator extends AppCompatActivity {
     EditText admin_et1, admin_et2, admin_et3, admin_et4, admin_et5, admin_et6;
     Button admin_button1;
@@ -185,7 +187,7 @@ public class Administrator extends AppCompatActivity {
                     String StartTime = (String) params[5];
                     String EndTime = (String) params[6];
 
-                    String link = "http://172.30.1.33/Administrator.php";
+                    String link = urls+"Administrator.php";
                     String data = URLEncoder.encode("Category", "UTF-8") + "=" + URLEncoder.encode(Category, "UTF-8");
                     data += "&" + URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Location", "UTF-8") + "=" + URLEncoder.encode(Location, "UTF-8");

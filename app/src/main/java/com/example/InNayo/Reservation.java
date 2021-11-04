@@ -56,6 +56,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
 
+    public static final String urls = "http://"+"192.168.35.13"+"/";
     private String TAG = "Reservation";
     private Context mContext = Reservation.this;
 
@@ -154,7 +155,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.121/Facilities.php");
+                                SelectDatabase(urls + "Facilities.php");
                             }
                         }).start();
                         break;
@@ -172,7 +173,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.121/Facilities_cafe.php");
+                                SelectDatabase(urls+"Facilities_cafe.php");
                             }
                         }).start();
                         break;
@@ -182,7 +183,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                SelectDatabase("http://192.168.35.121/Facilities_restaurant.php");
+                                SelectDatabase(urls+"Facilities_restaurant.php");
                             }
                         }).start();
                         break;
@@ -212,7 +213,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SelectDatabase("http://192.168.35.121/Facilities.php");
+                SelectDatabase(urls+"Facilities.php");
             }
         }).start();
 
@@ -353,7 +354,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         try {
             String data = URLEncoder.encode(reservation_edit1.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.35.121/Facilities_search.php");
+            httppost = new HttpPost(urls+"Facilities_search.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
             nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));

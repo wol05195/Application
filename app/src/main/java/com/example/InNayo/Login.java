@@ -1,6 +1,9 @@
 package com.example.InNayo;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +38,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Boolean isMenuShow = false;
     private Boolean isExitFlag = false;
     ViewPager viewPager;
-
+    ViewpagerAdapter2 adapter;
+    EditText et_side_name;
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
+    String logined_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +52,28 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         addSideView();  //사이드바 add
 
         viewPager = findViewById(R.id.login_viewpager);
-        ViewpagerAdapter2 adapter = new ViewpagerAdapter2(getSupportFragmentManager());
+        adapter = new ViewpagerAdapter2(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-    }
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
 
+        et_side_name = (EditText)findViewById(R.id.et_side_name);
+
+        logined_name = pref.getString("logined_name","");
+        et_side_name.setText(logined_name);
+
+//        if (!logined_name.equals("")){
+//            et_side_name.setText(logined_name);
+//        }
+    }
+    public void refresh(){
+        startActivity(new Intent(this, Login.class));
+        overridePendingTransition(0, 0);
+    }
     private void init(){
 
         findViewById(R.id.btn_menu).setOnClickListener(this);

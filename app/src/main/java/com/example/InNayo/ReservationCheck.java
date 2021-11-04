@@ -20,6 +20,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class ReservationCheck extends AppCompatActivity {
     EditText reservation_check_place, reservation_check_year, reservation_check_month, reservation_check_date,
             reservation_check_ap, reservation_check_hour, reservation_check_person;
@@ -128,7 +130,7 @@ public class ReservationCheck extends AppCompatActivity {
                 String Time = (String) params[2];
                 String Person = (String) params[3];
 
-                String link = "http://192.168.35.121/Reservation.php";
+                String link = urls+"Reservation.php";
                 String data = URLEncoder.encode("Place", "UTF-8") + "=" + URLEncoder.encode(Place, "UTF-8");
                 data += "&" + URLEncoder.encode("Date", "UTF-8") + "=" + URLEncoder.encode(Date, "UTF-8");
                 data += "&" + URLEncoder.encode("Time", "UTF-8") + "=" + URLEncoder.encode(Time, "UTF-8");

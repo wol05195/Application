@@ -30,6 +30,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class MyInformation extends AppCompatActivity {
     EditText my_information_et0, my_information_et1, my_information_et2, my_information_et3, my_information_et4, my_information_et5;
     Button my_information_bt, my_information_bt2;
@@ -85,7 +87,7 @@ public class MyInformation extends AppCompatActivity {
         try {
             String data = URLEncoder.encode(my_information_et0.getText().toString(), "UTF-8");
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://172.30.1.36/My_Information_getdata.php");
+            httppost = new HttpPost(urls+"My_Information_getdata.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Name", data));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -155,7 +157,7 @@ public class MyInformation extends AppCompatActivity {
                     String Email = (String) params[3];
                     String Phone = (String) params[4];
 
-                    String link = "http://172.30.1.36/My_information_update.php";
+                    String link = urls+"My_information_update.php";
                     String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("PassWord", "UTF-8") + "=" + URLEncoder.encode(PassWord, "UTF-8");

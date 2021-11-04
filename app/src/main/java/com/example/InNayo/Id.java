@@ -32,6 +32,8 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class Id extends Fragment {
     EditText mID, mPhone;
     TextView id_tv1;
@@ -84,7 +86,7 @@ public class Id extends Fragment {
     void find_id() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.108/Find_Id.php");
+            httppost = new HttpPost(urls+"Find_Id.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Id", mID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("Phone", mPhone.getText().toString()));
