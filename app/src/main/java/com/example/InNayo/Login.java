@@ -43,6 +43,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences pref;          // 프리퍼런스
     SharedPreferences.Editor editor;
     String logined_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
