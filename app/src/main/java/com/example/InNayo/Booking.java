@@ -53,7 +53,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
     Intent intent;
     Calendar bookingCalendar = Calendar.getInstance();
     NumberPicker np;
-    String state, selectedhour;
+    String state, selectedhour, ss, sh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +84,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-        booking_edit2 = (EditText)findViewById(R.id.booking_edit2);
+
         booking_edit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,4 +280,5 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
+
 }
