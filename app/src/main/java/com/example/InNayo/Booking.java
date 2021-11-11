@@ -84,11 +84,10 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-
+        booking_edit2 = (EditText)findViewById(R.id.booking_edit2);
         booking_edit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 AlertDialog.Builder dlg = new AlertDialog.Builder(Booking.this);
                 dlg.setTitle("예약할 시간을 선택해주세요");
                 dlg.setIcon(R.drawable.ic_time);
@@ -117,7 +116,7 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
                         }finally{
                             booking_edit2.setText("시간 : " + state + " " + selectedhour + "시 00분");
                         }
-                        
+
                     }
                 });
                 AlertDialog alertDialog = dlg.create();
