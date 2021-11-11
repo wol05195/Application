@@ -2,7 +2,9 @@ package com.example.InNayo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -41,6 +43,11 @@ public class MyInformation extends AppCompatActivity {
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
     String[] searchresult;
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
+    String logined_name;
+    EditText et_side_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +56,6 @@ public class MyInformation extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        my_information_et0 = (EditText) findViewById(R.id.my_information_et0);
         my_information_et1 = (EditText) findViewById(R.id.my_information_et1);
         my_information_et2 = (EditText) findViewById(R.id.my_information_et2);
         my_information_et3 = (EditText) findViewById(R.id.my_information_et3);
@@ -57,16 +63,28 @@ public class MyInformation extends AppCompatActivity {
         my_information_et5 = (EditText) findViewById(R.id.my_information_et5);
 
 
-        my_information_bt2 = findViewById(R.id.my_information_bt2);
-        my_information_bt2.setOnClickListener(v -> {
-            dialog = ProgressDialog.show(MyInformation.this,"","Validating user...",true);
+//        my_information_bt2 = findViewById(R.id.my_information_bt2);
+//        my_information_bt2.setOnClickListener(v -> {
+//            dialog = ProgressDialog.show(MyInformation.this,"","Validating user...",true);
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    GetDatabase();
+//                }
+//            }).start();
+//        });
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        logined_name = pref.getString("logined_name","");
+
+        dialog = ProgressDialog.show(MyInformation.this,"","Validating user...",true);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     GetDatabase();
                 }
             }).start();
-        });
 
         my_information_bt = findViewById(R.id.my_information_bt);
         my_information_bt.setOnClickListener(v -> {
@@ -82,10 +100,11 @@ public class MyInformation extends AppCompatActivity {
             toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 300);
             toast.show();
         });
+
     }
     void GetDatabase() {
         try {
-            String data = URLEncoder.encode(my_information_et0.getText().toString(), "UTF-8");
+            String data = URLEncoder.encode(logined_name.replace(" ", ""), "UTF-8");
             httpclient = new DefaultHttpClient();
             httppost = new HttpPost(urls+"My_Information_getdata.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
