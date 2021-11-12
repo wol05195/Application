@@ -57,7 +57,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
 
-    public static final String urls = "http://"+"192.168.1.157"+"/";
+    public static final String urls = "http://18.222.56.237/";
     private String TAG = "Reservation";
     private Context mContext = Reservation.this;
 

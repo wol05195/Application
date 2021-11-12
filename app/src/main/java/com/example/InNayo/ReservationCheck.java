@@ -91,11 +91,6 @@ public class ReservationCheck extends AppCompatActivity {
                 String Person = reservation_check_person.getText().toString();
 
                 String Date = Year + "-" + Month + "-" + Day;
-//                if(AP.equals("오전") == true){
-//                    Time = Hour + ":00:00";
-//                }else{
-//                    Time = String.valueOf(Integer.valueOf(Hour) + 12) + ":00:00";
-//                }
                 if(AP.equals("오전 ") == true){
                     if (Integer.valueOf(selectedhour) <= 9) {
                         Time = "0" + selectedhour + ":00:00";
