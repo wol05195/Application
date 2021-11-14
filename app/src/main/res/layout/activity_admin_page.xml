@@ -5,17 +5,65 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:text="예약내역"
-        android:id="@+id/admin_reservationButton"
-        android:layout_marginTop="20dp" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:text="회원내역"
-        android:id="@+id/admin_memberButton" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ivory"
+        android:elevation="1dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관리자 페이지"
+           android:textColor="@color/brown"
+            android:fontFamily="@font/gowunbatangbold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/admin_reservationButton"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:drawableTop="@drawable/ic_check2"
+            android:background="@drawable/gradient_basic_button"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:padding="30dp"
+            android:text="예약내역"
+            android:textColor="@color/brown"
+            android:textSize="22dp"
+            android:fontFamily="@font/hssaemaeul"
+           />
+
+        <Button
+            android:id="@+id/admin_memberButton"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:drawableTop="@drawable/ic_check3"
+            android:background="@drawable/gradient_basic_button"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:padding="30dp"
+            android:text="회원내역"
+            android:textColor="@color/brown"
+            android:textSize="22dp"
+            android:fontFamily="@font/hssaemaeul" />
+
+
+
+    </LinearLayout>
 
 </LinearLayout>
