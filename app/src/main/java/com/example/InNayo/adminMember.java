@@ -1,18 +1,12 @@
-/*package com.example.InNayo;
+package com.example.InNayo;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,94 +19,93 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class adminMember extends AppCompatActivity {
-
-
     String myJSON;
-    JSONArray peoples=null;
+    JSONArray members=null;
 
-    ArrayList<HashMap<String, String>> personList;
+    ArrayList<HashMap<String, String>> memberList;
     ListView list;
 
-    private static final String TAG_RESULTS = "result", TAG_DATE = "rdate",
-            TAG_TIME = "rtime", TAG_PEOPLE = "enter_count", TAG_NAME = "fname";
-
-    //TextView userListTextView;
-
-
-    private adminadapter adapter;
+    private static final String TAG_RESULT = "result", TAG_ID = "uid",
+            TAG_PW = "upw", TAG_NAME = "uname", TAG_PHONE = "uphone", TAG_EM = "email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_member);
 
-
-        protected void showList(){
+        list = (ListView)findViewById(R.id.listview);
+        memberList = new ArrayList<HashMap<String, String>>();
+        getData(urls+"adminmember.php");
+    }
+    protected void showList(){
         try{
             JSONObject jsonObj = new JSONObject(myJSON);
-            peoples = jsonObj.getJSONArray(TAG_RESULTS);
+            members = jsonObj.getJSONArray(TAG_RESULT);
 
-            for(int i=0; i<peoples.length(); i++){
-                JSONObject c = peoples.getJSONObject(i);
-                String list_item_date = c.getString(TAG_DATE);
-                String list_item_time = c.getString(TAG_TIME);
-                String list_item_people = c.getString(TAG_PEOPLE);
+            for(int i=0; i<members.length(); i++){
+                JSONObject c = members.getJSONObject(i);
+                String list_item_id = c.getString(TAG_ID);
+                String list_item_password = c.getString(TAG_PW);
+                String list_item_phone = c.getString(TAG_PHONE);
                 String list_item_name = c.getString(TAG_NAME);
+                String list_item_email = c.getString(TAG_EM);
                 HashMap<String,String> persons = new HashMap<String, String>();
 
-                persons.put(TAG_DATE, list_item_date);
-                persons.put(TAG_TIME, list_item_time);
-                persons.put(TAG_PEOPLE, list_item_people);
+                persons.put(TAG_ID, list_item_id);
+                persons.put(TAG_PW, list_item_password);
+                persons.put(TAG_PHONE, list_item_phone);
                 persons.put(TAG_NAME, list_item_name);
+                persons.put(TAG_EM, list_item_email);
 
-                personList.add(persons);
+                memberList.add(persons);
             }
             ListAdapter adapter = new SimpleAdapter(
-                    adminMember.this, personList, R.layout.list_item,
-                    new String[]{TAG_DATE, TAG_TIME, TAG_PEOPLE, TAG_NAME},
-                    new int[]{R.id.list_item_date, R.id.list_item_time, R.id.list_item_people, R.id.list_item_name}
+                    adminMember.this, memberList, R.layout.list_item,
+                    new String[]{TAG_ID, TAG_PW, TAG_NAME, TAG_PHONE, TAG_EM},
+                    new int[]{R.id.list_item_id, R.id.list_item_password, R.id.list_item_phone, R.id.list_item_name, R.id.list_item_email}
             );
             list.setAdapter(adapter);
         } catch (JSONException e){
             e.printStackTrace();
         }
-        public void getData(String url) {
-            class GetDataJson extends AsyncTask<String, Void, String> {
+    }
+    public void getData(String url) {
+        class GetDataJson extends AsyncTask<String, Void, String> {
 
-                @Override
-                protected String doInBackground(String... params) {
-                    String uri = params[0];
+            @Override
+            protected String doInBackground(String... params) {
+                String uri = params[0];
 
-                    BufferedReader bufferedReader = null;
-                    try{
-                        URL url = new URL(uri);
-                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                        StringBuilder sb = new StringBuilder();
+                BufferedReader bufferedReader = null;
+                try{
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
 
-                        bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-                        String json;
-                        while ((json = bufferedReader.readLine()) != null){
-                            sb.append(json + '\n');
-                        }
-                        return sb.toString().trim();
-                    } catch(Exception e){
-                        return null;
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null){
+                        sb.append(json + '\n');
                     }
-
+                    return sb.toString().trim();
+                } catch(Exception e){
+                    return null;
                 }
 
-                @Override
-                protected void onPostExecute(String result){
-                    myJSON = result;
-                    showList();
-                }
             }
-            GetDataJson g = new GetDataJson();
-            g.execute(url);
 
-
-
+            @Override
+            protected void onPostExecute(String result){
+                myJSON = result;
+                showList();
+            }
         }
-    }*/
+        GetDataJson g = new GetDataJson();
+        g.execute(url);
+
+    }
+}
