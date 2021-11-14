@@ -1,3 +1,4 @@
+/*
 package com.example.InNayo;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -108,4 +109,4 @@ public class adminMember extends AppCompatActivity {
         g.execute(url);
 
     }
-}
+}*/
