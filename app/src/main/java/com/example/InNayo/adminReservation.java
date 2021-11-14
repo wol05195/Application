@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.InNayo.Reservation.urls;
+
 public class adminReservation extends AppCompatActivity {
 
     String myJSON;
@@ -36,8 +38,8 @@ public class adminReservation extends AppCompatActivity {
         setContentView(R.layout.activity_admin_reservation);
 
         list = (ListView)findViewById(R.id.listview);
-        //personList = new ArrayList<HashMap<String, String>>();
-        //getData
+        personList = new ArrayList<HashMap<String, String>>();
+        getData(urls+"My_Booking_Check.php");
     }
 
     protected void showList(){
@@ -104,8 +106,5 @@ public class adminReservation extends AppCompatActivity {
         }
         GetDataJson g = new GetDataJson();
         g.execute(url);
-
-
-
     }
 }

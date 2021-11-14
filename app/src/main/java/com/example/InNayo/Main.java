@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class Main extends AppCompatActivity {
     Intent intent;
     Button main_button1, main_button2;
-    TextView main_tv1, main_tv2, main_tv3;
+    TextView main_tv1, main_tv2, main_tv3, main_tv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class Main extends AppCompatActivity {
         main_tv1 = (TextView) findViewById(R.id.main_tv1);
         main_tv2 = (TextView) findViewById(R.id.main_tv2);
         main_tv3 = (TextView) findViewById(R.id.main_tv3);
+        main_tv4 = (TextView) findViewById(R.id.main_tv4);
 
         Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
@@ -42,8 +43,9 @@ public class Main extends AppCompatActivity {
                 }
             }
         };
+        main_button1.setOnClickListener(onClickListener);
+        main_button2.setOnClickListener(onClickListener);
 
-        TextView main_tv1 = findViewById(R.id.main_tv1);
         main_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +54,6 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        TextView main_tv2 = findViewById(R.id.main_tv2);
         main_tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,6 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        TextView main_tv3 = findViewById(R.id.main_tv3);
         main_tv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,10 +70,12 @@ public class Main extends AppCompatActivity {
             }
         });
 
-
-        main_button1.setOnClickListener(onClickListener);
-        main_button2.setOnClickListener(onClickListener);
-
-
+        main_tv4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), adminPage.class);
+                startActivity(intent);
+            }
+        });
     }
 }

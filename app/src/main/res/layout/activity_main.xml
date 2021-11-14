@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="|"
-            android:textColor="@color/purple_200" />
+            android:textColor="@color/gray" />
 
         <TextView
             android:id="@+id/main_tv2"
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="|"
-            android:textColor="@color/purple_200" />
+            android:textColor="@color/gray" />
 
         <TextView
             android:id="@+id/main_tv3"
@@ -114,6 +114,21 @@
             android:layout_marginLeft="10dp"
             android:text="관리자 등록"
             android:textColor="@color/brown" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="|"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/main_tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="admin페이지"
+            android:textColor="@color/brown" />
+
     </LinearLayout>
 
     <LinearLayout
