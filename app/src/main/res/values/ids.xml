@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="editTextFilter" type="id" />
+    <item name="list_item_id" type="id" />
+    <item name="list_item_password" type="id" />
+    <item name="list_item_phone" type="id" />
+    <item name="list_item_email" type="id" />
 </resources>
