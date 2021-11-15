@@ -63,52 +63,50 @@ public class adminMember extends AppCompatActivity {
 
                 memberList.add(members);
             }
-            ListAdapter adapter = new SimpleAdapter(
+            ListAdapter adapters = new SimpleAdapter(
                     adminMember.this, memberList, R.layout.list_admin_member,
                     new String[]{TAG_ID, TAG_PW, TAG_NAME, TAG_PHONE, TAG_EM},
                     new int[]{R.id.list_item_id, R.id.list_item_password,R.id.list_item_name, R.id.list_item_phone, R.id.list_item_email}
             );
-            list.setAdapter(adapter);
+            list.setAdapter(adapters);
         } catch (JSONException e) {
             e.printStackTrace();
     }
 }
-        public void getData (String url){
-            class GetDataJson extends AsyncTask<String, Void, String> {
+    public void getData(String url) {
+        class GetDataJson extends AsyncTask<String, Void, String> {
 
-                @Override
-                protected String doInBackground(String... params) {
-                    String uri = params[0];
+            @Override
+            protected String doInBackground(String... params) {
+                String uri = params[0];
 
-                    BufferedReader bufferedReader = null;
-                    try {
-                        URL url = new URL(uri);
-                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                        StringBuilder sb = new StringBuilder();
+                BufferedReader bufferedReader = null;
+                try{
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
 
-                        bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-                        String json;
-                        while ((json = bufferedReader.readLine()) != null) {
-                            sb.append(json + '\n');
-                        }
-                        return sb.toString().trim();
-                    } catch (Exception e) {
-                        return null;
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null){
+                        sb.append(json + '\n');
                     }
-
+                    return sb.toString().trim();
+                } catch(Exception e){
+                    return null;
                 }
 
-                @Override
-                protected void onPostExecute(String result) {
-                    myJSON = result;
-                    showList();
-                }
             }
-            GetDataJson g = new GetDataJson();
-            g.execute(url);
-
-
+            @Override
+            protected void onPostExecute(String result){
+                myJSON = result;
+                showList();
+            }
         }
+        GetDataJson g = new GetDataJson();
+        g.execute(url);
+    }
+
     }
 
