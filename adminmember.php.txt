@@ -1,0 +1,20 @@
+<?php
+$con=mysqli_connect("localhost", "admin", "innayo", "capstone");
+
+mysqli_set_charset($con,"utf8");
+
+$res = mysqli_query($con,"select * from Users");
+
+$result = array();
+
+while($row = mysqli_fetch_array($res)){
+
+array_push($result,
+array('uid'=>$row[0], 'upw'=>$row[1], 'uname'=>$row[2], 'uphone'=>$row[3], 'email'=>$row[4]
+));
+}
+
+echo json_encode(array("result"=>$result),JSON_UNESCAPED_UNICODE);
+
+mysqli_close($con);
+?>
