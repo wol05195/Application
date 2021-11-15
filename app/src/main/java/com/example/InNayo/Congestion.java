@@ -45,7 +45,7 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         }
 
         mapFragment.getMapAsync(this);
-
+//
         congestion_bt5 = (Button)findViewById(R.id.congestion_bt5);
         congestion_bt6 = (Button)findViewById(R.id.congestion_bt6);
         congestion_bt7 = (Button)findViewById(R.id.congestion_bt7);
@@ -109,4 +109,5 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull  int[] grantResults) {
 
     }
+
 }
