@@ -38,7 +38,7 @@ public class adminMember extends AppCompatActivity {
 
         list = findViewById(R.id.listview);
         memberList = new ArrayList<HashMap<String, String>>();
-        getData(urls + "adminmember_a.php");
+        getData(urls + "adminmember.php");
     }
 
     protected void showList() {
