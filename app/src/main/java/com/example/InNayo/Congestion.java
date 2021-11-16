@@ -1,9 +1,15 @@
 package com.example.InNayo;
 
+import android.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.bluetooth.BluetoothAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -17,20 +23,28 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.overlay.OverlayImage;
 
+import app.akexorcist.bluetotohspp.library.BluetoothSPP;
+import app.akexorcist.bluetotohspp.library.BluetoothState;
+import app.akexorcist.bluetotohspp.library.DeviceList;
+
 
 public class Congestion extends FragmentActivity implements OnMapReadyCallback {
     Button congestion_bt4, congestion_bt5, congestion_bt6, congestion_bt7, congestion_bt8;
 
-//    private BluetoothSPP bt;
+    private BluetoothSPP bt;
 
     private MapView mapView;
     private static NaverMap naverMap;
     private Marker marker1 = new Marker();
 
+    String messages;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congestion);
+
+        bt = new BluetoothSPP(this); //Initializing
 
         //네이버 지도
         mapView = (MapView) findViewById(R.id.map_view);
@@ -43,18 +57,36 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         congestion_bt7 = (Button)findViewById(R.id.congestion_bt7);
         congestion_bt8 = (Button)findViewById(R.id.congestion_bt8);
 
+
+        if (!bt.isBluetoothAvailable()) { //블루투스 사용 불가
+            Toast.makeText(getApplicationContext()
+                    , "Bluetooth is not available"
+                    , Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() { //데이터 수신
+            public void onDataReceived(byte[] data, String message) {
+                messages = message;
+            }
+        });
+
         congestion_bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setMarker(marker1, 37.55830092764167, 127.05047158233968, R.drawable.yellow, 0);
 
                 marker1.setOnClickListener(new Overlay.OnClickListener() {
-                    @Override
-                    public boolean onClick(@NonNull Overlay overlay)
-                    {
-                        Toast.makeText(getApplication(), "도서관 인원 __/150 명 입니다.", Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
+                        @Override
+                        public boolean onClick(@NonNull Overlay overlay) {
+                            if (messages != "") {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Congestion.this);
+                                builder.setTitle("현재 도서관의 인원");
+                                builder.setMessage(messages+"/150 명 입니다.");
+//                Toast.makeText(Congestion.this, "마커", Toast.LENGTH_SHORT).show();
+                                return false;
+                            }
+                            return false;
+                        }
                 });
             }
         });
@@ -96,50 +128,35 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
             }
         });
 
-//        bt = new BluetoothSPP(this); //Initializing
-//
-//        if (!bt.isBluetoothAvailable()) { //블루투스 사용 불가
-//            Toast.makeText(getApplicationContext()
-//                    , "Bluetooth is not available"
-//                    , Toast.LENGTH_SHORT).show();
-//            finish();
-//        }
-//        bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() { //데이터 수신
-//            TextView Serial = findViewById(R.id.Serial);
-//            public void onDataReceived(byte[] data, String message) {
-//                Serial.setText(message );
-//            }
-//        });
-//
-//        bt.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() { //연결됐을 때
-//            public void onDeviceConnected(String name, String address) {
-//                Toast.makeText(getApplicationContext()
-//                        , "Connected to " + name + "\n" + address
-//                        , Toast.LENGTH_SHORT).show();
-//            }
-//
-//            public void onDeviceDisconnected() { //연결해제
-//                Toast.makeText(getApplicationContext()
-//                        , "Connection lost", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            public void onDeviceConnectionFailed() { //연결실패
-//                Toast.makeText(getApplicationContext()
-//                        , "Unable to connect", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        Button btnConnect = findViewById(R.id.btnConnect); //연결시도
-//        btnConnect.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                if (bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
-//                    bt.disconnect();
-//                } else {
-//                    Intent intent = new Intent(getApplicationContext(), DeviceList.class);
-//                    startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
-//                }
-//            }
-//        });
+        bt.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() { //연결됐을 때
+            public void onDeviceConnected(String name, String address) {
+                Toast.makeText(getApplicationContext()
+                        , "Connected to " + name + "\n" + address
+                        , Toast.LENGTH_SHORT).show();
+            }
+
+            public void onDeviceDisconnected() { //연결해제
+                Toast.makeText(getApplicationContext()
+                        , "Connection lost", Toast.LENGTH_SHORT).show();
+            }
+
+            public void onDeviceConnectionFailed() { //연결실패
+                Toast.makeText(getApplicationContext()
+                        , "Unable to connect", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button btnConnect = findViewById(R.id.btnConnect); //연결시도
+        btnConnect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
+                    bt.disconnect();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), DeviceList.class);
+                    startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
+                }
+            }
+        });
     }
 
     private void setMarker(Marker marker, double lat, double lng, int color, int i) {
@@ -190,16 +207,26 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         CameraPosition cameraPosition = new CameraPosition(
                 new LatLng(37.55834853256298, 127.04990932947216),   // 위치 지정
                 14,                                     // 줌 레벨
-                0,                                       // 기울임 각도
+                90,                                       // 기울임 각도
                 0                                     // 방향
         );
         naverMap.setCameraPosition(cameraPosition);
     }
+
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
         mapView.onStart();
+        if (!bt.isBluetoothEnabled()) { //
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
+        } else {
+            if (!bt.isServiceAvailable()) {
+                bt.setupService();
+                bt.startService(BluetoothState.DEVICE_OTHER); //DEVICE_ANDROID는 안드로이드 기기 끼리
+//                setup();
+            }
+        }
     }
 
     @Override
@@ -227,26 +254,10 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        bt.stopService(); //블루투스 중지
     }
-//    public void onDestroy() {
-//        super.onDestroy();
-//        bt.stopService(); //블루투스 중지
-//    }
-//
-//    public void onStart() {
-//        super.onStart();
-//        if (!bt.isBluetoothEnabled()) { //
-//            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//            startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
-//        } else {
-//            if (!bt.isServiceAvailable()) {
-//                bt.setupService();
-//                bt.startService(BluetoothState.DEVICE_OTHER); //DEVICE_ANDROID는 안드로이드 기기 끼리
-//                setup();
-//            }
-//        }
-//    }
-//
+
+
 //    public void setup() {
 //        Button btnSend = findViewById(R.id.btnSend); //데이터 전송
 //        btnSend.setOnClickListener(new View.OnClickListener() {
@@ -255,25 +266,25 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
 //            }
 //        });
 //    }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
-//            if (resultCode == Activity.RESULT_OK)
-//                bt.connect(data);
-//        } else if (requestCode == BluetoothState.REQUEST_ENABLE_BT) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                bt.setupService();
-//                bt.startService(BluetoothState.DEVICE_OTHER);
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
+            if (resultCode == Activity.RESULT_OK)
+                bt.connect(data);
+        } else if (requestCode == BluetoothState.REQUEST_ENABLE_BT) {
+            if (resultCode == Activity.RESULT_OK) {
+                bt.setupService();
+                bt.startService(BluetoothState.DEVICE_OTHER);
 //                setup();
-//            } else {
-//                Toast.makeText(getApplicationContext()
-//                        , "Bluetooth was not enabled."
-//                        , Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//        }
-//    }
+            } else {
+                Toast.makeText(getApplicationContext()
+                        , "Bluetooth was not enabled."
+                        , Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
 
 }
