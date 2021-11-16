@@ -3,6 +3,7 @@ package com.example.InNayo;
 import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -64,6 +65,7 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
                     , Toast.LENGTH_SHORT).show();
             finish();
         }
+
         bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() { //데이터 수신
             public void onDataReceived(byte[] data, String message) {
                 messages = message;
@@ -81,8 +83,15 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
                             if (messages != "") {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Congestion.this);
                                 builder.setTitle("현재 도서관의 인원");
-                                builder.setMessage(messages+"/150 명 입니다.");
-//                Toast.makeText(Congestion.this, "마커", Toast.LENGTH_SHORT).show();
+                                builder.setMessage(messages+"/150명");
+                                builder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                    }
+                                });
+                                builder.create().show();
+//                Toast.makeText(Congestion.this, messages, Toast.LENGTH_SHORT).show();
                                 return false;
                             }
                             return false;
@@ -207,7 +216,7 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         CameraPosition cameraPosition = new CameraPosition(
                 new LatLng(37.55834853256298, 127.04990932947216),   // 위치 지정
                 14,                                     // 줌 레벨
-                90,                                       // 기울임 각도
+                0,                                       // 기울임 각도
                 0                                     // 방향
         );
         naverMap.setCameraPosition(cameraPosition);
