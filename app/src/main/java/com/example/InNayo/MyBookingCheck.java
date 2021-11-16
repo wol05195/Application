@@ -44,21 +44,19 @@ public class MyBookingCheck extends AppCompatActivity {
     private static final String TAG_RESULTS = "result", TAG_DATE = "rdate",
             TAG_TIME = "rtime", TAG_PEOPLE = "enter_count", TAG_NAME = "fname";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_booking_check);
-
-        list = (ListView) findViewById(R.id.listview);
-        personList = new ArrayList<HashMap<String, String>>();
 
         pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         editor = pref.edit();
 
         logined_name = pref.getString("logined_name", "");
 
+        list = (ListView) findViewById(R.id.listview);
+        personList = new ArrayList<HashMap<String, String>>();
+        getData(urls+"My_Booking_Check.php", logined_name.replace(" ", ""));
     }
 
 
@@ -88,83 +86,56 @@ public class MyBookingCheck extends AppCompatActivity {
                     new String[]{TAG_DATE, TAG_TIME, TAG_PEOPLE, TAG_NAME},
                     new int[]{R.id.list_item_date, R.id.list_item_time, R.id.list_item_people, R.id.list_item_name}
 
-
             );
             list.setAdapter(adapter);
 
         } catch (JSONException e) {
             e.printStackTrace();
 
-
-
         }
     }
-
-
-    private void insertToDatabases(String Category, String Name, String Location, String Phone, String TotalPerson, String StartTime, String EndTime) {
-        class InsertData extends AsyncTask<String, Void, String> {
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(Administrator.this, "Please Wait", null, true, true);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast toast = Toast.makeText(Administrator.this, s, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 30);
-                toast.show();
-            }
+    public void getData(String url, String Lname) {
+        class GetDataJson extends AsyncTask<String, Void, String> {
 
             @Override
             protected String doInBackground(String... params) {
-                try {
-                    String Category = (String) params[0];
-                    String Name = (String) params[1];
-                    String Location = (String) params[2];
-                    String Phone = (String) params[3];
-                    String TotalPerson = (String) params[4];
-                    String StartTime = (String) params[5];
-                    String EndTime = (String) params[6];
+                try{
+                String uri = params[0];
+                String Lname = params[1];
 
-                    String link = urls+"My_Booking_Check.php";
-                    String data = URLEncoder.encode("Category", "UTF-8") + "=" + URLEncoder.encode(Category, "UTF-8");
-                    data += "&" + URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
-                    data += "&" + URLEncoder.encode("Location", "UTF-8") + "=" + URLEncoder.encode(Location, "UTF-8");
-                    data += "&" + URLEncoder.encode("Phone", "UTF-8") + "=" + URLEncoder.encode(Phone, "UTF-8");
-                    data += "&" + URLEncoder.encode("TotalPerson", "UTF-8") + "=" + URLEncoder.encode(TotalPerson, "UTF-8");
-                    data += "&" + URLEncoder.encode("StartTime", "UTF-8") + "=" + URLEncoder.encode(StartTime, "UTF-8");
-                    data += "&" + URLEncoder.encode("EndTime", "UTF-8") + "=" + URLEncoder.encode(EndTime, "UTF-8");
+                BufferedReader bufferedReader = null;
 
-                    URL url = new URL(link);
-                    URLConnection conn = url.openConnection();
+                String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Lname, "UTF-8");
 
-                    conn.setDoOutput(true);
-                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                URL url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
 
-                    wr.write(data);
-                    wr.flush();
+                wr.write(data);
+                wr.flush();
+                bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                    StringBuilder sb = new StringBuilder();
-                    String line = null;
-
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line);
-                        break;
-                    }
-                    return sb.toString();
-                } catch (Exception e) {
-                    return new String("Exception: " + e.getMessage());
+                StringBuilder sb = new StringBuilder();
+                String json;
+                while ((json = bufferedReader.readLine()) != null){
+                    sb.append(json + '\n');
+                    break;
                 }
+                return sb.toString().trim();
+                } catch(Exception e){
+                    return null;
+                }
+
+            }
+
+            @Override
+            protected void onPostExecute(String result){
+                myJSON = result;
+                showList();
             }
         }
-        InsertData task = new InsertData();
-        task.execute(Category, Name, Location, Phone, TotalPerson, StartTime, EndTime);
+        GetDataJson g = new GetDataJson();
+        g.execute(url, Lname);
     }
 }
