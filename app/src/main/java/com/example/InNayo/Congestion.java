@@ -190,7 +190,7 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         CameraPosition cameraPosition = new CameraPosition(
                 new LatLng(37.55834853256298, 127.04990932947216),   // 위치 지정
                 14,                                     // 줌 레벨
-                90,                                       // 기울임 각도
+                0,                                       // 기울임 각도
                 0                                     // 방향
         );
         naverMap.setCameraPosition(cameraPosition);
