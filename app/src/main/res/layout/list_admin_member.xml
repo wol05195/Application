@@ -25,7 +25,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_check" />
                 <TextView
-                    android:id="@+id/list_item_check"
+                    android:id="@+id/list_item_checks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="예약완료회원"
@@ -38,9 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
-
-
+                android:layout_marginBottom="10dp"
+                android:background="@color/lightpink"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,6 +51,11 @@
                     android:background="@color/lightpurple_200"
                     android:layout_marginRight="10dp"
                     android:text="ID"/>
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginRight="10dp"-->
+                <!--                    android:text="|"/>-->
                 <TextView
                     android:id="@+id/list_item_id"
                     android:layout_width="match_parent"
@@ -59,6 +63,8 @@
                     android:textSize="16dp"/>
 
             </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,8 +75,7 @@
                     android:gravity="center"
                     android:background="@color/lightpurple_200"
                     android:layout_marginRight="10dp"
-                    android:text="pw"/>
-
+                    android:text="PW"/>
                 <TextView
                     android:id="@+id/list_item_password"
                     android:layout_width="match_parent"
@@ -78,7 +83,6 @@
                     android:textSize="16dp"/>
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,6 +94,7 @@
                     android:background="@color/lightpurple_200"
                     android:layout_marginRight="10dp"
                     android:text="이름"/>
+
                 <TextView
                     android:id="@+id/list_item_name"
                     android:layout_width="match_parent"
@@ -115,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16dp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +131,7 @@
                     android:gravity="center"
                     android:background="@color/lightpurple_200"
                     android:layout_marginRight="10dp"
-                    android:text="e-mail"/>
+                    android:text="email"/>
 
                 <TextView
                     android:id="@+id/list_item_email"
