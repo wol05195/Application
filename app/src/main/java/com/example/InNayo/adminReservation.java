@@ -39,7 +39,7 @@ public class adminReservation extends AppCompatActivity {
 
         list = (ListView)findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
-        getData(urls+"My_Booking_Check.php");
+        getData(urls+"adminreservation.php");
     }
 
     protected void showList(){
