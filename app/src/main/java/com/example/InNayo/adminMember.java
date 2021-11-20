@@ -64,7 +64,7 @@ public class adminMember extends AppCompatActivity {
                 memberList.add(members);
             }
             ListAdapter adapters = new SimpleAdapter(
-                    adminMember.this, memberList, R.layout.list_admin_member,
+                    adminMember.this, memberList, R.layout.list_item_admin_member,
                     new String[]{TAG_ID, TAG_PW, TAG_NAME, TAG_PHONE, TAG_EM},
                     new int[]{R.id.list_item_id, R.id.list_item_password,R.id.list_item_name, R.id.list_item_phone, R.id.list_item_email}
             );

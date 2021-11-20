@@ -3,7 +3,7 @@
 
     <string name="title_activity_sub">SubActivity</string>
 
-    <string-array name = "TIME">
+    <string-array name="TIME">
         <item>"8:00"</item>
         <item>"9:00"</item>
         <item>"10:00"</item>

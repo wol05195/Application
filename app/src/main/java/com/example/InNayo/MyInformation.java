@@ -95,10 +95,6 @@ public class MyInformation extends AppCompatActivity {
             String Phone = my_information_et5.getText().toString();
 
             UpdateDatabases(Name, Id, PassWord, Email, Phone);
-
-            Toast toast = Toast.makeText(getApplicationContext(), "개인정보가 수정되었습니다.", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 300);
-            toast.show();
         });
 
     }
@@ -165,6 +161,9 @@ public class MyInformation extends AppCompatActivity {
 //                Toast toast = Toast.makeText(MyInformation.this, s, Toast.LENGTH_LONG);
 //                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 30);
 //                toast.show();
+                Toast toast = Toast.makeText(getApplicationContext(), "개인정보가 수정되었습니다.", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 300);
+                toast.show();
             }
 
             @Override
@@ -176,7 +175,7 @@ public class MyInformation extends AppCompatActivity {
                     String Email = (String) params[3];
                     String Phone = (String) params[4];
 
-                    String link = urls+"My_information_update.php";
+                    String link = urls+"My_Information_update.php";
                     String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                     data += "&" + URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("PassWord", "UTF-8") + "=" + URLEncoder.encode(PassWord, "UTF-8");

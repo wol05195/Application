@@ -52,7 +52,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
-    String DATE, TIME, RDATE, RTIME;
+    String DATE, TIME, RDATE, RTIME, RCOUNT;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
@@ -134,6 +134,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         try{
             RDATE = URLEncoder.encode(DATE, "UTF-8");
             RTIME = URLEncoder.encode(TIME, "UTF-8");
+            RCOUNT = URLEncoder.encode(people, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -316,6 +317,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));
             nameValuePairs.add(new BasicNameValuePair("Rtime", RTIME));
+            nameValuePairs.add(new BasicNameValuePair("Rcount", RCOUNT));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -361,6 +363,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
             nameValuePairs.add(new BasicNameValuePair("SearchItem", data));
             nameValuePairs.add(new BasicNameValuePair("Rdate", RDATE));
             nameValuePairs.add(new BasicNameValuePair("Rtime", RTIME));
+            nameValuePairs.add(new BasicNameValuePair("Rcount", RCOUNT));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
