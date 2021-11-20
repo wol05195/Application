@@ -31,7 +31,10 @@
             android:layout_marginRight="3dp"
             android:text="bt"
             android:textColor="@color/ivory"
-            android:background="@color/ivory" />
+            android:background="@color/ivory"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
