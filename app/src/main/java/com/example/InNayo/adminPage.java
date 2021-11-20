@@ -28,7 +28,7 @@ public class adminPage extends AppCompatActivity {
 //    String userID, userPassword,message;
 //    StringBuffer stringBuffer;
 
-    Button a_reservation, a_users;
+    Button a_reservation, a_users, a_facilities;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,14 @@ public class adminPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), adminMember.class);
+                startActivity(intent);
+            }
+        });
+        a_facilities = (Button)findViewById(R.id.admin_facilitiesButton);
+        a_facilities.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), adminFacilities.class);
                 startActivity(intent);
             }
         });
