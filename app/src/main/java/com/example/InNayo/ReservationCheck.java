@@ -59,11 +59,12 @@ public class ReservationCheck extends AppCompatActivity {
         reservation_check_date.setText(selecteddate);
 
         String selectedap = getIntent().getExtras().getString("selectedap");
-        if (selectedap.equals("AM") == true){
-            reservation_check_ap.setText("오전 ");
-        }else{
-            reservation_check_ap.setText("오후 ");
-        }
+//        if (selectedap.equals("AM") == true){
+//            reservation_check_ap.setText("오전 ");
+//        }else{
+//            reservation_check_ap.setText("오후 ");
+//        }
+        reservation_check_ap.setText(selectedap + " ");
 
         String selectedhour = getIntent().getExtras().getString("selectedhour");
         reservation_check_hour.setText(selectedhour);
