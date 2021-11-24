@@ -3,12 +3,14 @@ package com.example.InNayo;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -49,11 +51,14 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
     private Boolean isExitFlag = false;
 
     Button booking_button1;
-    EditText booking_edit1, booking_edit2, booking_edit3;
+    EditText booking_edit1, booking_edit2, booking_edit3, et_side_name;
     Intent intent;
     Calendar bookingCalendar = Calendar.getInstance();
     NumberPicker np;
-    String state, selectedhour, ss, sh;
+    String state, selectedhour, logined_name;
+
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,13 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
         init();
         addSideView();  //사이드바 add
 
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        et_side_name = (EditText)findViewById(R.id.et_side_name);
+
+        logined_name = pref.getString("logined_name","");
+        et_side_name.setText(logined_name);
 
         booking_button1 = (Button) findViewById(R.id.booking_button1);
         booking_button1.setOnClickListener(v -> {

@@ -1,7 +1,9 @@
 package com.example.InNayo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,7 +36,6 @@ class SideBarView extends RelativeLayout implements View.OnClickListener {
     public interface EventListener {
         // 닫기 버튼 클릭 이벤트
         void btnLevel1();
-
 
     }
     public SideBarView(Context context) {
@@ -90,12 +91,27 @@ class SideBarView extends RelativeLayout implements View.OnClickListener {
                 pref= getContext().getSharedPreferences("pref", Activity.MODE_PRIVATE);
                 editor = pref.edit();
 
-                editor.putString("logined_name", "");
-                editor.apply();
-                et_side_name = (EditText)findViewById(R.id.et_side_name);
-                et_side_name.setText("");
-                Intent intent = new Intent(getContext(), Main.class);
-                getContext().startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("로그아웃 하시겠습니까?");
+                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        editor.putString("logined_name", "");
+                        editor.apply();
+
+                        et_side_name = (EditText)findViewById(R.id.et_side_name);
+                        et_side_name.setText("");
+
+                        Intent intent = new Intent(getContext(), Main.class);
+                        getContext().startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                builder.create().show();
             }
         });
     }

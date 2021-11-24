@@ -82,7 +82,14 @@
             android:layout_height="wrap_content"
             android:text="로그인"
             android:textColor="@color/brown" />
-
+        <TextView
+            android:id="@+id/main_tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="로그아웃"
+            android:textColor="@color/brown"
+            android:visibility="gone"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,6 +106,7 @@
             android:textColor="@color/brown" />
 
         <TextView
+            android:id="@+id/main_view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

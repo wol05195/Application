@@ -67,16 +67,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         logined_name = pref.getString("logined_name","");
         et_side_name.setText(logined_name);
 
-//        if (!logined_name.equals("")){
-//            et_side_name.setText(logined_name);
-//        }
     }
     public void refresh(){
         startActivity(new Intent(this, Login.class));
         overridePendingTransition(0, 0);
     }
-    private void init(){
 
+    private void init(){
         findViewById(R.id.btn_menu).setOnClickListener(this);
 
         mainLayout = findViewById(R.id.id_main);
@@ -110,9 +107,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.btn_menu:
-
                 showMenu();
                 break;
         }
