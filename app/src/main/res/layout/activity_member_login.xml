@@ -66,15 +66,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? "
+            android:text="계정이 없으신가요? -->"
             android:textColor="#BEBBBB"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/member_login_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"
-            android:textColor="@color/darkpurple"
+            android:text=" 회원가입 하기"
+            android:textColor="@color/pink_200"
             android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>
