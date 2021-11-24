@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="예약하기"
                 android:textColor="@color/brown"
-                android:fontFamily="@font/gowunbatangbold"
+                android:fontFamily="@font/nanumbarungothicbold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
             <LinearLayout
@@ -61,6 +61,7 @@
             android:clickable="true"
             android:editable="false"
             android:gravity="center"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="날짜" />
 
 
@@ -73,6 +74,7 @@
             android:clickable="true"
             android:editable="false"
             android:gravity="center"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="시간" />
 
         <EditText
@@ -84,6 +86,7 @@
             android:clickable="true"
             android:editable="false"
             android:gravity="center"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="인원수" />
 
         <Button
@@ -92,9 +95,10 @@
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:background="@drawable/gradient_basic_button"
-            android:text="OK"
+            android:text="다음"
             android:textAllCaps="true"
             android:textColor="@color/brown"
+            android:fontFamily="@font/nanumbarungothicbold"
             app:backgroundTintMode="multiply" />
     </LinearLayout>
 

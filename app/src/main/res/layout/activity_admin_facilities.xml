@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="등록된 시설 내역"
             android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
     </androidx.appcompat.widget.Toolbar>
 

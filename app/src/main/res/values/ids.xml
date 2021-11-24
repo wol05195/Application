@@ -5,4 +5,5 @@
     <item name="list_item_password" type="id" />
     <item name="list_item_phone" type="id" />
     <item name="list_item_email" type="id" />
+    <item name="compass" type="id" />
 </resources>

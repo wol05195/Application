@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:layout_marginTop="16dp"
-            android:text="LogIn -->"
+            android:text="로그인 -->"
             android:textColor="@color/brown"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -62,7 +62,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_basic_button"
             android:textAllCaps="false"
-            android:text="OK"
+            android:text="확인"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textColor="@color/darkpurple"
             android:textSize="18dp"/>
 

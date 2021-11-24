@@ -16,7 +16,9 @@
         android:paddingLeft="10dp"
         android:textSize="17dp"
         android:textColor="@color/darkgray"
-        android:hint="장소이름"/>
+        android:hint="장소이름"
+        android:fontFamily="@font/nanumbarungothic"
+        />
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"

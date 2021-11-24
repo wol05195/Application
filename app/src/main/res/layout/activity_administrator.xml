@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="관리자 등록"
             android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         <LinearLayout
@@ -54,6 +54,7 @@
                 android:text="시설 카테고리"
                 android:textColor="@color/darkpurple"
                 android:textStyle="bold"
+                android:fontFamily="@font/nanumbarungothic"
                 android:layout_weight="2"/>
             <Spinner
                 android:id="@+id/admin_spinner1"
@@ -72,6 +73,7 @@
             android:layout_marginTop="10dp"
             android:text="시설명"
             android:textColor="@color/darkpurple"
+            android:fontFamily="@font/nanumbarungothic"
             android:textStyle="bold" />
 
         <EditText
@@ -86,6 +88,7 @@
             android:layout_height="wrap_content"
             android:text="시설 위치"
             android:textColor="@color/darkpurple"
+            android:fontFamily="@font/nanumbarungothic"
             android:textStyle="bold" />
 
         <EditText
@@ -100,6 +103,7 @@
             android:layout_height="wrap_content"
             android:text="전화번호"
             android:textColor="@color/darkpurple"
+            android:fontFamily="@font/nanumbarungothic"
             android:textStyle="bold" />
 
         <EditText
@@ -107,6 +111,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightpink"
+            android:fontFamily="@font/nanumbarungothic"
             android:maxLength="13"
             android:inputType="phone"/>
 
@@ -115,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="전체 수용 가능 인원 수"
             android:textColor="@color/darkpurple"
+            android:fontFamily="@font/nanumbarungothic"
             android:textStyle="bold" />
 
         <EditText
@@ -128,12 +134,14 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:fontFamily="@font/nanumbarungothic"
             android:layout_marginBottom="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="예약 가능 시작 시간"
                 android:textColor="@color/darkpurple"
+                android:fontFamily="@font/nanumbarungothic"
                 android:textStyle="bold"
                 android:layout_weight="1"/>
             <TextView
@@ -141,6 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="예약 가능 종료 시간"
                 android:textColor="@color/darkpurple"
+                android:fontFamily="@font/nanumbarungothic"
                 android:textStyle="bold"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -172,6 +181,7 @@
         android:background="@drawable/gradient_basic_button"
         android:textAllCaps="false"
         android:text="등록하기"
+        android:fontFamily="@font/nanumbarungothicbold"
         android:textColor="@color/darkpurple"
         android:layout_gravity="center"
         android:textSize="20dp"/>

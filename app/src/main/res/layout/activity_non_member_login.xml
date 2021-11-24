@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:fontFamily="@font/nanumbarungothic"
         android:layout_weight="5">
         <EditText
             android:id="@+id/non_member_login_et1"
@@ -20,7 +21,7 @@
             android:textColor="#ACACAC"
             android:textSize="15dp"
             android:paddingLeft="15dp"
-            android:hint="NAME"/>
+            android:hint="이름"/>
 
         <EditText
             android:id="@+id/non_member_login_et2"
@@ -33,7 +34,7 @@
             android:paddingLeft="15dp"
             android:inputType="numberPassword"
             android:maxLength="4"
-            android:hint="PW"/>
+            android:hint="비밀번호"/>
 
 
         <Button
@@ -42,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@drawable/gradient_basic_button"
-            android:text="LogIn"
+            android:text="로그인"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"
             android:textAllCaps="false"/>
@@ -58,14 +60,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? "
+            android:text="계정이 없으신가요? -->"
             android:textColor="#BEBBBB"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/non_member_login_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"
+            android:text=" 회원가입 하기"
             android:textColor="@color/pink_200"
             android:textStyle="bold"/>
     </LinearLayout>

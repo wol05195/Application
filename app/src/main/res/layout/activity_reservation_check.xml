@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="예약하기"
             android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         <LinearLayout
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="님"
-                android:fontFamily="@font/hssaemaeul"
+                android:fontFamily="@font/nanumbarungothic"
                 android:textSize="25dp"/>
         </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:hint="_(장소)_"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothic"
                     android:editable="false"
                     android:textSize="25dp"/>
             </LinearLayout>
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="0000"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
 
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="년 "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="0"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
 
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="월 "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="0"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
 
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일 "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="시간 : "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="00 "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
                 <EditText
@@ -183,14 +183,14 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="0"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="시"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="인원 : "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -216,14 +216,14 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:hint="0 "
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="명"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="예약을 진행하시겠습니까?"
-                    android:fontFamily="@font/hssaemaeul"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:textColor="@color/lightpink"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -263,7 +263,8 @@
                 android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:background="@drawable/gradient_basic_button"
-                android:text="OK"
+                android:fontFamily="@font/nanumbarungothicbold"
+                android:text="확인"
                 android:textAllCaps="true"
                 android:textColor="@color/brown"
                 app:backgroundTintMode="multiply" />

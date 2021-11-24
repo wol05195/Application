@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="개인 정보 수정"
             android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         <LinearLayout
@@ -43,12 +43,13 @@
         android:layout_height="500dp"
         android:orientation="vertical"
         android:gravity="center"
+        android:fontFamily="@font/nanumbarungothic"
         android:layout_gravity="center">
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="이름"
             android:layout_marginTop="10dp"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
@@ -60,7 +61,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="ID"
+            android:text="아이디"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
@@ -73,7 +74,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="비밀번호"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
@@ -84,7 +85,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="이메일"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
@@ -95,7 +96,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Phone Number"
+            android:text="전화번호"
             android:textColor="@color/darkpurple"
             android:textStyle="bold"/>
         <EditText
@@ -111,6 +112,7 @@
         android:background="@drawable/gradient_basic_button"
         android:textAllCaps="false"
         android:text="수정하기"
+        android:fontFamily="@font/nanumbarungothicbold"
         android:textColor="@color/darkpurple"
         android:layout_gravity="center"
         android:textSize="20dp"/>

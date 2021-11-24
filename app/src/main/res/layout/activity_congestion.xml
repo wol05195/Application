@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="혼잡도"
             android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         <Button
@@ -150,6 +150,8 @@
             <!--                app:navermap_longitude="127.04984"-->
             <!--                app:navermap_zoom="16"/>-->
 
+
+<!--            </fragment>-->
 
             <!--                app:navermap_latitude="37.55834853256298"-->
             <!--                app:navermap_longitude="127.04990932947216"-->

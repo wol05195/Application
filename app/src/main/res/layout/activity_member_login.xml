@@ -20,7 +20,7 @@
             android:background="@drawable/corner_line_button"
             android:textSize="15dp"
             android:paddingLeft="15dp"
-            android:hint="ID"/>
+            android:hint="아이디"/>
 
         <EditText
             android:id="@+id/member_login_ed2"
@@ -30,7 +30,7 @@
             android:background="@drawable/corner_line_button"
             android:textSize="15dp"
             android:paddingLeft="15dp"
-            android:hint="PW"
+            android:hint="비밀번호"
             android:inputType="textPassword"/>
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:layout_marginTop="16dp"
-            android:text="Forgotten password?"
+            android:text="비밀번호 찾기 -->"
             android:textColor="@color/brown"
             android:textStyle="bold"/>
 
@@ -49,8 +49,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/gradient_basic_button"
-                android:text="LogIn"
-                android:textColor="#ffffff"
+                android:text="로그인"
+                android:textColor="@color/darkpurple"
+                android:fontFamily="@font/nanumbarungothicbold"
                 android:textStyle="bold"
                 android:textAllCaps="false"/>
     </LinearLayout>

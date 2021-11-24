@@ -20,7 +20,7 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:text="관리자 페이지"
            android:textColor="@color/brown"
-            android:fontFamily="@font/gowunbatangbold"
+            android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
     </androidx.appcompat.widget.Toolbar>
@@ -45,7 +45,7 @@ android:orientation="vertical">
             android:text="예약관리"
             android:textColor="@color/brown"
             android:textSize="22dp"
-            android:fontFamily="@font/hssaemaeul"
+            android:fontFamily="@font/nanumbarungothicbold"
            />
 
         <Button
@@ -60,7 +60,7 @@ android:orientation="vertical">
             android:text="회원관리"
             android:textColor="@color/brown"
             android:textSize="22dp"
-            android:fontFamily="@font/hssaemaeul" />
+            android:fontFamily="@font/nanumbarungothicbold" />
 
         <Button
             android:id="@+id/admin_facilitiesButton"
@@ -74,7 +74,7 @@ android:orientation="vertical">
             android:text="시설관리"
             android:textColor="@color/brown"
             android:textSize="22dp"
-            android:fontFamily="@font/hssaemaeul" />
+            android:fontFamily="@font/nanumbarungothicbold" />
 
     </LinearLayout>
 

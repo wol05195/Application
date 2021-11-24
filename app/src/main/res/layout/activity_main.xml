@@ -19,7 +19,7 @@
             android:gravity="center_horizontal"
             android:text="여기 사람 in나요?"
             android:textSize="30dp"
-            android:fontFamily="@font/gowunbatangbold"/>
+            android:fontFamily="@font/nanumbarungothicbold"/>
 
     </LinearLayout>
 
@@ -37,6 +37,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/line_button2"
             android:drawableLeft="@drawable/icon_img"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="혼잡도"
             android:gravity="center"
             android:padding="10dp"
@@ -54,9 +55,10 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/line_button2"
             android:drawableLeft="@drawable/booking_i"
+            android:fontFamily="@font/nanumbarungothic"
             android:gravity="center"
             android:padding="10dp"
-            android:text="예약"
+            android:text="예   약  "
             android:textAllCaps="false"
             android:textColor="#000000"
             android:textSize="20dp"
@@ -64,18 +66,14 @@
             app:backgroundTintMode="multiply" />
     </LinearLayout>
 
-    <View
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="35dp"
-        android:background="@color/gray"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:visibility="visible">
 
         <TextView
