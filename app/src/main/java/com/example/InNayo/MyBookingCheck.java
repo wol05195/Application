@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -44,6 +48,7 @@ public class MyBookingCheck extends AppCompatActivity {
     private static final String TAG_RESULTS = "result", TAG_DATE = "rdate",
             TAG_TIME = "rtime", TAG_PEOPLE = "enter_count", TAG_NAME = "fname";
 
+    Button btn_menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,26 @@ public class MyBookingCheck extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listview);
         personList = new ArrayList<HashMap<String, String>>();
         getData(urls+"My_Booking_Check.php", logined_name.replace(" ", ""));
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                String sp = String.valueOf(arg0.getAdapter().getItem(arg2));
+//                if (sp.indexOf("=")>=1){
+//                    sp = sp.substring(sp.indexOf("=")+1,sp.indexOf(","));
+//                }
+                Toast.makeText(MyBookingCheck.this, sp, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_menu = (Button)findViewById(R.id.btn_menu);
+        btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Main.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -88,10 +113,8 @@ public class MyBookingCheck extends AppCompatActivity {
 
             );
             list.setAdapter(adapter);
-
         } catch (JSONException e) {
             e.printStackTrace();
-
         }
     }
     public void getData(String url, String Lname) {
