@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:hint="_(장소)_"
-                    android:fontFamily="@font/nanumbarungothic"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:editable="false"
                     android:textSize="25dp"/>
             </LinearLayout>

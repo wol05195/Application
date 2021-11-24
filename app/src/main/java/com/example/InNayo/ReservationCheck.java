@@ -32,6 +32,8 @@ public class ReservationCheck extends AppCompatActivity {
 
     SharedPreferences pref;          // 프리퍼런스
     SharedPreferences.Editor editor;
+
+    AlertDialog.Builder builder1, builder2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,33 +84,50 @@ public class ReservationCheck extends AppCompatActivity {
         reservation_check_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Name = reservation_check_name.getText().toString().replace(" ","");
-                String Place = reservation_check_place.getText().toString();
-                String Year = reservation_check_year.getText().toString();
-                String Month = reservation_check_month.getText().toString();
-                String Day = reservation_check_date.getText().toString();
-                String AP = reservation_check_ap.getText().toString();
-                String Hour = reservation_check_hour.getText().toString();
-                String Person = reservation_check_person.getText().toString();
+                if(logined_name == ""){
+                    builder1 = new AlertDialog.Builder(ReservationCheck.this);
+                    builder1.setMessage("로그인을 해주세요");
+                    builder1.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(ReservationCheck.this, Login.class);
+                            startActivity(intent);
+                        }
+                    });
+                    builder1.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    builder1.create().show();
+                }else if(logined_name != ""){
+                    String Name = reservation_check_name.getText().toString().replace(" ","");
+                    String Place = reservation_check_place.getText().toString();
+                    String Year = reservation_check_year.getText().toString();
+                    String Month = reservation_check_month.getText().toString();
+                    String Day = reservation_check_date.getText().toString();
+                    String AP = reservation_check_ap.getText().toString();
+                    String Hour = reservation_check_hour.getText().toString();
+                    String Person = reservation_check_person.getText().toString();
 
-                String Date = Year + "-" + Month + "-" + Day;
-                if(AP.equals("오전 ") == true){
-                    if (Integer.valueOf(selectedhour) <= 9) {
-                        Time = "0" + selectedhour + ":00:00";
+                    String Date = Year + "-" + Month + "-" + Day;
+                    if(AP.equals("오전 ") == true){
+                        if (Integer.valueOf(selectedhour) <= 9) {
+                            Time = "0" + selectedhour + ":00:00";
+                        }else{
+                            Time = selectedhour + ":00:00";
+                        }
                     }else{
-                        Time = selectedhour + ":00:00";
+                        if(Integer.valueOf(selectedhour)==12){
+                            Time = selectedhour + ":00:00";
+                        }else {
+                            Time = String.valueOf(Integer.valueOf(selectedhour) + 12) + ":00:00";
+                        }
                     }
-                }else{
-                    if(Integer.valueOf(selectedhour)==12){
-                        Time = selectedhour + ":00:00";
-                    }else {
-                        Time = String.valueOf(Integer.valueOf(selectedhour) + 12) + ":00:00";
-                    }
+                    insertToDatabases(Name, Place, Date, Time, Person);
                 }
-                insertToDatabases(Name, Place, Date, Time, Person);
             }
         });
-
     }
 
     private void insertToDatabases(String Name, String Place, String Date, String Time, String Person) {
@@ -125,24 +144,25 @@ public class ReservationCheck extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-//                Toast toast = Toast.makeText(ReservationCheck.this, s, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 30);
-//                toast.show();
-                AlertDialog.Builder builder = new AlertDialog.Builder(ReservationCheck.this);
-//                builder.setTitle("제목");
+                builder2 = new AlertDialog.Builder(ReservationCheck.this);
                 if (s.equals("예약 등록 완료")) {
-                    builder.setMessage("예약이 완료되었습니다.");
+                    builder2.setMessage("예약이 완료되었습니다.");
+                    builder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(ReservationCheck.this, MyBookingCheck.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else{
-                    builder.setMessage("예약을 실패하였습니다. 재시도 바랍니다.");
+                    builder2.setMessage("예약을 실패하였습니다. 재시도 바랍니다.");
+                    builder2.setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
                 }
-                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(ReservationCheck.this, MyBookingCheck.class);
-                        startActivity(intent);
-                    }
-                });
-                builder.create().show();
+                builder2.create().show();
             }
 
         @Override
