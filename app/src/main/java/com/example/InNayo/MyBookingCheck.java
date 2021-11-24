@@ -38,7 +38,7 @@ import java.util.HashMap;
 import static com.example.InNayo.Reservation.urls;
 
 public class MyBookingCheck extends AppCompatActivity {
-    String myJSON, logined_name, rfname, rtime, rdate, rcount;
+    String myJSON, logined_name, rfname, rtime, rdate, rcount, list_item_time_sub;
     ArrayList<Integer> index = new ArrayList<Integer>();
     JSONArray peoples = null;
 
@@ -127,6 +127,14 @@ public class MyBookingCheck extends AppCompatActivity {
                 String list_item_people = c.getString(TAG_PEOPLE);
                 String list_item_name = c.getString(TAG_NAME);
                 HashMap<String, String> persons = new HashMap<String, String>();
+
+//                if(Integer.valueOf(list_item_time.substring(0,2)) == 12){
+//                    list_item_time_sub = "오후 "+ list_item_time.substring(0,2) +"시";
+//                }else if(Integer.valueOf(list_item_time.substring(0,2)) >= 13){
+//                    list_item_time_sub = "오후 "+ String.valueOf(Integer.valueOf(list_item_time.substring(0,2))-12) +"시";
+//                }else{
+//                    list_item_time_sub = "오전 "+ list_item_time.substring(1,2) +"시";
+//                }
 
                 persons.put(TAG_DATE, list_item_date);
                 persons.put(TAG_TIME, list_item_time);
