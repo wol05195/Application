@@ -81,11 +81,24 @@ public class MyBookingCheck extends AppCompatActivity {
                     index.add(Ritem.indexOf(",", index.get(3)+1));
                     index.add(Ritem.indexOf("=", index.get(4)+1));
                     rfname = Ritem.substring(index.get(0)+1, index.get(1));
-                    rtime = Ritem.substring(index.get(2)+1, index.get(3));
-                    rcount = Ritem.substring(index.get(4)+1, index.get(5));
+//                    rtime = Ritem.substring(index.get(2)+1, index.get(3)-1);
+                    if (Ritem.substring(index.get(2)+1, index.get(2)+3).equals("오후") == true){
+                        if(Integer.valueOf(Ritem.substring(index.get(3)-2, index.get(3)-1)) == 12){
+                            rtime = "12:00:00";
+                        }else{
+                            rtime = String.valueOf(Integer.valueOf(Ritem.substring(index.get(3)-2, index.get(3)-1)) + 12)+":00:00";
+                        }
+                    }else{
+                        if(Integer.valueOf(Ritem.substring(index.get(3)-2, index.get(3)-1)) == 10){
+                            rtime = "10:00:00";
+                        }else{
+                            rtime = "0"+String.valueOf(Integer.valueOf(Ritem.substring(index.get(3)-2, index.get(3)-1)))+":00:00";
+                        }
+                    }
+                    rcount = Ritem.substring(index.get(4)+1, index.get(5)-1);
                     rdate = Ritem.substring(index.get(6)+1, Ritem.indexOf("}"));
                 }
-//                Toast.makeText(MyBookingCheck.this, rdate, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MyBookingCheck.this, rtime , Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(MyBookingCheck.this);
                 builder.setMessage("예약을 취소 하시겠습니까?");
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -128,17 +141,17 @@ public class MyBookingCheck extends AppCompatActivity {
                 String list_item_name = c.getString(TAG_NAME);
                 HashMap<String, String> persons = new HashMap<String, String>();
 
-//                if(Integer.valueOf(list_item_time.substring(0,2)) == 12){
-//                    list_item_time_sub = "오후 "+ list_item_time.substring(0,2) +"시";
-//                }else if(Integer.valueOf(list_item_time.substring(0,2)) >= 13){
-//                    list_item_time_sub = "오후 "+ String.valueOf(Integer.valueOf(list_item_time.substring(0,2))-12) +"시";
-//                }else{
-//                    list_item_time_sub = "오전 "+ list_item_time.substring(1,2) +"시";
-//                }
+                if(Integer.valueOf(list_item_time.substring(0,2)) == 12){
+                    list_item_time_sub = "오후 "+ list_item_time.substring(0,2) +"시";
+                }else if(Integer.valueOf(list_item_time.substring(0,2)) >= 13){
+                    list_item_time_sub = "오후 "+ String.valueOf(Integer.valueOf(list_item_time.substring(0,2))-12) +"시";
+                }else{
+                    list_item_time_sub = "오전 "+ list_item_time.substring(1,2) +"시";
+                }
 
                 persons.put(TAG_DATE, list_item_date);
-                persons.put(TAG_TIME, list_item_time);
-                persons.put(TAG_PEOPLE, list_item_people);
+                persons.put(TAG_TIME, list_item_time_sub);
+                persons.put(TAG_PEOPLE, list_item_people +"명");
                 persons.put(TAG_NAME, list_item_name);
 
                 personList.add(persons);
