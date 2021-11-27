@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,7 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
-    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM;
+    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM, SP, TP, RP;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1;
@@ -73,7 +74,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 
     ArrayList<HashMap<String, String>> personList;
     ListView list;
-
+    ArrayList<Integer> index = new ArrayList<Integer>();
     ProgressDialog dialog = null;
     HttpPost httppost;
     HttpResponse response;
@@ -193,24 +194,42 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         personList = new ArrayList<HashMap<String, String>>();
         getData(urls+"Facilities.php");
 
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                String sp = String.valueOf(arg0.getAdapter().getItem(arg2));
-                if (sp.indexOf("=")>=1){
-                    sp = sp.substring(sp.indexOf("=")+1,sp.indexOf(","));
-                }
-                Intent intent = new Intent(Reservation.this, ReservationCheck.class);
-                intent.putExtra("selectedplace", sp);
-                intent.putExtra("selectedyear", year);
-                intent.putExtra("selectedmonth", month);
-                intent.putExtra("selecteddate", date);
-                intent.putExtra("selectedhour", time);
-                intent.putExtra("selectedap", ap);
-                intent.putExtra("selectedpp", people);
-                startActivity(intent);
+                String SF = String.valueOf(arg0.getAdapter().getItem(arg2));
+                if (SF.indexOf("=")>=1){
+                    index.clear();
+                    index.add(SF.indexOf("="));
+                    index.add(SF.indexOf(","));
+                    index.add(SF.indexOf("=", index.get(0)+1));
+                    index.add(SF.indexOf(",", index.get(1)+1));
+                    index.add(SF.indexOf("=", index.get(2)+1));
+                    SP = SF.substring(index.get(0)+1, index.get(1));
+                    TP = SF.substring(index.get(2)+1, index.get(3));
+                    RP = SF.substring(index.get(4)+1, SF.indexOf("}"));
 
+                    if(Integer.valueOf(TP)>=Integer.valueOf(RP)+Integer.valueOf(people)){
+                        Intent intent = new Intent(Reservation.this, ReservationCheck.class);
+                        intent.putExtra("selectedplace", SP);
+                        intent.putExtra("selectedyear", year);
+                        intent.putExtra("selectedmonth", month);
+                        intent.putExtra("selecteddate", date);
+                        intent.putExtra("selectedhour", time);
+                        intent.putExtra("selectedap", ap);
+                        intent.putExtra("selectedpp", people);
+                        startActivity(intent);
+                    }else if(Integer.valueOf(TP)<Integer.valueOf(RP)+Integer.valueOf(people)){
+                        Toast.makeText(mContext, "예약 불가능", Toast.LENGTH_SHORT).show();
+                        list.getChildAt(arg2).setBackgroundColor(Color.parseColor("#ff0000"));
+                    }else{
+                        Toast.makeText(mContext, "errorsection1", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
+
         });
 
     }
