@@ -74,32 +74,38 @@ public class NonMemberLogin extends Fragment {
                 if(indexfname != -1 && indexpass != -1){
                     if(indexfname <indexbname){
                         if(non_member_login_et2.getText().toString().equals(nonmember.get(indexbname+2)) == true){
-                            Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getContext(), "안녕하세요! " +  non_member_login_et1.getText().toString() + "님", Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                             toast.show();
                             editor.putString("logined_name", non_member_login_et1.getText().toString());
                             editor.apply();
-                            ((Login)getActivity()).refresh();
+//                            ((Login)getActivity()).refresh();
+                            Intent intent = new Intent(nonmemberlogincontext, Main.class);
+                            startActivity(intent);
                         }else{
                             if(non_member_login_et2.getText().toString().equals(nonmember.get(indexfname+2)) == true){
-                                Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(getContext(), "안녕하세요! " +  non_member_login_et1.getText().toString() + "님", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                                 toast.show();
                                 editor.putString("logined_name", non_member_login_et1.getText().toString());
                                 editor.apply();
-                                ((Login)getActivity()).refresh();
+//                                ((Login)getActivity()).refresh();
+                                Intent intent = new Intent(nonmemberlogincontext, Main.class);
+                                startActivity(intent);
                             }else{
                                 Toast.makeText(getContext(), "errorsection 1", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }else if(indexfname >= indexbname){
                         if(non_member_login_et2.getText().toString().equals(nonmember.get(indexfname+2)) == true){
-                            Toast toast = Toast.makeText(getContext(), "로그인 성공", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getContext(), "안녕하세요! " +  non_member_login_et1.getText().toString() + "님", Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                             toast.show();
                             editor.putString("logined_name", non_member_login_et1.getText().toString());
                             editor.apply();
-                            ((Login)getActivity()).refresh();
+//                            ((Login)getActivity()).refresh();
+                            Intent intent = new Intent(nonmemberlogincontext, Main.class);
+                            startActivity(intent);
                         }else{
                             Toast.makeText(getContext(), "errorsection 2", Toast.LENGTH_SHORT).show();
                         }

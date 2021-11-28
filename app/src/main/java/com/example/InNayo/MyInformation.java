@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,7 +38,7 @@ import static com.example.InNayo.Reservation.urls;
 
 public class MyInformation extends AppCompatActivity {
     EditText my_information_et0, my_information_et1, my_information_et2, my_information_et3, my_information_et4, my_information_et5;
-    Button my_information_bt, my_information_bt2;
+    Button my_information_bt, my_information_bt2 ,btn_menu;
     ProgressDialog dialog = null;
     HttpPost httppost;
     HttpResponse response;
@@ -97,6 +99,14 @@ public class MyInformation extends AppCompatActivity {
             UpdateDatabases(Name, Id, PassWord, Email, Phone);
         });
 
+        btn_menu = (Button)findViewById(R.id.btn_menu);
+        btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Main.class);
+                startActivity(intent);
+            }
+        });
     }
     void GetDatabase() {
         try {
@@ -164,6 +174,7 @@ public class MyInformation extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "개인정보가 수정되었습니다.", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 300);
                 toast.show();
+                refresh();
             }
 
             @Override
@@ -208,5 +219,9 @@ public class MyInformation extends AppCompatActivity {
         }
         UpdateData task = new UpdateData();
         task.execute(Name, Id, PassWord, Email, Phone);
+    }
+    public void refresh(){
+        startActivity(new Intent(this, MyInformation.class));
+        overridePendingTransition(0, 0);
     }
 }

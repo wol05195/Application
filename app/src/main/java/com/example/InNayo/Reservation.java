@@ -1,5 +1,6 @@
 package com.example.InNayo;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -54,10 +55,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
-    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM, SP, TP, RP;
+    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM, SP, TP, RP , logined_name;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
-    EditText reservation_edit1;
+    EditText reservation_edit1, et_side_name;
 
     public static final String urls = "http://18.217.241.8/";
     private String TAG = "Reservation";
@@ -82,6 +83,9 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
     List<NameValuePair> nameValuePairs;
     String[] searchresult, selectresult;
 
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor;
+
     private static final String TAG_RESULTS = "result", TAG_NAME ="fname", TAG_SUM_COUNT = "RP", TAG_TOTAL_PERSON = "TP";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +94,14 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
 
         init();
         addSideView();  //사이드바 add
+
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        et_side_name = (EditText)findViewById(R.id.et_side_name);
+
+        logined_name = pref.getString("logined_name","");
+        et_side_name.setText(logined_name);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -221,9 +233,12 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
                         intent.putExtra("selectedap", ap);
                         intent.putExtra("selectedpp", people);
                         startActivity(intent);
-                    }else if(Integer.valueOf(TP)<Integer.valueOf(RP)+Integer.valueOf(people)){
-                        Toast.makeText(mContext, "예약 불가능", Toast.LENGTH_SHORT).show();
-                        list.getChildAt(arg2).setBackgroundColor(Color.parseColor("#ff0000"));
+                    }else if(Integer.valueOf(TP) == Integer.valueOf(RP)){
+                        Toast.makeText(mContext, "해당 시간 예약 마감", Toast.LENGTH_SHORT).show();
+                        list.getChildAt(arg2).setBackgroundColor(Color.parseColor("#A6ff0000"));
+                    }else if(Integer.valueOf(TP)>Integer.valueOf(RP) && Integer.valueOf(TP)<Integer.valueOf(RP)+Integer.valueOf(people)){
+                        Toast.makeText(mContext, "예약 가능한 인원 수 초과로 인해 예약 불가능", Toast.LENGTH_SHORT).show();
+                        list.getChildAt(arg2).setBackgroundColor(Color.parseColor("#A6ff0000"));
                     }else{
                         Toast.makeText(mContext, "errorsection1", Toast.LENGTH_SHORT).show();
                     }

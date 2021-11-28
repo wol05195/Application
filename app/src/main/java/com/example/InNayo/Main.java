@@ -16,12 +16,12 @@ import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
     Intent intent;
-    Button main_button1, main_button2;
-    TextView main_tv1, main_tv2, main_tv3, main_tv4, main_tv5, main_view1;
+    Button main_button1, main_button2, main_button3, main_button4;
+    TextView main_tv1, main_tv2, main_tv3, main_tv4, main_tv5, main_tv6, main_view1, main_view2;
 
     SharedPreferences pref;          // 프리퍼런스
     SharedPreferences.Editor editor;
-    String logined_name;
+    String logined_name, logined_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +31,20 @@ public class Main extends AppCompatActivity {
         editor = pref.edit();
 
         logined_name = pref.getString("logined_name", "");
+        logined_id = pref.getString("logined_id", "");
 
         main_button1 = (Button) findViewById(R.id.main_button1);
         main_button2 = (Button) findViewById(R.id.main_button2);
+        main_button3 = (Button) findViewById(R.id.main_button3);
+        main_button4 = (Button) findViewById(R.id.main_button4);
 
         main_tv1 = (TextView) findViewById(R.id.main_tv1);
         main_tv2 = (TextView) findViewById(R.id.main_tv2);
         main_tv3 = (TextView) findViewById(R.id.main_tv3);
-        main_tv4 = (TextView) findViewById(R.id.main_tv4);
         main_tv5 = (TextView) findViewById(R.id.main_tv5);
+        main_tv6 = (TextView) findViewById(R.id.main_tv6);
         main_view1 = (TextView) findViewById(R.id.main_view1);
+        main_view2 = (TextView) findViewById(R.id.main_view2);
 
         Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
@@ -54,12 +58,21 @@ public class Main extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), Booking.class);
                         startActivity(intent);
                         break;
-
+                    case R.id.main_button3:
+                        Intent intent = new Intent(getApplicationContext(), Administrator.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.main_button4:
+                        intent = new Intent(getApplicationContext(), adminPage.class);
+                        startActivity(intent);
+                        break;
                 }
             }
         };
         main_button1.setOnClickListener(onClickListener);
         main_button2.setOnClickListener(onClickListener);
+        main_button3.setOnClickListener(onClickListener);
+        main_button4.setOnClickListener(onClickListener);
 
         main_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,23 +89,13 @@ public class Main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         main_tv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Administrator.class);
+                Intent intent = new Intent(getApplicationContext(), MyInformation.class);
                 startActivity(intent);
             }
         });
-
-        main_tv4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), adminPage.class);
-                startActivity(intent);
-            }
-        });
-
         main_tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,11 +105,8 @@ public class Main extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         editor.putString("logined_name", "");
+                        editor.putString("logined_id", "");
                         editor.apply();
-                        main_tv1.setVisibility(View.VISIBLE);
-                        main_tv2.setVisibility(View.VISIBLE);
-                        main_tv5.setVisibility(View.GONE);
-                        main_view1.setVisibility(View.VISIBLE);
                         refresh();
                     }
                 });
@@ -119,17 +119,44 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        if(logined_name != ""){
+        main_tv6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MyBookingCheck.class);
+                startActivity(intent);
+            }
+        });
+        String developer = logined_name.replace(" ", "");
+        if(developer.equals("개발자")==true){
             main_tv1.setVisibility(View.GONE);
             main_tv2.setVisibility(View.GONE);
-            main_tv5.setVisibility(View.VISIBLE);
+            main_tv3.setVisibility(View.GONE);
             main_view1.setVisibility(View.GONE);
+            main_view2.setVisibility(View.GONE);
+            main_tv5.setVisibility(View.VISIBLE);
+            main_button3.setVisibility(View.GONE);
+            main_button4.setVisibility(View.VISIBLE);
         }
         else if(logined_name == ""){
             main_tv1.setVisibility(View.VISIBLE);
             main_tv2.setVisibility(View.VISIBLE);
+            main_tv3.setVisibility(View.GONE);
             main_tv5.setVisibility(View.GONE);
-            main_view1.setVisibility(View.VISIBLE);
+            main_tv6.setVisibility(View.GONE);
+            main_view1.setVisibility(View.GONE);
+
+        }else if(logined_name != ""){
+            if(logined_id ==""){
+                main_tv3.setVisibility(View.GONE);
+                main_view1.setVisibility(View.GONE);
+            }else{
+                main_tv3.setVisibility(View.VISIBLE);
+                main_view1.setVisibility(View.VISIBLE);
+            }
+            main_tv1.setVisibility(View.GONE);
+            main_tv2.setVisibility(View.GONE);
+            main_tv5.setVisibility(View.VISIBLE);
+            main_tv6.setVisibility(View.VISIBLE);
         }
     }
     public void refresh(){

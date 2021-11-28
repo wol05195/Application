@@ -133,12 +133,15 @@ public class MemberLogin extends Fragment {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toast = Toast.makeText(memberlogincontext, "사용자 이름" + res + "입니다.", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(memberlogincontext, "안녕하세요!" + res + "님", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
                         toast.show();
                         editor.putString("logined_name", res);
+                        editor.putString("logined_id", mID.getText().toString());
                         editor.apply();
-                        ((Login)getActivity()).refresh();
+//                        ((Login)getActivity()).refresh();
+                        Intent intent = new Intent(memberlogincontext, Main.class);
+                        startActivity(intent);
                     }
                 });
             }

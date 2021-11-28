@@ -203,10 +203,10 @@ public class NonMember extends Fragment {
                             break;
                     }
 
-                    if(nextRow.getRowNum()>=2){
-                        nonmember.add(value);
-                    }else{
-                    }
+//                    if(nextRow.getRowNum()>=2){
+//                        nonmember.add(value);
+//                    }else{
+//                    }
                 }
             }
             workbook.close();

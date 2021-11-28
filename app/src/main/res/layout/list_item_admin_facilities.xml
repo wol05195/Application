@@ -13,8 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/round_border"
-            android:padding="15dp">
+            android:padding="7dp">
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
@@ -55,19 +54,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:background="@color/lightpurple_200"
-                    android:layout_marginRight="10dp"
-                    android:text="이름"/>
+<!--                <TextView-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:background="@color/lightpurple_200"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:text="이름"/>-->
 
                 <TextView
                     android:id="@+id/list_item_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"/>
+                    android:textSize="18dp"/>
             </LinearLayout>
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->

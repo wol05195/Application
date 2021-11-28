@@ -19,7 +19,7 @@
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="관리자 등록"
+            android:text="시설 등록"
             android:textColor="@color/brown"
             android:fontFamily="@font/nanumbarungothicbold"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>

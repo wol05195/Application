@@ -8,6 +8,10 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/ivory">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,21 +19,19 @@
         android:gravity="center">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="130dp"
             android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
             android:text="여기 사람 in나요?"
             android:textSize="30dp"
             android:fontFamily="@font/nanumbarungothicbold"/>
-
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:orientation="vertical"
         android:gravity="center">
-
         <Button
             android:id="@+id/main_button1"
             android:layout_width="300dp"
@@ -66,8 +68,6 @@
             app:backgroundTintMode="multiply" />
     </LinearLayout>
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,12 +91,20 @@
             android:textColor="@color/brown"
             android:visibility="gone"/>
         <TextView
+            android:id="@+id/main_view2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="|"
             android:textColor="@color/gray" />
-
+        <TextView
+            android:id="@+id/main_tv6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="예약 내역"
+            android:visibility="gone"
+            android:textColor="@color/brown" />
         <TextView
             android:id="@+id/main_tv2"
             android:layout_width="wrap_content"
@@ -118,38 +126,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="관리자 등록"
-            android:textColor="@color/brown" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="|"
-            android:textColor="@color/gray" />
+            android:text="개인정보수정"
+            android:visibility="gone"
+            android:textColor="@color/brown"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:text="|"-->
+<!--            android:textColor="@color/gray" />-->
 
-        <TextView
-            android:id="@+id/main_tv4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="admin페이지"
-            android:textColor="@color/brown" />
-
+<!--        <TextView-->
+<!--            android:id="@+id/main_tv4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:text="admin페이지"-->
+<!--            android:textColor="@color/brown" />-->
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:visibility="invisible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Page"
-            android:textColor="@color/purple_700" />
+        android:paddingRight="40dp"
+        android:paddingBottom="15dp"
+        android:gravity="right">
+        <Button
+            android:id="@+id/main_button3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/enroll" />
+        <Button
+            android:id="@+id/main_button4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/admin"
+            android:visibility="gone"/>
     </LinearLayout>
-
 </LinearLayout>
