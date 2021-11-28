@@ -266,7 +266,6 @@ public class Congestion extends FragmentActivity implements OnMapReadyCallback {
         bt.stopService(); //블루투스 중지
     }
 
-
 //    public void setup() {
 //        Button btnSend = findViewById(R.id.btnSend); //데이터 전송
 //        btnSend.setOnClickListener(new View.OnClickListener() {
