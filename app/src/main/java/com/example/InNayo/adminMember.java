@@ -107,6 +107,5 @@ public class adminMember extends AppCompatActivity {
         GetDataJson g = new GetDataJson();
         g.execute(url);
     }
-
     }
 

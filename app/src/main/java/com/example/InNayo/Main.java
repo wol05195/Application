@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
     Intent intent;
-    Button main_button1, main_button2, main_button3, main_button4;
+    Button main_button1, main_button2, main_button3, main_button4, main_button5, main_button6, main_button7;
     TextView main_tv1, main_tv2, main_tv3, main_tv4, main_tv5, main_tv6, main_view1, main_view2;
 
     SharedPreferences pref;          // 프리퍼런스
@@ -36,7 +36,9 @@ public class Main extends AppCompatActivity {
         main_button1 = (Button) findViewById(R.id.main_button1);
         main_button2 = (Button) findViewById(R.id.main_button2);
         main_button3 = (Button) findViewById(R.id.main_button3);
-        main_button4 = (Button) findViewById(R.id.main_button4);
+        main_button5 = (Button) findViewById(R.id.main_button5);
+        main_button6 = (Button) findViewById(R.id.main_button6);
+        main_button7 = (Button) findViewById(R.id.main_button7);
 
         main_tv1 = (TextView) findViewById(R.id.main_tv1);
         main_tv2 = (TextView) findViewById(R.id.main_tv2);
@@ -62,8 +64,20 @@ public class Main extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Administrator.class);
                         startActivity(intent);
                         break;
-                    case R.id.main_button4:
-                        intent = new Intent(getApplicationContext(), adminPage.class);
+//                    case R.id.main_button4:
+//                        intent = new Intent(getApplicationContext(), adminPage.class);
+//                        startActivity(intent);
+//                        break;
+                    case R.id.main_button5:
+                        intent = new Intent(getApplicationContext(), adminReservation.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.main_button6:
+                        intent = new Intent(getApplicationContext(), adminMember.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.main_button7:
+                        intent = new Intent(getApplicationContext(), adminFacilities.class);
                         startActivity(intent);
                         break;
                 }
@@ -72,7 +86,9 @@ public class Main extends AppCompatActivity {
         main_button1.setOnClickListener(onClickListener);
         main_button2.setOnClickListener(onClickListener);
         main_button3.setOnClickListener(onClickListener);
-        main_button4.setOnClickListener(onClickListener);
+        main_button5.setOnClickListener(onClickListener);
+        main_button6.setOnClickListener(onClickListener);
+        main_button7.setOnClickListener(onClickListener);
 
         main_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +150,12 @@ public class Main extends AppCompatActivity {
             main_view1.setVisibility(View.GONE);
             main_view2.setVisibility(View.GONE);
             main_tv5.setVisibility(View.VISIBLE);
+            main_button1.setVisibility(View.GONE);
+            main_button2.setVisibility(View.GONE);
             main_button3.setVisibility(View.GONE);
-            main_button4.setVisibility(View.VISIBLE);
+            main_button5.setVisibility(View.VISIBLE);
+            main_button6.setVisibility(View.VISIBLE);
+            main_button7.setVisibility(View.VISIBLE);
         }
         else if(logined_name == ""){
             main_tv1.setVisibility(View.VISIBLE);

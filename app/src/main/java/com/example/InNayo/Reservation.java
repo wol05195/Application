@@ -55,7 +55,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
-    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM, SP, TP, RP , logined_name;
+    String myJSON, DATE, TIME, RDATE, RTIME, RCOUNT , SEARCHITEM, SP, TP, RP , logined_name, logined_id;
     Button reservation_bt1, reservation_bt2, reservation_bt3, reservation_bt4, reservation_bt5, reservation_bt6;
     TextView reservation_year, reservation_month, reservation_date, reservation_time, reservation_ap, reservation_people;
     EditText reservation_edit1, et_side_name;
@@ -101,6 +101,7 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         et_side_name = (EditText)findViewById(R.id.et_side_name);
 
         logined_name = pref.getString("logined_name","");
+        logined_id = pref.getString("logined_id","");
         et_side_name.setText(logined_name);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -163,6 +164,10 @@ public class Reservation extends AppCompatActivity implements View.OnClickListen
         reservation_bt6 = (Button)findViewById(R.id.reservation_bt6);
         reservation_edit1 = (EditText) findViewById(R.id.reservation_edit1);
 
+        if (logined_id == ""){
+            reservation_bt2.setVisibility(View.GONE);
+            reservation_bt3.setVisibility(View.GONE);
+        }
         Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
             public void onClick(View v) {

@@ -127,5 +127,4 @@ class SideBarView extends RelativeLayout implements View.OnClickListener {
                 break;
         }
     }
-
 }

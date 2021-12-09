@@ -29,7 +29,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="180dp"
         android:orientation="vertical"
         android:gravity="center">
         <Button
@@ -66,6 +66,53 @@
             android:textSize="20dp"
             app:backgroundTint="#FFFFFF"
             app:backgroundTintMode="multiply" />
+        <Button
+            android:id="@+id/main_button5"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:background="@drawable/gradient_basic_button"
+            android:gravity="center"
+            android:text="예약 관리"
+            android:textColor="@color/brown"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:fontFamily="@font/nanumbarungothicbold"/>
+
+        <Button
+            android:id="@+id/main_button6"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:background="@drawable/gradient_basic_button"
+            android:gravity="center"
+            android:text="회원 관리"
+            android:textColor="@color/brown"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:fontFamily="@font/nanumbarungothicbold"/>
+
+        <Button
+            android:id="@+id/main_button7"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:background="@drawable/gradient_basic_button"
+            android:gravity="center"
+            android:text="시설 관리"
+            android:textColor="@color/brown"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:fontFamily="@font/nanumbarungothicbold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -159,11 +206,11 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/enroll" />
-        <Button
-            android:id="@+id/main_button4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/admin"
-            android:visibility="gone"/>
+<!--        <Button-->
+<!--            android:id="@+id/main_button4"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:background="@drawable/admin"-->
+<!--            android:visibility="gone"/>-->
     </LinearLayout>
 </LinearLayout>

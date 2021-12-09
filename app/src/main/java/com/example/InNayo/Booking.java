@@ -291,5 +291,4 @@ public class Booking extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
-
 }
