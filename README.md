@@ -13,8 +13,7 @@ Java, PHP |AWS ec2, Ubuntu, phpMyAdmin| Mysql 8.0.21 | Android Studio 4.0.2 (SDK
 #
 ## [기술 설명]
 ### 1. DB
-정규화 및 데이터 베이스의 개념을 이해하였고, PK와 FK 및 칼럼 간의 관계를 고려하여 ER-diagram 작성 및 DB구축 가능,  
-이를 기반으로 CRUD 작성 가능
+정규화 및 데이터 베이스의 개념을 이해하였고, PK와 FK 및 칼럼 간의 관계를 고려하여 ER-diagram 작성 및 DB구축 가능, 이를 기반으로 CRUD 작성 가능
 
 ### 2. 웹서버
 AWS 를 이용하여 Ubuntu 서버 생성 가능, 서버에 phpMyAdmin 설치 가능, File zilla 프로그램을 통해 서버에 파일 업로드 가능
